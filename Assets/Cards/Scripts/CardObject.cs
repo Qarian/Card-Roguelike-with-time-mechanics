@@ -10,12 +10,12 @@ public class CardObject : MonoBehaviour
     [Space]
     [NonSerialized] public CardStyle style;
 
-    private new Transform transform;
+    public new RectTransform transform;
 
-    public Vector3 position
+    public Vector2 anchoredPosition
     {
-        get => transform.position;
-        set => transform.position = value;
+        get => transform.anchoredPosition;
+        set => transform.anchoredPosition = value;
     }
     
     public Quaternion rotation
@@ -24,9 +24,14 @@ public class CardObject : MonoBehaviour
         set => transform.rotation = value;
     }
 
+    public void SetParent(Transform newParent)
+    {
+        transform.SetParent(newParent);
+    }
+
     private void Awake()
     {
-        transform = GetComponent<Transform>();
+        transform = GetComponent<RectTransform>();
         background.color = Random.ColorHSV();
     }
 

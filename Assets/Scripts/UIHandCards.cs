@@ -9,10 +9,15 @@ public class UIHandCards : MonoBehaviour
     [SerializeField] private float maxCardRotation;
     [MinValue(1f)]
     [SerializeField] private int maxCardsForCentering = 6;
+
+    [Space]
+    [SerializeField] private Vector2 cardsAnchor;
     
     private readonly List<CardObject> cardsInHand = new List<CardObject>(10);
 
     private new RectTransform transform;
+
+    private float centeringOffset;
 
     private void Awake()
     {
@@ -35,20 +40,34 @@ public class UIHandCards : MonoBehaviour
         }
     }
 
+    [Button]
+    public void RemoveCard(int index)
+    {
+        cardsInHand.RemoveAt(index);
+        Refresh();
+    }
+
+    public void RemoveCard(CardObject card)
+    {
+        cardsInHand.Remove(card);
+        Refresh();
+    }
+
     public void MoveCardToPosition(CardObject card, int position)
     {
-        float centeringOffset = Mathf.Clamp((maxCardsForCentering - cardsInHand.Count) / 2f, 0f, Mathf.Infinity);
         float xPos = (position + centeringOffset) / Mathf.Max(maxCardsForCentering - 1, cardsInHand.Count - 1);
-        Vector2 pos = new Vector2(xPos, 1 - Mathf.Pow(1 - 2 * xPos, 2));
+        Vector2 pos = new Vector2(xPos - cardsAnchor.x, 1 - Mathf.Pow(1 - 2 * xPos, 2) - cardsAnchor.y);
         
         pos *= transform.sizeDelta;
-        card.position = transform.position + new Vector3(pos.x, pos.y);
-        //card.rotation = Quaternion.Euler(0, 0, maxCardRotation * (0.5f - xPos) * 2);
+        card.transform.parent = transform;
+        card.anchoredPosition = pos;
+        card.rotation = Quaternion.Euler(0, 0, maxCardRotation * (0.5f - xPos) * 2);
     }
 
     [Button]
     public void Refresh()
     {
+        centeringOffset = Mathf.Clamp((maxCardsForCentering - cardsInHand.Count) / 2f, 0f, Mathf.Infinity);
         for (int i = 0; i < cardsInHand.Count; i++)
         {
             MoveCardToPosition(cardsInHand[i], i);
