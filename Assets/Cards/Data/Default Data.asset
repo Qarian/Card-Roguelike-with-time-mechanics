@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc620566a7dbdb4bac744df77aade53, type: 3}
-  m_Name: Default Style
+  m_Script: {fileID: 11500000, guid: abc808898df9ea344966a62ab754a656, type: 3}
+  m_Name: Default Data
   m_EditorClassIdentifier: 
-  background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  style: {fileID: 11400000, guid: b7912924c6caa5b4ca594711f75e088b, type: 2}
+  title: Default
+  cost: 99
