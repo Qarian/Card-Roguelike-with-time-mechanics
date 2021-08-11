@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UI.Cards
 {
-	public class UICardHand : MonoBehaviour
+	public class UICardsHand : MonoBehaviour
 	{
 		[Range(0f, 90f)] [SerializeField] private float maxCardRotation;
 		[MinValue(1f)] [SerializeField] private int maxCardsForCentering = 6;

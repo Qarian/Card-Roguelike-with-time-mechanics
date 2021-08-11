@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace UI.Cards
 {
-	public class UICardController : MonoBehaviour
+	public class UICardsController : MonoBehaviour
 	{
-		[SerializeField] private UICardHand cardHand;
-		[SerializeField] private UICardDeck cardDeck;
+		[SerializeField] private UICardsHand cardsHand;
+		[SerializeField] private UICardsDeck cardsDeck;
 
 		[Button]
 		public void DrawCardToHand()
@@ -18,9 +18,9 @@ namespace UI.Cards
 
 		IEnumerator TmpDrawCardToHandAnimation()
 		{
-			CardUI card = cardDeck.DrawCard();
+			CardUI card = cardsDeck.DrawCard();
 			yield return new WaitForSeconds(1f);
-			cardHand.AddCard(card);
+			cardsHand.AddCard(card);
 		}
 	}
 }

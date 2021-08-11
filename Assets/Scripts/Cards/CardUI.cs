@@ -72,5 +72,11 @@ namespace Cards
 			//TODO: Remove after generating proper cards
 			background.color = Random.ColorHSV();
 		}
+
+		public void SetCard(CardData cardData)
+		{
+			data = cardData;
+			ApplyStyle();
+		}
 	}
 }

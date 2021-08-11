@@ -4,7 +4,7 @@ using Utilities;
 
 namespace UI.Cards
 {
-	public class UICardDeck : MonoBehaviour
+	public class UICardsDeck : MonoBehaviour
 	{
 		[SerializeField] private CardUI cardPrefab = default;
 		
