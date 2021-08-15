@@ -5,9 +5,19 @@ namespace Utilities
 {
 	public class ObjectPool<T>
 	{
-		private Queue<T> pool = new Queue<T>();
+		private Queue<T> pool;
 
 		public int Size => pool.Count;
+
+		public ObjectPool()
+		{
+			pool = new Queue<T>();
+		}
+
+		public ObjectPool(int capacity)
+		{
+			pool = new Queue<T>(capacity);
+		}
 
 		public void Add(T obj)
 		{

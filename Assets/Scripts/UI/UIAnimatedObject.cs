@@ -1,18 +1,11 @@
-using System;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
-namespace Cards
+namespace UI.Cards
 {
-	public class CardUI : MonoBehaviour
-	{
-		[SerializeField] private Image background = default;
-
-		[Space]
-		public CardData data;
-
-		[NonSerialized]
+    public class UIAnimatedObject : MonoBehaviour
+    {
+	    [NonSerialized]
 		public new RectTransform transform;
 
 		public Vector2 AnchoredPosition
@@ -26,7 +19,7 @@ namespace Cards
 		{
 			// TODO: Add animation
 			Vector3 rotation = transform.rotation.eulerAngles;
-			rotation.y = zRotation;
+			rotation.z = zRotation;
 			transform.rotation = Quaternion.Euler(rotation);
 		}
 
@@ -60,23 +53,5 @@ namespace Cards
 			transform.SetParent(newParent);
 		}
 
-		private void Awake()
-		{
-			transform = GetComponent<RectTransform>();
-			ApplyStyle();
-		}
-
-		private void ApplyStyle()
-		{
-			background.sprite = data.style.background;
-			//TODO: Remove after generating proper cards
-			background.color = Random.ColorHSV();
-		}
-
-		public void SetCard(CardData cardData)
-		{
-			data = cardData;
-			ApplyStyle();
-		}
-	}
+    }
 }

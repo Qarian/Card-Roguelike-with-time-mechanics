@@ -7,18 +7,31 @@ namespace UI.Cards
 	public class UICardsDeck : MonoBehaviour
 	{
 		[SerializeField] private CardUI cardPrefab = default;
-		
+
 		[Space]
-		[SerializeField] private int initialSize = 20;
-		
+		//TODO: start deck from script
+		[SerializeField] private Deck startDeck = null;
+
 		private MonoBehaviourPool<CardUI> cardsPool;
+		private int size;
 
 		private void Awake()
 		{
-			cardsPool = new MonoBehaviourPool<CardUI>(transform);
-			for (int i = 0; i < initialSize; i++)
+			if (startDeck)
+				GenerateCards(startDeck);
+			else
+				Debug.LogWarning("No starting deck!");
+		}
+
+		private void GenerateCards(Deck deck)
+		{
+			size = deck.cards.Count;
+			cardsPool = new MonoBehaviourPool<CardUI>(transform, size);
+			for (int i = 0; i < size; i++)
 			{
-				cardsPool.Destroy(Instantiate(cardPrefab, transform));
+				var card = Instantiate(cardPrefab, transform);
+				card.SetCard(deck.cards[i]);
+				cardsPool.Destroy(card);
 			}
 		}
 		

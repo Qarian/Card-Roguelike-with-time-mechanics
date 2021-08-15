@@ -8,5 +8,6 @@ namespace Cards
 		public CardStyle style;
 		public string title;
 		public int cost;
+		public string explanation;
 	}
 }

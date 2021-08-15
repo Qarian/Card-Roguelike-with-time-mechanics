@@ -1,8 +1,7 @@
-﻿using UI.Cards;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Cards
+namespace UI.Cards
 {
     [RequireComponent(typeof(CardUI))]
     public class CardUIMouseSupport : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler

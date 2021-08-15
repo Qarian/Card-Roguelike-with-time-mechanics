@@ -543,7 +543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 7945281051113626310, guid: 0487d54d1fe2975478bce22d3784e235, type: 3}
-  initialSize: 20
+  startDeck: {fileID: 11400000, guid: ee1769f701b5fef488f36a5a7982b948, type: 2}
 --- !u!1 &1695388850
 GameObject:
   m_ObjectHideFlags: 0
