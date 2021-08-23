@@ -1,11 +1,15 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Cards
 {
-    [CreateAssetMenu(menuName = "Card/Deck", fileName = "New Deck")]
-    public class Deck : ScriptableObject
+    public class Deck
     {
-        public List<CardData> cards;
+        public readonly List<CardData> cards;
+        public int Size => cards.Count;
+
+        public Deck(List<CardData> baseCards)
+        {
+            cards = new List<CardData>(baseCards);
+        }
     }
 }

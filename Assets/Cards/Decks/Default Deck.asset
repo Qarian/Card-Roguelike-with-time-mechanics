@@ -9,24 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9a50c7a43e98f4a8c144c96db6e60c, type: 3}
-  m_Name: ExampleDeck
+  m_Script: {fileID: 11500000, guid: e0402ad358b5466cb157ceed5fa226d6, type: 3}
+  m_Name: Default Deck
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
-  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
-  - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
-  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
-  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
-  - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
-  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
-  - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
-  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
-  - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
-  - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
   - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
   - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
   - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
   - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
   - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
+  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
   - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
+  - {fileID: 11400000, guid: 2ae6aa03453996e42ab35995abf9fc87, type: 2}
+  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}
+  - {fileID: 11400000, guid: 31942cb93c465c84f9b5b11b3312220e, type: 2}

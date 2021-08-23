@@ -1,4 +1,5 @@
 ﻿using Cards;
+using Player;
 using UnityEngine;
 using Utilities;
 
@@ -8,24 +9,19 @@ namespace UI.Cards
 	{
 		[SerializeField] private CardUI cardPrefab = default;
 
-		[Space]
-		//TODO: start deck from script
-		[SerializeField] private Deck startDeck = null;
-
+		private Deck deck;
 		private MonoBehaviourPool<CardUI> cardsPool;
 		private int size;
 
-		private void Awake()
+		private void Start()
 		{
-			if (startDeck)
-				GenerateCards(startDeck);
-			else
-				Debug.LogWarning("No starting deck!");
+			deck = PlayerData.Instance.deck;
+			GenerateCards(deck);
 		}
 
 		private void GenerateCards(Deck deck)
 		{
-			size = deck.cards.Count;
+			size = deck.Size;
 			cardsPool = new MonoBehaviourPool<CardUI>(transform, size);
 			for (int i = 0; i < size; i++)
 			{
