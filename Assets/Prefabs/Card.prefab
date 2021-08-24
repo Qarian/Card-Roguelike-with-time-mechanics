@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d810e4702d9b462dae8440acdc281d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raycastReceiver: {fileID: 8497599171477563128}
 --- !u!1 &4263418650928264052
 GameObject:
   m_ObjectHideFlags: 0

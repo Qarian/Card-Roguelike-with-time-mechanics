@@ -1,3 +1,4 @@
+using System;
 using Cards;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,23 @@ namespace UI.Cards
 
 		[Space]
 		public CardData data;
+		
+		private ICardHolder parent;
+
+		public ICardHolder Parent
+		{
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				parent = value;
+				OnCardReparented?.Invoke(this);
+			}
+		}
+
+		public event Action<CardUI> OnCardReparented;
 
 		private void Awake()
 		{

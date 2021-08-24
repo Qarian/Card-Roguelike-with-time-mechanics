@@ -4,7 +4,7 @@ namespace Utilities
 {
 	public abstract class BaseSingleton<T>: MonoBehaviour where T : MonoBehaviour
 	{
-		[SerializeField] private bool persistent;
+		[SerializeField] protected bool persistent;
 		
 		private static T instance;
 
@@ -13,6 +13,9 @@ namespace Utilities
 			get
 			{
 				instance ??= FindObjectOfType<T>();
+				
+				if (instance is null)
+					Debug.LogError($"Can't find singleton of type {typeof(T).FullName}");
 
 				return instance;
 			}

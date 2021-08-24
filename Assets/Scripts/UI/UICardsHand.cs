@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace UI.Cards
 {
-	public class UICardsHand : MonoBehaviour
+	public class UICardsHand : MonoBehaviour, ICardHolder
 	{
 		[Range(0f, 90f)] [SerializeField] private float maxCardRotation;
 		[MinValue(1f)] [SerializeField] private int maxCardsForCentering = 6;
@@ -22,16 +23,32 @@ namespace UI.Cards
 			transform = GetComponent<RectTransform>();
 		}
 		
-		public void AddCard(CardUI card)
+		public bool ReceiveCard(CardUI card)
 		{
+			card.Parent = this;
+			card.OnCardReparented += RemoveCard;
 			if (cardsInHand.Contains(card))
 			{
 				MoveCardToPosition(card, cardsInHand.IndexOf(card));
-				return;
+				return true;
 			}
 
 			cardsInHand.Add(card);
 			Refresh();
+			return true;
+		}
+
+		public void ReturnCard(CardUI card)
+		{
+			if (cardsInHand.Contains(card))
+			{
+				MoveCardToPosition(card, cardsInHand.IndexOf(card));
+			}
+			else
+			{
+				Debug.LogError("Card wasn't in hand before");
+				ReceiveCard(card);
+			}
 		}
 
 		[Button]
@@ -43,6 +60,7 @@ namespace UI.Cards
 
 		public void RemoveCard(CardUI card)
 		{
+			card.OnCardReparented -= RemoveCard;
 			cardsInHand.Remove(card);
 			Refresh();
 		}
