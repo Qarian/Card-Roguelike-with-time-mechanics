@@ -6,5 +6,6 @@ namespace Cards
 	public class CardStyle : ScriptableObject
 	{
 		public Sprite background;
+		public Sprite backSide;
 	}
 }

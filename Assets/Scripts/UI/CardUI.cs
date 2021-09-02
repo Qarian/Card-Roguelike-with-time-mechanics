@@ -8,7 +8,9 @@ namespace UI.Cards
 {
 	public class CardUI : UIAnimatedObject
 	{
+		[Header("References")]
 		[SerializeField] private Image background = default;
+		[SerializeField] private Image backSide = default;
 		[SerializeField] private TMP_Text cost = default;
 		[SerializeField] private TMP_Text title = default;
 		[SerializeField] private TMP_Text explanation = default;
@@ -42,6 +44,7 @@ namespace UI.Cards
 		private void ApplyStyle()
 		{
 			background.sprite = data.style.background;
+			backSide.sprite = data.style.backSide;
 		}
 
 		private void UpdateData()

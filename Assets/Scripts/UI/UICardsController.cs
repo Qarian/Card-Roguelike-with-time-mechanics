@@ -22,7 +22,7 @@ namespace UI.Cards
 			IEnumerator TmpDrawCardToHandAnimation()
 			{
 				CardUI card = cardsDeck.DrawCard();
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(0.1f);
 				cardsHand.ReceiveCard(card);
 			}
 		}
