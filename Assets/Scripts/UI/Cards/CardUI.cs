@@ -37,8 +37,8 @@ namespace UI.Cards
 
 		private void Awake()
 		{
+			OnCreate();
 			transform = GetComponent<RectTransform>();
-			ApplyStyle();
 		}
 
 		private void ApplyStyle()
@@ -60,6 +60,16 @@ namespace UI.Cards
 			gameObject.name = data.title;
 			ApplyStyle();
 			UpdateData();
+		}
+
+		public override void OnCreate()
+		{
+			gameObject.SetActive(true);
+		}
+
+		public override void OnDestroy()
+		{
+			gameObject.SetActive(false);
 		}
 	}
 }

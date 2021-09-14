@@ -1,18 +1,18 @@
 ﻿using System;
 using DG.Tweening;
 using UnityEngine;
+using Utilities;
 
 namespace UI.Cards
 {
-    public class UIAnimatedObject : MonoBehaviour
+    public abstract class UIAnimatedObject : PoolableMonoBehaviour
     {
 	    [SerializeField] private float animationScale = 1f;
 
 	    [Space]
 	    [SerializeField] private float movementDuration = 2f;
 	    private Tween movementTween;
-
-
+	    
 	    private float rotationY = 0;
 	    private float rotationZ = 0;
 	    private bool updateRotation = false;
@@ -22,8 +22,7 @@ namespace UI.Cards
 	    [SerializeField] private float flipDuration = 0.5f;
 	    private Tween flipTween;
 
-	    [NonSerialized]
-		public new RectTransform transform;
+	    [NonSerialized] protected new RectTransform transform;
 
 		private void Awake()
 		{
