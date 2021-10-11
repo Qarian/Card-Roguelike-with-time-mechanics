@@ -15,17 +15,14 @@ namespace Utilities
             objectPools.Add(typeof(T), pool);
         }
 
-        public static void Destroy<T>(T objectToDestroy) where T : PoolableMonoBehaviour
+        public static void Remove<T>(T objectToDestroy) where T : PoolableMonoBehaviour
         {
-            objectToDestroy.OnDestroy();
-            if (objectPools.ContainsKey(typeof(T)))
-            {
-                ((ObjectPool<T>) objectPools[typeof(T)]).Add(objectToDestroy);
-            }
-            else
-            {
-                Debug.LogError("Destroying object without creating pool for it");
-            }
+            objectToDestroy.OnRemove();
+            
+            if (!objectPools.ContainsKey(typeof(T)))
+                TryToAddNewPool(new ObjectPool<T>());
+            
+            ((ObjectPool<T>) objectPools[typeof(T)]).Add(objectToDestroy);
         }
 
         public static T Get<T>() where T : PoolableMonoBehaviour
@@ -34,12 +31,12 @@ namespace Utilities
             {
                 return ((ObjectPool<T>) objectPools[typeof(T)]).Get();
             }
-            catch (InvalidOperationException e)
+            catch //InvalidOperationException
             {
                 if (prefabs.ContainsKey(typeof(T)))
                 {
                     var obj = Object.Instantiate(prefabs[typeof(T)]);
-                    obj.OnCreate();
+                    obj.OnGet();
                     return obj as T;
                 }
             }

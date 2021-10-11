@@ -2,8 +2,9 @@
 
 namespace Utilities
 {
-	public abstract class BaseSingleton<T>: MonoBehaviour where T : MonoBehaviour
+	public abstract class Singleton<T>: MonoBehaviour where T : MonoBehaviour
 	{
+		[Header("Singleton")]
 		[SerializeField] protected bool persistent;
 		
 		private static T instance;

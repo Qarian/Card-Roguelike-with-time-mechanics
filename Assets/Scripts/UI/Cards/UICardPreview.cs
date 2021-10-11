@@ -29,7 +29,7 @@ namespace UI.Cards
                 return;
             
             staticPreviewCard.gameObject.SetActive(false);
-            currentDisplayedData = null;
+            currentDisplayedData = CardData.Empty;
         }
     }
 }

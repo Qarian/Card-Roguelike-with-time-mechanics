@@ -5,7 +5,7 @@ using Utilities;
 namespace UI.Cards
 {
     [RequireComponent(typeof(Canvas))]
-    public class CanvasDataProvider : BaseSingleton<CanvasDataProvider>
+    public class CanvasDataProvider : Singleton<CanvasDataProvider>
     {
         public Canvas canvas { get; private set; }
 

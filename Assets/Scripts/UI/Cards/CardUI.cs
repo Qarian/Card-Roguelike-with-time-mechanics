@@ -1,6 +1,7 @@
 using System;
 using Cards;
 using TMPro;
+using UnityEditor.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,12 +38,17 @@ namespace UI.Cards
 
 		private void Awake()
 		{
-			OnCreate();
+			OnGet();
 			transform = GetComponent<RectTransform>();
 		}
 
 		private void ApplyStyle()
 		{
+			if (!data.style)
+			{
+				Debug.LogError("Tried to apply null style");
+				return;
+			}
 			background.sprite = data.style.background;
 			backSide.sprite = data.style.backSide;
 		}
@@ -51,7 +57,7 @@ namespace UI.Cards
 		{
 			cost.text = data.cost.ToString();
 			title.text = data.title;
-			explanation.text = data.explanation;
+			explanation.text = data.description;
 		}
 
 		public void SetCard(CardData cardData)
@@ -60,16 +66,6 @@ namespace UI.Cards
 			gameObject.name = data.title;
 			ApplyStyle();
 			UpdateData();
-		}
-
-		public override void OnCreate()
-		{
-			gameObject.SetActive(true);
-		}
-
-		public override void OnDestroy()
-		{
-			gameObject.SetActive(false);
 		}
 	}
 }

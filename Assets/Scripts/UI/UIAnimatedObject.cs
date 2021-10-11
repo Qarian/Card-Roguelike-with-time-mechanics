@@ -90,7 +90,7 @@ namespace UI.Cards
 					updateRotation = true;
 				}, 
 				!facingFront ? 0 : 180,
-				rotationDuration * animationScale);
+				flipDuration * animationScale);
 		}
 
 		public void SetParent(Transform newParent)

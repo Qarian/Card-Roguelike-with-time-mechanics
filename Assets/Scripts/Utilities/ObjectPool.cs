@@ -9,25 +9,22 @@ namespace Utilities
 		private Queue<T> pool;
 
 		public int Size => pool.Count;
-		
-		private Transform parent;
 
-		public ObjectPool(Transform parent)
+
+		public ObjectPool()
 		{
-			this.parent = parent;
 			pool = new Queue<T>();
 		}
 
-		public ObjectPool(Transform parent, int capacity)
+		public ObjectPool(int capacity)
 		{
-			this.parent = parent;
 			pool = new Queue<T>(capacity);
 		}
 
 		public void Add(T obj)
 		{
 			pool.Enqueue(obj);
-			obj.OnDestroy();
+			obj.OnRemove();
 		}
 
 		public void Add(IEnumerable<T> objs)
@@ -43,7 +40,7 @@ namespace Utilities
 			if (pool.Count > 0)
 			{
 				T obj = pool.Dequeue();
-				obj.OnCreate();
+				obj.OnGet();
 				return obj;
 			}
 			else

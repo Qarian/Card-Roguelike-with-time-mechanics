@@ -6,11 +6,12 @@ namespace Cards
 	[CreateAssetMenu(menuName = "Card/Deck", fileName = "New Deck")]
 	public class DeckScriptable : ScriptableObject
 	{
-		public List<CardData> cards;
+		public List<CardDataScriptable> cards;
 
 		private void OnValidate()
 		{
-			cards.RemoveAll(item => item is null);
+			if (cards != null)
+				cards.RemoveAll(item => item is null);
 		}
 	}
 }

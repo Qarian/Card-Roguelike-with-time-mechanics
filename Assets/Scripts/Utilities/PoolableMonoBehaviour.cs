@@ -1,16 +1,18 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Utilities
 {
     public abstract class PoolableMonoBehaviour : MonoBehaviour
     {
-        public abstract void OnCreate();
-        public abstract void OnDestroy();
-
-        public void Destroy()
+        public virtual void OnGet()
         {
-            PoolsManager.Destroy(this);
+            gameObject.SetActive(true);
+        }
+
+        public virtual void OnRemove()
+        {
+            gameObject.SetActive(false);
+            transform.SetParent(MonoBehaviourPoolParent.Transform);
         }
     }
 }

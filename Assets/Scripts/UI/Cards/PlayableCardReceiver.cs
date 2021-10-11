@@ -8,7 +8,7 @@ namespace UI.Cards
         public bool ReceiveCard(CardUI card)
         {
             Debug.Log($"Used {card.data.title}!");
-            PoolsManager.Destroy(card);
+            PoolsManager.Remove(card);
             return true;
         }
 
