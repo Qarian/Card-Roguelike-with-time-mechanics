@@ -34,6 +34,7 @@ namespace UI.Cards
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            cardUI.Parent.DragCard(cardUI);
             raycastReceiver.raycastTarget = false;
             UICardPreview.HidePreview(cardUI.data);
         }
@@ -43,16 +44,17 @@ namespace UI.Cards
             raycastReceiver.raycastTarget = true;
             foreach (GameObject hoveredObject in eventData.hovered)
             {
-                ICardHolder cardHolder;
-                if (hoveredObject.TryGetComponent(out cardHolder))
+                if (hoveredObject.TryGetComponent(out ICardHolder cardHolder))
                 {
-                    if (cardHolder.ReceiveCard(cardUI))
+                    if (cardHolder.CanReceiveCard(cardUI))
                     {
-                        // End function if card was taken
+                        cardUI.Parent.RemoveCard(cardUI);
+                        cardHolder.ReceiveCard(cardUI);
                         return;
                     }
                 }
             }
+            
             //fallback
             cardUI.Parent.ReturnCard(cardUI);
         }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -22,20 +21,34 @@ namespace UI.Cards
 		{
 			transform = GetComponent<RectTransform>();
 		}
-		
-		public bool ReceiveCard(CardUI card)
+
+		public bool CanReceiveCard(CardUI card)
 		{
-			card.Parent = this;
-			card.OnCardReparented += RemoveCard;
+			return true;
+		}
+
+		public void ReceiveCard(CardUI card)
+		{
+			card.SetParent(this, transform);
 			if (cardsInHand.Contains(card))
 			{
 				MoveCardToPosition(card, cardsInHand.IndexOf(card));
-				return true;
+				return;
 			}
 
 			cardsInHand.Add(card);
 			Refresh();
-			return true;
+		}
+
+		public void DragCard(CardUI card)
+		{
+			card.RotateCard(0);
+		}
+
+		public void RemoveCard(CardUI card)
+		{
+			cardsInHand.Remove(card);
+			Refresh();
 		}
 
 		public void ReturnCard(CardUI card)
@@ -58,14 +71,7 @@ namespace UI.Cards
 			Refresh();
 		}
 
-		public void RemoveCard(CardUI card)
-		{
-			card.OnCardReparented -= RemoveCard;
-			cardsInHand.Remove(card);
-			Refresh();
-		}
-
-		public void MoveCardToPosition(CardUI card, int position)
+		private void MoveCardToPosition(CardUI card, int position)
 		{
 			float xPos = (position + centeringOffset) / Mathf.Max(maxCardsForCentering - 1, cardsInHand.Count - 1);
 			Vector2 pos = new Vector2(xPos - cardsAnchor.x, 1 - Mathf.Pow(1 - 2 * xPos, 2) - cardsAnchor.y);

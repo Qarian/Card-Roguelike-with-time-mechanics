@@ -1,4 +1,3 @@
-using System;
 using Cards;
 using TMPro;
 using UnityEditor.EventSystems;
@@ -21,20 +20,13 @@ namespace UI.Cards
 		
 		private ICardHolder parent;
 
-		public ICardHolder Parent
-		{
-			get
-			{
-				return parent;
-			}
-			set
-			{
-				parent = value;
-				OnCardReparented?.Invoke(this);
-			}
-		}
+		public ICardHolder Parent => parent;
 
-		public event Action<CardUI> OnCardReparented;
+		public void SetParent(ICardHolder newParent, Transform newParentTransform)
+		{
+			parent = newParent;
+			transform.SetParent(newParentTransform);
+		}
 
 		private void Awake()
 		{
