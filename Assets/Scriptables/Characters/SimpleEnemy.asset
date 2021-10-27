@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc7b48cb08c063f4cafbedd4250c81c5, type: 3}
-  m_Name: Defence
+  m_Script: {fileID: 11500000, guid: 310f8c14bf3a4b7e8f96f34a4d83873b, type: 3}
+  m_Name: SimpleEnemy
   m_EditorClassIdentifier: 
-  style: {fileID: 11400000, guid: b7912924c6caa5b4ca594711f75e088b, type: 2}
-  title: Defence
-  cost: 2
-  description: Defend yourself
+  life: 100

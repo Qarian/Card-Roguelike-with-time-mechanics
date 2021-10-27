@@ -43,7 +43,6 @@ namespace UI.Cards
 		public Vector2 AnchoredPosition
 		{
 			get => transform.anchoredPosition;
-			// TODO: Add animation
 			set
 			{
 				movementTween?.Kill();

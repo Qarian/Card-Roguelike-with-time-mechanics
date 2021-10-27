@@ -1,5 +1,5 @@
 ﻿using Cards;
-using Player;
+using Entity;
 using UnityEngine;
 using Utilities;
 
@@ -7,6 +7,7 @@ namespace UI.Cards
 {
 	public class UICardsDeck : MonoBehaviour
 	{
+		[SerializeField] private PlayerData player = default;
 		[SerializeField] private CardUI cardPrefab = default;
 
 		private Deck deck;
@@ -14,7 +15,7 @@ namespace UI.Cards
 
 		private void Awake()
 		{
-			deck = PlayerData.Instance.PermanentDeck;
+			deck = player.PermanentDeck;
 			GenerateCards(deck);
 		}
 

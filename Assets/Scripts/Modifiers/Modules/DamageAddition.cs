@@ -1,14 +1,15 @@
-﻿using Other;
+﻿using Card.Actions;
+using Entity;
 
 namespace Modifiers.Modules
 {
     public class DamageAddition : IDamageCalculation
     {
         public float dmg = 0;
-        
-        public void DamageCalculation(ref float baseDamage, Character context)
+
+        public void DamageCalculation(CardAttackData attackData, Character context, ModificatorData originData)
         {
-            baseDamage += dmg;
+            attackData.FinalDamage += dmg;
         }
     }
 }

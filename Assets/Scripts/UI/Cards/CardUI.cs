@@ -17,7 +17,7 @@ namespace UI.Cards
 
 		[Space]
 		public CardData data;
-		
+
 		private ICardHolder parent;
 
 		public ICardHolder Parent => parent;

@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc7b48cb08c063f4cafbedd4250c81c5, type: 3}
-  m_Name: Attack
+  m_Name: Fire
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 567a75a5e3fef1343953470c5164177d, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -29,10 +30,22 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|Card.Actions.DamageAction, Assembly-CSharp
-    - Name: damage
-      Entry: 4
+      Data: 1|Card.Actions.StatusEffectAction, Assembly-CSharp
+    - Name: modificator
+      Entry: 10
+      Data: 0
+    - Name: values
+      Entry: 7
+      Data: 2|Modifiers.ModificatorData, Assembly-CSharp
+    - Name: strength
+      Entry: 3
       Data: 5
+    - Name: length
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -43,6 +56,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   style: {fileID: 11400000, guid: b7912924c6caa5b4ca594711f75e088b, type: 2}
-  title: Attack
-  cost: 1
-  description: Attack enemy
+  title: Fire!!!
+  cost: 2
+  description: Apply fire to enemy

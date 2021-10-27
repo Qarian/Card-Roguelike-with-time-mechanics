@@ -1,4 +1,5 @@
-﻿using Other;
+﻿using Card.Actions;
+using Entity;
 
 namespace Modifiers.Modules
 {
@@ -11,13 +12,13 @@ namespace Modifiers.Modules
 
         private Modificator Modificator => modificatorScriptable.modificator;
         
-        public void DamageCalculation(ref float baseDamage, Character context)
+        public void DamageCalculation(CardAttackData attackData, Character context, ModificatorData originData)
         {
             float modification = context.GetEffectData(Modificator).strength * multiplication;
             if (useAddition)
-                baseDamage += modification;
+                attackData.FinalDamage += modification;
             else
-                baseDamage *= modification;
+                attackData.FinalDamage *= modification;
             
             if (clearEffect)
                 context.RemoveEffect(Modificator);

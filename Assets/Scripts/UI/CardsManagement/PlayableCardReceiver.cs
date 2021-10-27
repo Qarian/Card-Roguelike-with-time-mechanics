@@ -1,3 +1,4 @@
+using Entity;
 using UnityEngine;
 using Utilities;
 
@@ -5,6 +6,9 @@ namespace UI.Cards
 {
     public class PlayableCardReceiver : MonoBehaviour, ICardHolder
     {
+        [SerializeField] private Character player;
+        [SerializeField] private Character character;
+        
         public bool CanReceiveCard(CardUI card)
         {
             return true;
@@ -14,7 +18,8 @@ namespace UI.Cards
         {
             Debug.Log($"Used {card.data.title}!");
             card.SetParent(this, transform);
-            //PoolsManager.Destroy(card);
+            character.ApplyAction(card.data.PrepareAttack());
+            PoolsManager.Remove(card);
         }
 
         public void DragCard(CardUI card)

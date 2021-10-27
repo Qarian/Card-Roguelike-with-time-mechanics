@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Card.Actions;
+using Entity;
 
 namespace Cards
 {
-	[Serializable]
 	public struct CardData
 	{
 		public readonly CardStyle style;
@@ -10,27 +13,35 @@ namespace Cards
 		public readonly int cost;
 		public readonly string description;
 
+		public List<ICardAction> subActions;
+
+		public Character owner;
+
 		public CardData(CardDataScriptable origin)
 		{
 			style = origin.style;
 			title = origin.title;
 			cost = origin.cost;
 			description = origin.description;
+			subActions = origin.actions.ToList();
+			owner = null;
 		}
 		
-		private CardData(CardStyle style, string title, int cost, string description)
+		private CardData(CardStyle style, string title, int cost, string description, List<ICardAction> subActions)
 		{
 			this.style = style;
 			this.title = title;
 			this.cost = cost;
 			this.description = description;
+			this.subActions = subActions;
+			owner = null;
 		}
 
-		public static CardData Empty => new CardData(null, string.Empty, -1, string.Empty);
+		public static CardData Empty => new CardData(null, string.Empty, -1, string.Empty, null);
 
 		public bool IsEmpty => title == string.Empty;
 
-		public static bool operator ==(CardData c1, CardData c2) 
+		public static bool operator ==(CardData c1, CardData c2)
 		{
 			return c1.title == c2.title && c1.style == c2.style;
 		}
@@ -60,6 +71,18 @@ namespace Cards
 				hashCode = (hashCode * 397) ^ (description != null ? description.GetHashCode() : 0);
 				return hashCode;
 			}
+		}
+
+		public CardAttackData PrepareAttack()
+		{
+			CardAttackData attackData = new CardAttackData();
+			
+			foreach (ICardAction cardAction in subActions)
+			{
+				cardAction.CreateAttack(attackData, owner);
+			}
+
+			return attackData;
 		}
 	}
 }

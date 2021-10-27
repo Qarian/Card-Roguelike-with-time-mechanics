@@ -1,4 +1,6 @@
-﻿using Sirenix.OdinInspector;
+﻿using Card.Actions;
+using Entity;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Modifiers
@@ -13,5 +15,13 @@ namespace Modifiers
         public IDamageCalculation[] onTurnStart;
         public IDamageCalculation[] onTurnEnd;
         public IDamageCalculation[] onDamageReceived;
+
+        public void CalculateDamageReceived(CardAttackData attackData, Character target, ModificatorData modificatorData)
+        {
+            foreach (var t in onDamageReceived)
+            {
+                t.DamageCalculation(attackData, target, modificatorData);
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Other;
+﻿using Card.Actions;
+using Entity;
 
 namespace Modifiers.Modules
 {
@@ -6,9 +7,9 @@ namespace Modifiers.Modules
     {
         public float mul = 1;
         
-        public void DamageCalculation(ref float baseDamage, Character context)
+        public void DamageCalculation(CardAttackData attackData, Character context, ModificatorData originData)
         {
-            baseDamage *= mul;
+            attackData.baseDamage = (int)(attackData.FinalDamage * mul);
         }
     }
 }

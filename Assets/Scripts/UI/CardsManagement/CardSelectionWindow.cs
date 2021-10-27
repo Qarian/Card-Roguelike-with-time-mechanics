@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Cards;
-using Player;
+using Entity;
 using Sirenix.OdinInspector;
 using UI.Cards;
 using UnityEngine;
@@ -11,6 +11,7 @@ namespace UI.CardsManagement
     public class CardSelectionWindow : Singleton<CardSelectionWindow>
     {
         [SerializeField] private UICardClickable cardPrefab = default;
+        [SerializeField] private PlayerData player;
         [SerializeField] private Transform parent = default;
 
         private int availablePicks;
@@ -51,7 +52,7 @@ namespace UI.CardsManagement
 
         private void OnClick(UICardClickable cardUI, CardData cardData, bool temporary)
         {
-            Deck deck = temporary ? PlayerData.Instance.TemporaryDeck : PlayerData.Instance.PermanentDeck;
+            Deck deck = temporary ? player.TemporaryDeck : player.PermanentDeck;
             if (create)
                 deck.AddCard(cardData);
             else

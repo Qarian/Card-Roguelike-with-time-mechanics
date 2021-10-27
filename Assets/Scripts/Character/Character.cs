@@ -1,11 +1,26 @@
 ﻿using System.Collections.Generic;
+using Card.Actions;
 using Modifiers;
+using UnityEngine;
 
-namespace Other
+namespace Entity
 {
-    public class Character
+    [CreateAssetMenu(menuName = "Characters/Blank Character")]
+    public class Character : ScriptableObject
     {
+        [SerializeField] private int life = 100;
+        
         private Dictionary<Modificator, ModificatorData> appliedEffects = new Dictionary<Modificator, ModificatorData>();
+
+        public void ApplyAction(CardAttackData attackData)
+        {
+            foreach (Modificator modificator in appliedEffects.Keys)
+            {
+                modificator.CalculateDamageReceived(attackData, this, appliedEffects[modificator]);
+            }
+
+            life -= (int)attackData.FinalDamage;
+        }
 
         public void ApplyEffect(Modificator modificator, ModificatorData data)
         {
