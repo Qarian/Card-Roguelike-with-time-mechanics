@@ -94,7 +94,7 @@ namespace UI.Cards
 
 		public void SetParent(Transform newParent)
 		{
-			transform.SetParent(newParent);
+			transform.SetParent(newParent, false);
 		}
     }
 }
