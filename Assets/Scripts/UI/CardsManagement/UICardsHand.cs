@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UI.Cards
 {
-	public class UICardsHand : MonoBehaviour, ICardHolder
+	public class UICardsHand : MonoBehaviour, ICardProvider
 	{
 		[Range(0f, 90f)] [SerializeField] private float maxCardRotation;
 		[MinValue(1f)] [SerializeField] private int maxCardsForCentering = 6;
@@ -40,7 +40,7 @@ namespace UI.Cards
 			Refresh();
 		}
 
-		public void DragCard(CardUI card)
+		public void DragAwayCard(CardUI card)
 		{
 			card.RotateCard(0);
 		}

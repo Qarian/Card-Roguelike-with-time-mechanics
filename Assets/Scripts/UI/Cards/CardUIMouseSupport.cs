@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.Cards
@@ -7,7 +8,8 @@ namespace UI.Cards
     [RequireComponent(typeof(CardUI))]
     public class CardUIMouseSupport : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IInitializePotentialDragHandler, IBeginDragHandler, IEndDragHandler
     {
-        [SerializeField] private Image raycastReceiver = default;
+        [FormerlySerializedAs("raycastReceiver")]
+        [SerializeField] private Image cardRaycastReceiver = default;
         private CardUI cardUI;
         private new RectTransform transform;
 
@@ -34,24 +36,22 @@ namespace UI.Cards
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            cardUI.Parent.DragCard(cardUI);
-            raycastReceiver.raycastTarget = false;
+            cardUI.Parent.DragAwayCard(cardUI);
+            cardRaycastReceiver.raycastTarget = false;
             UICardPreview.HidePreview(cardUI.data);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            raycastReceiver.raycastTarget = true;
+            cardRaycastReceiver.raycastTarget = true;
             foreach (GameObject hoveredObject in eventData.hovered)
             {
-                if (hoveredObject.TryGetComponent(out ICardHolder cardHolder))
+                ICardReceiver cardReceiver = hoveredObject.GetComponentInParent<ICardReceiver>();
+                if (cardReceiver is not null && cardReceiver.CanReceiveCard(cardUI))
                 {
-                    if (cardHolder.CanReceiveCard(cardUI))
-                    {
-                        cardUI.Parent.RemoveCard(cardUI);
-                        cardHolder.ReceiveCard(cardUI);
-                        return;
-                    }
+                    cardUI.Parent.RemoveCard(cardUI);
+                    cardReceiver.ReceiveCard(cardUI);
+                    return;
                 }
             }
             

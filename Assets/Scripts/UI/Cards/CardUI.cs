@@ -1,8 +1,9 @@
 using Cards;
+using Entity;
 using TMPro;
-using UnityEditor.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace UI.Cards
 {
@@ -18,11 +19,12 @@ namespace UI.Cards
 		[Space]
 		public CardData data;
 
-		private ICardHolder parent;
+		private ICardProvider parent;
+		public ICardProvider Parent => parent;
 
-		public ICardHolder Parent => parent;
+		private bool playerCard = true;
 
-		public void SetParent(ICardHolder newParent, Transform newParentTransform)
+		public void SetParent(ICardProvider newParent, Transform newParentTransform)
 		{
 			parent = newParent;
 			transform.SetParent(newParentTransform);
@@ -58,6 +60,12 @@ namespace UI.Cards
 			gameObject.name = data.title;
 			ApplyStyle();
 			UpdateData();
+		}
+
+		public void UseCard(Character target)
+		{
+			target.ApplyAction(data.PrepareAttack());
+			PoolsManager.Remove(this);
 		}
 	}
 }

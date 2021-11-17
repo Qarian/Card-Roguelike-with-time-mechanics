@@ -3,8 +3,8 @@
 namespace Entity
 {
     [CreateAssetMenu(menuName = "Characters/Enemy")]
-    public class Enemy : Character
+    public class EnemyData : Character
     {
-        [SerializeField] private Sprite sprite;
+        public Sprite sprite;
     }
 }

@@ -7,6 +7,6 @@ namespace Battle
     [Serializable]
     public class Combination
     {
-        public List<Enemy> enemies = new ();
+        public List<EnemyData> enemies = new ();
     }
 }
