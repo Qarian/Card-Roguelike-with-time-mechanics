@@ -1,5 +1,5 @@
 ﻿using Modifiers;
-using Entity;
+using UI.Entities;
 using UnityEngine;
 
 namespace Card.Actions

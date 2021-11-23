@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Cards;
-using Entity;
+using UI.Entities;
 using Sirenix.OdinInspector;
 using UI.Cards;
 using UnityEngine;

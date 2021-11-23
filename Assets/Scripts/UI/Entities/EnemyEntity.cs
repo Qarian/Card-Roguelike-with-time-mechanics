@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Entity
+namespace UI.Entities
 {
     public class EnemyEntity : MonoBehaviour, ICardReceiver
     {
@@ -10,7 +10,7 @@ namespace Entity
         [SerializeField] // serialized only for debug
         private EnemyData enemyData;
 
-        public void Init(EnemyData data, Vector3 position)
+        public void Init(EnemyData data)
         {
             enemyData = data;
             image.sprite = enemyData.sprite;

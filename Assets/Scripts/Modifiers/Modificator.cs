@@ -1,5 +1,5 @@
 ﻿using Card.Actions;
-using Entity;
+using UI.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

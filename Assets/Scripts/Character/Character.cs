@@ -3,7 +3,7 @@ using Card.Actions;
 using Modifiers;
 using UnityEngine;
 
-namespace Entity
+namespace UI.Entities
 {
     [CreateAssetMenu(menuName = "Characters/Blank Character")]
     public class Character : ScriptableObject

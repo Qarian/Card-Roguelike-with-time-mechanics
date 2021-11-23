@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Entity
+namespace UI.Entities
 {
     [CreateAssetMenu(menuName = "Characters/Enemy")]
     public class EnemyData : Character

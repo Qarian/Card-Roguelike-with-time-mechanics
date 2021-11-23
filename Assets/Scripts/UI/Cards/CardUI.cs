@@ -1,5 +1,5 @@
 using Cards;
-using Entity;
+using UI.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +21,6 @@ namespace UI.Cards
 
 		private ICardProvider parent;
 		public ICardProvider Parent => parent;
-
-		private bool playerCard = true;
 
 		public void SetParent(ICardProvider newParent, Transform newParentTransform)
 		{

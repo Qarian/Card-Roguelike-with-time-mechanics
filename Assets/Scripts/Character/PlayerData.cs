@@ -1,9 +1,9 @@
 ﻿using Cards;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Entity;
+using UI.Entities;
 
-namespace Entity
+namespace UI.Entities
 {
 	[CreateAssetMenu(menuName = "Characters/Player")]
 	public class PlayerData : Character

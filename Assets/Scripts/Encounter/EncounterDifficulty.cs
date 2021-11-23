@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Battle
+namespace Encounter
 {
     [Serializable]
-    public enum BaseDifficulty
+    public enum EncounterDifficulty
     {
         Normal,
         Hard,

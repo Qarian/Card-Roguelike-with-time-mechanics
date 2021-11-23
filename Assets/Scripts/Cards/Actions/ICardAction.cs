@@ -1,4 +1,4 @@
-﻿using Entity;
+﻿using UI.Entities;
 
 namespace Card.Actions
 {

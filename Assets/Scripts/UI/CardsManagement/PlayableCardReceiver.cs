@@ -1,4 +1,4 @@
-using Entity;
+using UI.Entities;
 using UnityEngine;
 
 namespace UI.Cards

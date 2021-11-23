@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 310f8c14bf3a4b7e8f96f34a4d83873b, type: 3}
-  m_Name: SimpleEnemy
+  m_Name: SimpleCharacter
   m_EditorClassIdentifier: 
   life: 100

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: New Enemy
   m_EditorClassIdentifier: 
   life: 100
-  sprite: {fileID: 21300000, guid: ce0f2dece7601d048be72db42c61d233, type: 3}
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

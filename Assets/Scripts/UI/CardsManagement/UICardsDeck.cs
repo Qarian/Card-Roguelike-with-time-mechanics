@@ -1,5 +1,5 @@
 ﻿using Cards;
-using Entity;
+using UI.Entities;
 using UnityEngine;
 using Utilities;
 

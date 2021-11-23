@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Card.Actions;
-using Entity;
+using UI.Entities;
 
 namespace Cards
 {

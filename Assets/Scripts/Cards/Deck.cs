@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Entity;
+using UI.Entities;
 using UnityEngine;
 
 namespace Cards

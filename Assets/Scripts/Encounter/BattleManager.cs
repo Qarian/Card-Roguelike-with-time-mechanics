@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Battle
+namespace Encounter
 {
     public class BattleManager : MonoBehaviour
     {
         [SerializeField] private PossibleEncounters possibleEncounters;
 
-        public BaseDifficulty difficulty;
+        public EncounterDifficulty difficulty;
 
         private void GenerateEnemies()
         {
