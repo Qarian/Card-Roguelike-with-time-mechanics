@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Modifiers;
+using Card.Modifiers;
 
 namespace Card.Actions
 {
     [Serializable]
     public class CardAttackData
     {
-        public Dictionary<Modificator, ModificatorData> modificators = new Dictionary<Modificator, ModificatorData>();
+        public List<Modifier> modificators = new List<Modifier>();
 
         public float baseDamage = 0;
 

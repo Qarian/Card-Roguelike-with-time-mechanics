@@ -21,47 +21,20 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: modificator
+    - Name: modifier
       Entry: 7
-      Data: 0|Modifiers.Modificator, Assembly-CSharp
+      Data: 0|Modifiers.Modifier, Assembly-CSharp
     - Name: name
       Entry: 6
       Data: 
-    - Name: onTurnStart
-      Entry: 7
-      Data: 1|Modifiers.IDamageCalculation[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
+    - Name: onEffectWearOut
+      Entry: 6
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: onTurnEnd
-      Entry: 7
-      Data: 2|Modifiers.IDamageCalculation[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
+    - Name: onEffectApply
+      Entry: 6
       Data: 
     - Name: onDamageReceived
-      Entry: 7
-      Data: 3|Modifiers.IDamageCalculation[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

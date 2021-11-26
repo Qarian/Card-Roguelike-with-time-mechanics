@@ -6,5 +6,6 @@ namespace UI.Entities
     public class EnemyData : Character
     {
         public Sprite sprite;
+        //size?
     }
 }

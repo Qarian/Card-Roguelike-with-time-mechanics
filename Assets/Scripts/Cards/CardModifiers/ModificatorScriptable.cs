@@ -2,13 +2,13 @@
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Modifiers
+namespace Card.Modifiers
 {
     [CreateAssetMenu(fileName = "Modificator", menuName = "Other/Modificator")]
     public class ModificatorScriptable : SerializedScriptableObject
     {
-        [OdinSerialize] public Modificator modificator;
+        [OdinSerialize] public Modifier modifier;
         
-        public static implicit operator Modificator(ModificatorScriptable m) => m.modificator;
+        public static implicit operator Modifier(ModificatorScriptable m) => m.modifier;
     }
 }
