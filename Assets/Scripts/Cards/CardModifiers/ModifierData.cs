@@ -2,7 +2,13 @@
 {
     public class ModifierData
     {
-        public int Strength;
-        public float Length;
+        public ModifierData(int strength, float length = 0)
+        {
+            this.strength = strength;
+            this.length = length;
+        }
+        
+        public int strength;
+        public float length;
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 namespace Cards.CardModifiers
 {
     [CreateAssetMenu(fileName = "Modificator", menuName = "Other/Modificator")]
-    public class ModificatorScriptable : SerializedScriptableObject
+    public class ModifierScriptable : SerializedScriptableObject
     {
         [OdinSerialize] public Modifier modifier;
         
-        public static implicit operator Modifier(ModificatorScriptable m) => m.modifier;
+        public static implicit operator Modifier(ModifierScriptable m) => m.modifier;
     }
 }

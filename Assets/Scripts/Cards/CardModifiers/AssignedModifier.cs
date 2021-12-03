@@ -40,7 +40,7 @@ namespace Cards.CardModifiers
             allData.Add(newModifierData);
             if (modifier.UseTimer)
             {
-                allTimers.Add(new Timer(newModifierData.Length, OnTimeOut));
+                allTimers.Add(new Timer(newModifierData.length, OnTimeOut));
             }
             NewData?.Invoke(newModifierData);
         }

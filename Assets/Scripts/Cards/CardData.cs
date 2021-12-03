@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Cards.Actions;
 using Cards.CardModifiers;
 using UI.Entities;
 
@@ -13,7 +12,7 @@ namespace Cards
 		public readonly int cost;
 		public readonly string description;
 
-		public List<ICardAction> subActions;
+		public List<ModifierWithData> actionsModifiers;
 
 		public EntityData owner;
 
@@ -23,17 +22,17 @@ namespace Cards
 			title = origin.title;
 			cost = origin.cost;
 			description = origin.description;
-			subActions = origin.actions.ToList();
+			actionsModifiers = origin.Actions;
 			owner = null;
 		}
 		
-		private CardData(CardStyle style, string title, int cost, string description, List<ICardAction> subActions)
+		private CardData(CardStyle style, string title, int cost, string description, List<ModifierWithData> actionsModifiers)
 		{
 			this.style = style;
 			this.title = title;
 			this.cost = cost;
 			this.description = description;
-			this.subActions = subActions;
+			this.actionsModifiers = actionsModifiers;
 			owner = null;
 		}
 
@@ -73,16 +72,16 @@ namespace Cards
 			}
 		}
 
-		public CardAttackData PrepareAttack()
+		public ActionData PrepareAction()
 		{
-			CardAttackData attackData = new CardAttackData();
+			ActionData actionData = new ActionData();
 			
-			foreach (ICardAction cardAction in subActions)
+			foreach (ModifierWithData actionModifier in actionsModifiers)
 			{
-				cardAction.CreateAttack(attackData, owner);
+				actionData.AddModifier(actionModifier);
 			}
 
-			return attackData;
+			return actionData;
 		}
 	}
 }

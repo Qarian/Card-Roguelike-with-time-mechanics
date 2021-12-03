@@ -1,4 +1,6 @@
-using Cards.Actions;
+using System.Collections.Generic;
+using System.Linq;
+using Cards.CardModifiers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -13,7 +15,9 @@ namespace Cards
         [Multiline]
         public string description = string.Empty;
 
-        public ICardAction[] actions;
+        public List<ModifierWithDataScriptable> actions;
+
+        public List<ModifierWithData> Actions => actions.ToList().ConvertAll(x => (ModifierWithData) x);
 
         public static implicit operator CardData(CardDataScriptable c) => new CardData(c);
     }

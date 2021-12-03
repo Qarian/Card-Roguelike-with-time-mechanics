@@ -7,12 +7,10 @@ namespace UI.Entities
     [CreateAssetMenu(menuName = "Characters/Blank Character")]
     public class EntityData : ScriptableObject
     {
-        [Required]
+        public string entityName;
         public Sprite sprite;
+        public int baseLife = 100;
         
-        [SerializeField] private int baseLife = 100;
-        
-        [Required]
         public DeckScriptable startingDeck = default;
     }
 }
