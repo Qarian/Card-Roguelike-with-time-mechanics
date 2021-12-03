@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UI.Entities
 {
-    public class EnemyEntity : MonoBehaviour, ICardReceiver
+    public class EnemyEntity : BaseEntity
     {
         [SerializeField] private Image image;
         [SerializeField] // serialized only for debug
@@ -15,12 +15,7 @@ namespace UI.Entities
             enemyData = data;
             image.sprite = enemyData.sprite;
         }
-
-        public bool CanReceiveCard(CardUI card)
-        {
-            return true; //Check if card is attack card
-        }
-
+        
         public void ReceiveCard(CardUI card)
         {
             card.UseCard(enemyData);

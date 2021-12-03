@@ -6,11 +6,10 @@ using UI.Entities;
 namespace UI.Entities
 {
 	[CreateAssetMenu(menuName = "Characters/Player")]
-	public class PlayerData : Character
+	public class PlayerData : EntityData
 	{
-		[Header("Player Specific")]
-		[Required]
-		[SerializeField] private DeckScriptable startingDeck = default;
+		//[Header("Player Specific")]
+		
 
 		public Deck PermanentDeck
 		{

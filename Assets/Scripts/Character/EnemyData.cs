@@ -3,9 +3,9 @@
 namespace UI.Entities
 {
     [CreateAssetMenu(menuName = "Characters/Enemy")]
-    public class EnemyData : Character
+    public class EnemyData : EntityData
     {
-        public Sprite sprite;
+        
         //size?
     }
 }

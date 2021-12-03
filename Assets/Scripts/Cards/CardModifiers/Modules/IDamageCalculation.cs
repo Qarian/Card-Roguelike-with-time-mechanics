@@ -1,10 +1,9 @@
-﻿using Card.Actions;
-using UI.Entities;
+﻿using UI.Entities;
 
-namespace Card.Modifiers
+namespace Cards.CardModifiers.Modules
 {
     public interface IDamageCalculation
     {
-        public void DamageCalculation(CardAttackData attackData, Character context);
+        public void DamageCalculation(CardAttackData attackData, EntityData context);
     }
 }

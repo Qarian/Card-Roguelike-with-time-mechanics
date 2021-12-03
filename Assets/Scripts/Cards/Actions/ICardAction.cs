@@ -1,9 +1,10 @@
-﻿using UI.Entities;
+﻿using Cards.CardModifiers;
+using UI.Entities;
 
-namespace Card.Actions
+namespace Cards.Actions
 {
     public interface ICardAction
     {
-        public void CreateAttack(CardAttackData data, Character player);
+        public void CreateAttack(CardAttackData data, EntityData player);
     }
 }

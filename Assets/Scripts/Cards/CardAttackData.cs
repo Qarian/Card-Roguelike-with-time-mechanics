@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Card.Modifiers;
 
-namespace Card.Actions
+namespace Cards.CardModifiers
 {
     [Serializable]
     public class CardAttackData

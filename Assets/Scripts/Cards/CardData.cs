@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Card.Actions;
+using Cards.Actions;
+using Cards.CardModifiers;
 using UI.Entities;
 
 namespace Cards
@@ -15,7 +15,7 @@ namespace Cards
 
 		public List<ICardAction> subActions;
 
-		public Character owner;
+		public EntityData owner;
 
 		public CardData(CardDataScriptable origin)
 		{

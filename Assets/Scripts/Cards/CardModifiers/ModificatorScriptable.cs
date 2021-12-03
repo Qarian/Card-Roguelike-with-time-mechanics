@@ -2,7 +2,7 @@
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Card.Modifiers
+namespace Cards.CardModifiers
 {
     [CreateAssetMenu(fileName = "Modificator", menuName = "Other/Modificator")]
     public class ModificatorScriptable : SerializedScriptableObject

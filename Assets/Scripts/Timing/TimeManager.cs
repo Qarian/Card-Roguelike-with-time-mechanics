@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Timing
 {
@@ -25,7 +26,7 @@ namespace Timing
         {
             foreach (Timer timer in timers)
             {
-                timer.Update();
+                timer.Update(Time.deltaTime * Speed);
             }
         }
     }

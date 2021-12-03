@@ -5,8 +5,8 @@ namespace UI.Cards
 {
     public class PlayableCardReceiver : MonoBehaviour, ICardReceiver
     {
-        [SerializeField] private Character player;
-        [SerializeField] private Character character;
+        [SerializeField] private EntityData player;
+        [SerializeField] private EntityData entityData;
         
         public bool CanReceiveCard(CardUI card)
         {
@@ -16,7 +16,7 @@ namespace UI.Cards
         public void ReceiveCard(CardUI card)
         {
             Debug.Log($"Used {card.data.title}!");
-            card.UseCard(character);
+            card.UseCard(entityData);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Card.Modifiers.Modules
 {
     public interface ICharacterEffect
     {
-        public void Execute(Character target);
+        public void Execute(EntityData target);
     }
 }

@@ -1,7 +1,5 @@
-using System.Collections.Generic;
-using Card.Actions;
+using Cards.Actions;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Cards

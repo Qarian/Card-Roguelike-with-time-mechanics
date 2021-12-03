@@ -11,7 +11,7 @@ namespace Cards
         public readonly List<CardData> cards;
         public int Size => cards.Count;
 
-        [SerializeField] private Character owner = default;
+        [SerializeField] private EntityData owner = default;
 
         public Deck(List<CardDataScriptable> baseCards)
         {

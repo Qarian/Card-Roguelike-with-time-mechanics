@@ -60,9 +60,9 @@ namespace UI.Cards
 			UpdateData();
 		}
 
-		public void UseCard(Character target)
+		public void UseCard(EntityData target)
 		{
-			target.ApplyAction(data.PrepareAttack());
+			//target.ApplyAction(data.PrepareAttack());
 			PoolsManager.Remove(this);
 		}
 	}

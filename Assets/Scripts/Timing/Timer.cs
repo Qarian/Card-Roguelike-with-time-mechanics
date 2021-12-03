@@ -4,51 +4,35 @@ namespace Timing
 {
     public class Timer
     {
-        private float length;
-        private float currentTime;
-        private float interval;
+        private readonly float length;
 
-        public event Action OnModified;
+        private float currentTime;
 
         public event Action OnEnd;
 
         public float Progress => currentTime / length;
         public float TimeLeft => length - currentTime;
         public float Length => length;
-        
-        
-        public Timer(float length, Action onEnd, bool autoUpdate = true, float defaultInterval = -1)
+
+        public Timer(float length, Action onEnd, bool autoUpdate = false)
         {
             this.length = length;
-            interval = defaultInterval;
-            
-            OnEnd += onEnd;
+            OnEnd = onEnd;
             
             if (autoUpdate)
                 TimeManager.AutoUpdateTimer(this);
         }
 
-        public void Update()
+        public void StartAutoUpdate()
         {
-            Update(interval < 0 ? UnityEngine.Time.fixedDeltaTime : interval);
+            TimeManager.AutoUpdateTimer(this);
         }
 
         public void Update(float amount)
         {
-            currentTime += amount * TimeManager.Speed;
+            currentTime += amount;
             if (currentTime > length)
                 OnEnd?.Invoke();
-        }
-
-        public void Reset()
-        {
-            currentTime = 0f;
-            OnModified?.Invoke();
-        }
-
-        public void ChangeLength(float newLength)
-        {
-            length = newLength;
         }
     }
 }
