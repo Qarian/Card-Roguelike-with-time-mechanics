@@ -1,4 +1,6 @@
-﻿using Cards.CardModifiers;
+﻿using Cards;
+using Cards.CardModifiers;
+using Character;
 using UI.Cards;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +11,6 @@ namespace UI.Entities
     public class BaseEntity : MonoBehaviour, ICardReceiver
     {
         [SerializeField] protected Image image;
-        [SerializeField] // Serialized only for debug
         protected EntityData entityData;
         
         protected int currentHealth;
@@ -17,7 +18,7 @@ namespace UI.Entities
 
         public Modifiers Modifiers => modifiers;
 
-        private void Awake()
+        protected void Init()
         {
             currentHealth = entityData.baseLife;
             gameObject.name = entityData.entityName;
@@ -34,7 +35,7 @@ namespace UI.Entities
         
         public void ReceiveCard(CardUI card)
         {
-            card.UseCard(entityData);
+            card.UseCard(this);
         }
 
         public void ModifyHealth(int amount)
@@ -44,6 +45,19 @@ namespace UI.Entities
             {
                 // Kill Entity
             }
+        }
+
+        public void UseCard(CardData card, BaseEntity target)
+        {
+            var action = card.PrepareAction();
+            modifiers.UseCard(this, card, action);
+            action.PerformAction(target);
+        }
+
+        public void Defend(ActionData action)
+        {
+            // ToDo: Visual
+            modifiers.Defend(this, action);
         }
     }
 }

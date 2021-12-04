@@ -1,44 +1,14 @@
 ﻿using Cards;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UI.Entities;
 
-namespace UI.Entities
+namespace Character
 {
-	[CreateAssetMenu(menuName = "Characters/Player")]
+	[System.Serializable]
 	public class PlayerData : EntityData
 	{
-		//[Header("Player Specific")]
-		
-
-		public Deck PermanentDeck
-		{
-			get
-			{
-				if (!initialized)
-					Initialize();
-				return permanentDeck;
-			}
-		}
-		private Deck permanentDeck;
-
-		public Deck TemporaryDeck
-		{
-			get
-			{
-				if (!initialized)
-					Initialize();
-				return temporaryDeck;
-			}
-		}
-		private Deck temporaryDeck;
-
-		private bool initialized;
-
-		private void Initialize()
-		{
-			permanentDeck = new Deck(startingDeck.cards);
-			temporaryDeck = new Deck(startingDeck.cards);
-		}
+		[HideInInspector]
+		public Deck permanentDeck;
+		[HideInInspector]
+		public Deck temporaryDeck;
 	}
 }

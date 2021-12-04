@@ -16,7 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 946248df9db4b784a9530edc497dbf17, type: 2}
+    - {fileID: 11400000, guid: b6b75890b7de1b947a60d850b38c59f9, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -53,7 +53,7 @@ MonoBehaviour:
       Data: 2|Encounter.Combination, Assembly-CSharp
     - Name: enemies
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[UI.Entities.EnemyData, Assembly-CSharp]],
+      Data: 3|System.Collections.Generic.List`1[[Character.EnemyDataScriptable, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -84,7 +84,7 @@ MonoBehaviour:
       Data: 4|Encounter.Combination, Assembly-CSharp
     - Name: enemies
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UI.Entities.EnemyData, Assembly-CSharp]],
+      Data: 5|System.Collections.Generic.List`1[[Character.EnemyDataScriptable, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -118,7 +118,7 @@ MonoBehaviour:
       Data: 6|Encounter.Combination, Assembly-CSharp
     - Name: enemies
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[UI.Entities.EnemyData, Assembly-CSharp]],
+      Data: 7|System.Collections.Generic.List`1[[Character.EnemyDataScriptable, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12

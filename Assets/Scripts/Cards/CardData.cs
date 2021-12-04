@@ -14,7 +14,11 @@ namespace Cards
 
 		public List<ModifierWithData> actionsModifiers;
 
-		public EntityData owner;
+		public BaseEntity owner;
+		
+		public static CardData Empty => new CardData(null, string.Empty, -1, string.Empty, null);
+
+		public bool IsEmpty => title == string.Empty;
 
 		public CardData(CardDataScriptable origin)
 		{
@@ -35,11 +39,20 @@ namespace Cards
 			this.actionsModifiers = actionsModifiers;
 			owner = null;
 		}
+		
+		public ActionData PrepareAction()
+		{
+			ActionData actionData = new ActionData();
+			
+			foreach (ModifierWithData actionModifier in actionsModifiers)
+			{
+				actionData.AddModifier(actionModifier);
+			}
 
-		public static CardData Empty => new CardData(null, string.Empty, -1, string.Empty, null);
+			return actionData;
+		}
 
-		public bool IsEmpty => title == string.Empty;
-
+		
 		public static bool operator ==(CardData c1, CardData c2)
 		{
 			return c1.title == c2.title && c1.style == c2.style;
@@ -70,18 +83,6 @@ namespace Cards
 				hashCode = (hashCode * 397) ^ (description != null ? description.GetHashCode() : 0);
 				return hashCode;
 			}
-		}
-
-		public ActionData PrepareAction()
-		{
-			ActionData actionData = new ActionData();
-			
-			foreach (ModifierWithData actionModifier in actionsModifiers)
-			{
-				actionData.AddModifier(actionModifier);
-			}
-
-			return actionData;
 		}
 	}
 }

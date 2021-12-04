@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e60950832042cc91705103f239457a, type: 3}
-  m_Name: New Enemy
+  m_Script: {fileID: 11500000, guid: e0402ad358b5466cb157ceed5fa226d6, type: 3}
+  m_Name: Enemy Example Deck
   m_EditorClassIdentifier: 
-  life: 100
-  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  cards: []

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Character;
 using Encounter;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace UI.Entities
             ClearEnemies();
             int chosenEncounter = Random.Range(0, possibleEncounters.Count);
             var enemies = possibleEncounters[chosenEncounter].GetCombination(difficulty);
-            foreach (EnemyData data in enemies)
+            foreach (EnemyDataScriptable data in enemies)
             {
                 EnemyEntity entity = Instantiate(enemyPrefab, enemiesLayout.transform);
                 entity.Init(data);

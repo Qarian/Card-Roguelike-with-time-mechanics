@@ -6,7 +6,7 @@ namespace Cards.CardModifiers.Effects
     {
         public void ApplyEffect(BaseEntity target, ModifierData data)
         {
-            target.ModifyHealth(data.strength);
+            target.ModifyHealth(-data.strength);
         }
     }
 }

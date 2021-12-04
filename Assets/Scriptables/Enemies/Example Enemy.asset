@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24e3120bdb043e8ab636b250def14f3, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 2ba12656d0a94dde937ea6ff2df569f2, type: 3}
+  m_Name: Example Enemy
   m_EditorClassIdentifier: 
   data:
-    entityName: Player
+    entityName: Example Enemy
     sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    baseLife: 100
-    startingDeck: {fileID: 11400000, guid: 16f9138287f920947b832fd171a84b7d, type: 2}
+    baseLife: 50
+    startingDeck: {fileID: 11400000, guid: 62f1d3d98ae765f48a73714d6b27c5a8, type: 2}

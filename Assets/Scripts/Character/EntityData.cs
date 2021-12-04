@@ -1,16 +1,24 @@
 ﻿using Cards;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace UI.Entities
+namespace Character
 {
-    [CreateAssetMenu(menuName = "Characters/Blank Character")]
-    public class EntityData : ScriptableObject
+    [System.Serializable]
+    public class EntityData
     {
         public string entityName;
         public Sprite sprite;
         public int baseLife = 100;
         
         public DeckScriptable startingDeck = default;
+        
+        protected EntityData() { }
+        public EntityData(EntityData data)
+        {
+            entityName = data.entityName;
+            sprite = data.sprite;
+            baseLife = data.baseLife;
+            startingDeck = data.startingDeck;
+        }
     }
 }

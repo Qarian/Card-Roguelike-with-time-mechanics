@@ -37,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 967475888813821614, guid: 0487d54d1fe2975478bce22d3784e235, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 190
+      value: 380
       objectReference: {fileID: 0}
     - target: {fileID: 967475888813821614, guid: 0487d54d1fe2975478bce22d3784e235, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 967475888813821614, guid: 0487d54d1fe2975478bce22d3784e235, type: 3}
       propertyPath: m_LocalPosition.x
@@ -110,6 +110,10 @@ PrefabInstance:
     - target: {fileID: 7255305147704921729, guid: 0487d54d1fe2975478bce22d3784e235, type: 3}
       propertyPath: m_text
       value: Defend
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255305147704921729, guid: 0487d54d1fe2975478bce22d3784e235, type: 3}
+      propertyPath: m_fontSize
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8497599171477563128, guid: 0487d54d1fe2975478bce22d3784e235, type: 3}
       propertyPath: m_Sprite

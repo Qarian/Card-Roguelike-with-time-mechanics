@@ -1,5 +1,5 @@
 ﻿using Cards;
-using UI.Entities;
+using Character;
 using UnityEngine;
 using Utilities;
 
@@ -7,16 +7,17 @@ namespace UI.Cards
 {
 	public class UICardsDeck : MonoBehaviour
 	{
-		[SerializeField] private PlayerData player = default;
+		[SerializeField] private PlayerDataScriptable player = default;
 		[SerializeField] private CardUI cardPrefab = default;
 
 		private Deck deck;
 		private int size;
 
-		private void Awake()
+		public void Init()
 		{
-			deck = player.PermanentDeck;
+			deck = player.data.temporaryDeck;
 			GenerateCards(deck);
+			//ToDo: Deck should have backside
 		}
 
 		private void GenerateCards(Deck sourceDeck)
@@ -36,6 +37,7 @@ namespace UI.Cards
 			CardUI card = PoolsManager.Get<CardUI>();
 			card.SetParent(transform);
 			card.AnchoredPosition = Vector2.zero;
+			card.transform.localScale = Vector3.one;
 
 			card.FacingFront = false;
 			card.gameObject.SetActive(true);

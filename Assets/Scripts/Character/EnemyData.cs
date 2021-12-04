@@ -1,11 +1,14 @@
-﻿using UnityEngine;
-
-namespace UI.Entities
+﻿namespace Character
 {
-    [CreateAssetMenu(menuName = "Characters/Enemy")]
+    [System.Serializable]
     public class EnemyData : EntityData
     {
         
         //size?
+
+        public EnemyData(EnemyData data) : base(data)
+        {
+            
+        }
     }
 }

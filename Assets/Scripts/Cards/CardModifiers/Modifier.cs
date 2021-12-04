@@ -49,7 +49,7 @@ namespace Cards.CardModifiers
             }
         }
 
-        public void ApplyingAttack(BaseEntity defender, ModifierData data)
+        public void Attack(BaseEntity defender, ModifierData data)
         {
             foreach (var effect in onAttacking)
             {

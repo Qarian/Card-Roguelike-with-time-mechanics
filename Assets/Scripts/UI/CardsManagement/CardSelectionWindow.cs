@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Cards;
-using UI.Entities;
+using Character;
 using Sirenix.OdinInspector;
 using UI.Cards;
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace UI.CardsManagement
     public class CardSelectionWindow : Singleton<CardSelectionWindow>
     {
         [SerializeField] private UICardClickable cardPrefab = default;
-        [SerializeField] private PlayerData player;
+        [SerializeField] private PlayerDataScriptable player;
         [SerializeField] private Transform parent = default;
 
         private int availablePicks;
@@ -23,7 +23,7 @@ namespace UI.CardsManagement
             if (gameObject.activeSelf)
                 return;
             gameObject.SetActive(true);
-            
+
             create = true;
             this.availablePicks = availablePicks;
             CreateCards(cards, temporary);
@@ -35,7 +35,7 @@ namespace UI.CardsManagement
             if (gameObject.activeSelf)
                 return;
             gameObject.SetActive(true);
-            
+
             create = false;
             this.availablePicks = availablePicks;
             CreateCards(cards, temporary);
@@ -52,7 +52,7 @@ namespace UI.CardsManagement
 
         private void OnClick(UICardClickable cardUI, CardData cardData, bool temporary)
         {
-            Deck deck = temporary ? player.TemporaryDeck : player.PermanentDeck;
+            Deck deck = temporary ? player.data.temporaryDeck : player.data.permanentDeck;
             if (create)
                 deck.AddCard(cardData);
             else
@@ -65,6 +65,7 @@ namespace UI.CardsManagement
                 {
                     PoolsManager.Remove(childCard.GetComponent<UICardClickable>());
                 }
+
                 gameObject.SetActive(false);
             }
             else

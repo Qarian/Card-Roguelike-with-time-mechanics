@@ -15,6 +15,22 @@ namespace Cards.CardModifiers
             assignedModifiers = new Dictionary<Modifier, AssignedModifier>();
         }
 
+        public void UseCard(BaseEntity caster, CardData card, ActionData action)
+        {
+            foreach (KeyValuePair<Modifier,AssignedModifier> assignedModifier in assignedModifiers)
+            {
+                assignedModifier.Key.UseCard(caster, card, action, assignedModifier.Value.CurrentData);
+            }
+        }
+
+        public void Defend(BaseEntity defender, ActionData action)
+        {
+            foreach (KeyValuePair<Modifier,AssignedModifier> assignedModifier in assignedModifiers)
+            {
+                assignedModifier.Key.Defend(defender, action, assignedModifier.Value.CurrentData);
+            }
+        }
+
         public void ApplyModifier(ModifierWithData modData)
         {
             if (!assignedModifiers.ContainsKey(modData.modifier))

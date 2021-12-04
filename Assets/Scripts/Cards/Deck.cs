@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UI.Entities;
-using UnityEngine;
 
 namespace Cards
 {
@@ -11,16 +10,16 @@ namespace Cards
         public readonly List<CardData> cards;
         public int Size => cards.Count;
 
-        [SerializeField] private EntityData owner = default;
+        private BaseEntity owner = default;
 
-        public Deck(List<CardDataScriptable> baseCards)
+        public Deck(List<CardDataScriptable> cards, BaseEntity owner)
         {
-            cards = new List<CardData>(baseCards.Count);
-            foreach (var t in baseCards)
+            this.cards = new List<CardData>(cards.Count);
+            foreach (var t in cards)
             {
                 CardData card = t;
                 card.owner = owner;
-                cards.Add(t);
+                this.cards.Add(card);
             }
         }
 

@@ -10,7 +10,7 @@ namespace UI.Cards
         private static CardUI staticPreviewCard;
         private static CardData currentDisplayedData;
 
-        private void Awake()
+        public void Init()
         {
             staticPreviewCard = previewCard;
             staticPreviewCard.gameObject.SetActive(false);
