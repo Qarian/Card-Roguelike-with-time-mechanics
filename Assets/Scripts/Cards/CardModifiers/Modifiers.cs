@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UI.CardModifiers;
 using UI.Entities;
 using UnityEngine;
 
@@ -6,12 +7,17 @@ namespace Cards.CardModifiers
 {
     public class Modifiers : MonoBehaviour
     {
-        private BaseEntity entityData;
+        [SerializeField] private ModifierIcon modifierIconPrefab;
+        
+        [Space]
+        [SerializeField] private Transform modifiersParent;
+        
+        private BaseEntity entity;
         private Dictionary<Modifier, AssignedModifier> assignedModifiers;
 
         public void Initialize(BaseEntity owner)
         {
-            entityData = owner;
+            entity = owner;
             assignedModifiers = new Dictionary<Modifier, AssignedModifier>();
         }
 
@@ -45,9 +51,16 @@ namespace Cards.CardModifiers
 
         private void CreateNewModifier(ModifierWithData modData)
         {
-            AssignedModifier newAssignedModifier = new AssignedModifier(entityData, modData);
+            AssignedModifier newAssignedModifier = new AssignedModifier(entity, modData);
             newAssignedModifier.ModifierEnd += () => ModifierEnd(modData.modifier);
             assignedModifiers.Add(modData.modifier, newAssignedModifier);
+
+            if (modData.modifier.useTimer)
+            {
+                // ToDO: show icon but disable timer
+                var icon = Instantiate(modifierIconPrefab, modifiersParent);
+                icon.Init(newAssignedModifier, entity);
+            }
         }
 
         private void ModifierEnd(Modifier modifier)

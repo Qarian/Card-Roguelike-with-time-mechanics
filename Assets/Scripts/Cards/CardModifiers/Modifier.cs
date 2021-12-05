@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cards.CardModifiers.Effects;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
@@ -11,16 +12,16 @@ namespace Cards.CardModifiers
     {
         [Required]
         public string name;
+        public bool useTimer;
 
         [Header("Events")]
-        [OdinSerialize] private ICardUsageEffect[] onUsingCard;
-        [OdinSerialize] private IDefendEffect[] onDefending;
-        [OdinSerialize] private ICharacterEffect[] onAttacking;
+        [OdinSerialize] private List<ICardUsageEffect> onUsingCard = new ();
+        [OdinSerialize] private List<IDefendEffect> onDefending = new ();
+        [OdinSerialize] private List<ICharacterEffect> onAttacking = new ();
         [Space]
-        [OdinSerialize] private ICharacterEffect[] onTimeTick;
+        [OdinSerialize] private List<ICharacterEffect> onTimeTick = new ();
         
-        public bool UseTimer => onTimeTick.Length > 0;
-        public bool CanBeAssigned => onTimeTick.Length > 0 || onUsingCard.Length > 0 || onAttacking.Length > 0;
+        public bool CanBeAssigned => onTimeTick.Count > 0 || onUsingCard.Count > 0 || onAttacking.Count > 0;
 
         public event Action ModifierEnd; // TODO: Implement
         

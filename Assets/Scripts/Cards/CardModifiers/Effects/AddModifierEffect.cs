@@ -8,12 +8,14 @@ namespace Cards.CardModifiers.Effects
     public class AddModifierEffect : ICharacterEffect, ICardUsageEffect
     {
         [SerializeField] private ModifierScriptable modifierToAdd;
+        
         [SerializeField] private bool useStrengthFromData = true;
         [HideIf("useStrengthFromData")]
-        private int customStrength;
+        [SerializeField] private int customStrength;
+        
         [SerializeField] private bool useLengthFromData = true;
-        [HideIf("useStrengthFromData")]
-        private int customLength;
+        [HideIf("useLengthFromData")]
+        [SerializeField] private int customLength;
         
         public void ApplyEffect(BaseEntity target, ModifierData data)
         {

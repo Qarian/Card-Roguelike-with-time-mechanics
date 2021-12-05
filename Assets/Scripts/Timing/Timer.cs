@@ -11,7 +11,7 @@ namespace Timing
         public event Action OnEnd;
 
         public float Progress => currentTime / length;
-        public float TimeLeft => length - currentTime;
+        public float RemainingTime => length - currentTime;
         public float Length => length;
 
         public Timer(float length, Action onEnd, bool autoUpdate = false)

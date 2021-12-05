@@ -23,7 +23,7 @@ namespace UI.Cards
 		private void GenerateCards(Deck sourceDeck)
 		{
 			size = sourceDeck.Size;
-			PoolsManager.TryToAddNewPool(new ObjectPool<CardUI>());
+			PoolsManager.AddNewPool(new ObjectPool<CardUI>());
 			for (int i = 0; i < size; i++)
 			{
 				var card = Instantiate(cardPrefab, transform);

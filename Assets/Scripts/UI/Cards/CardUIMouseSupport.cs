@@ -1,12 +1,12 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.Cards
 {
     [RequireComponent(typeof(CardUI))]
-    public class CardUIMouseSupport : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IInitializePotentialDragHandler, IBeginDragHandler, IEndDragHandler
+    public class CardUIMouseSupport : UIMouseInput
     {
         [FormerlySerializedAs("raycastReceiver")]
         [SerializeField] private Image cardRaycastReceiver = default;
@@ -19,32 +19,35 @@ namespace UI.Cards
             transform = GetComponent<RectTransform>();
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
+        protected override void StartHovering()
         {
             UICardPreview.ShowPreview(cardUI.data);
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        protected override void EndHovering()
         {
             UICardPreview.HidePreview(cardUI.data);
         }
 
-        public void OnDrag(PointerEventData eventData)
+        protected override void StartDragging()
         {
-            transform.anchoredPosition += eventData.delta / CanvasDataProvider.Instance.canvas.scaleFactor;
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            cardUI.Parent.DragAwayCard(cardUI);
             cardRaycastReceiver.raycastTarget = false;
-            UICardPreview.HidePreview(cardUI.data);
+            cardUI.Parent.DragAwayCard(cardUI);
+        }
+        
+        protected override void Dragging(Vector2 delta)
+        {
+            transform.anchoredPosition += delta / CanvasDataProvider.Instance.canvas.scaleFactor;
         }
 
-        public void OnEndDrag(PointerEventData eventData)
+        protected override void EndDrag(List<GameObject> hovered)
         {
             cardRaycastReceiver.raycastTarget = true;
-            foreach (GameObject hoveredObject in eventData.hovered)
+            
+            if (hovered is null)
+                return;
+            
+            foreach (GameObject hoveredObject in hovered)
             {
                 ICardReceiver cardReceiver = hoveredObject.GetComponentInParent<ICardReceiver>();
                 if (cardReceiver is not null && cardReceiver.CanReceiveCard(cardUI))
@@ -57,11 +60,6 @@ namespace UI.Cards
             
             //fallback
             cardUI.Parent.ReturnCard(cardUI);
-        }
-
-        public void OnInitializePotentialDrag(PointerEventData eventData)
-        {
-            eventData.useDragThreshold = false;
         }
     }
 }

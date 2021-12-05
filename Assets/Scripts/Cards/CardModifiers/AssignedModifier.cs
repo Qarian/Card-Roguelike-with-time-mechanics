@@ -27,7 +27,7 @@ namespace Cards.CardModifiers
             modifier = modData.modifier;
             
             AddNew(modData);
-            CurrentTimer.StartAutoUpdate();
+            
         }
         
         public void AddNew(ModifierWithData modData)
@@ -38,9 +38,10 @@ namespace Cards.CardModifiers
         private void AddNew(ModifierData newModifierData)
         {
             allData.Add(newModifierData);
-            if (modifier.UseTimer)
+            if (modifier.useTimer)
             {
                 allTimers.Add(new Timer(newModifierData.length, OnTimeOut));
+                CurrentTimer.StartAutoUpdate();
             }
             NewData?.Invoke(newModifierData);
         }

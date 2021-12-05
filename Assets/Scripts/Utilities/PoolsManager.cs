@@ -10,7 +10,7 @@ namespace Utilities
         private static Dictionary<Type, object> objectPools = new Dictionary<Type, object>();
         private static Dictionary<Type, PoolableMonoBehaviour> prefabs = new Dictionary<Type, PoolableMonoBehaviour>();
 
-        public static void TryToAddNewPool<T>(ObjectPool<T> pool) where T : PoolableMonoBehaviour
+        public static void AddNewPool<T>(ObjectPool<T> pool) where T : PoolableMonoBehaviour
         {
             objectPools.Add(typeof(T), pool);
         }
@@ -20,7 +20,7 @@ namespace Utilities
             objectToDestroy.OnRemove();
             
             if (!objectPools.ContainsKey(typeof(T)))
-                TryToAddNewPool(new ObjectPool<T>());
+                AddNewPool(new ObjectPool<T>());
             
             ((ObjectPool<T>) objectPools[typeof(T)]).Add(objectToDestroy);
         }

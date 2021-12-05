@@ -15,7 +15,7 @@ namespace Cards
         [Multiline]
         public string description = string.Empty;
 
-        public List<ModifierWithDataScriptable> actions;
+        public List<ModifierWithDataScriptable> actions = new();
 
         public List<ModifierWithData> Actions => actions.ToList().ConvertAll(x => (ModifierWithData) x);
 

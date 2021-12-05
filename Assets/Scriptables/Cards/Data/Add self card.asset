@@ -9,40 +9,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c40ebb83f5924f7fb5ce400fd4c4f8fd, type: 3}
-  m_Name: Base Damage
+  m_Script: {fileID: 11500000, guid: cc7b48cb08c063f4cafbedd4250c81c5, type: 3}
+  m_Name: Add self card
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: a1b6c30336895964497c307ffde25be0, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: modifier
+    - Name: actions
       Entry: 7
-      Data: 0|Cards.CardModifiers.Modifier, Assembly-CSharp
-    - Name: name
-      Entry: 1
-      Data: Damage
-    - Name: onUsingCard
-      Entry: 6
-      Data: 
-    - Name: onDefending
-      Entry: 6
-      Data: 
-    - Name: onAttacking
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[Cards.CardModifiers.Effects.ICharacterEffect,
+      Data: 0|System.Collections.Generic.List`1[[Cards.CardModifiers.ModifierWithDataScriptable,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 2|Cards.CardModifiers.Effects.DealDamageEffect, Assembly-CSharp
+      Data: 1|Cards.CardModifiers.ModifierWithDataScriptable, Assembly-CSharp
+    - Name: modifier
+      Entry: 10
+      Data: 0
+    - Name: strength
+      Entry: 3
+      Data: 5
+    - Name: length
+      Entry: 4
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -52,9 +50,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: onTimeTick
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+  style: {fileID: 11400000, guid: b7912924c6caa5b4ca594711f75e088b, type: 2}
+  title: Add mod
+  cost: 1
+  description: Add modifier
