@@ -1,4 +1,5 @@
 ﻿using Encounter;
+using Timing;
 using UI.Cards;
 using UI.Entities;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace Gameplay
             player.Initialize();
             uiCards.Init();
             entities.CreateEnemies(EncounterDifficulty.Normal);
+            TimeManager.Paused = false;
         }
     }
 }

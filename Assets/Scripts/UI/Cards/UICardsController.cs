@@ -16,6 +16,11 @@ namespace UI.Cards
 			cardsDeck.Init();
 			cardPreview.Init();
 			DrawCardToHand();
+			DrawCardToHand();
+			DrawCardToHand();
+			DrawCardToHand();
+			DrawCardToHand();
+			DrawCardToHand();
 		}
 
 		[Button]

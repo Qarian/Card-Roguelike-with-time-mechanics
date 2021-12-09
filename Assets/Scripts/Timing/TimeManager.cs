@@ -14,7 +14,7 @@ namespace Timing
 
         public static bool Paused { get; set; }
 
-        private static List<Timer> timers = new List<Timer>();
+        private static List<Timer> timers = new ();
 
         public static void AutoUpdateTimer(Timer timer)
         {
@@ -22,11 +22,15 @@ namespace Timing
             timer.OnEnd += () => timers.Remove(timer);
         }
 
-        public static void UpdateTimers()
+        public static void UpdateTimers(float delta)
         {
-            foreach (Timer timer in timers)
+            if (timers.Count == 0)
+                return;
+
+            var timersArr = timers.ToArray();
+            for (var index = 0; index < timersArr.Length; index++)
             {
-                timer.Update(Time.deltaTime * Speed);
+                timersArr[index].Update(delta * Speed);
             }
         }
     }

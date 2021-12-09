@@ -19,7 +19,7 @@ namespace UI.CardModifiers
         [SerializeField] private GameObject timer;
         [SerializeField] private Transform ringsTransform;
         [SerializeField] private Transform currentTimeIndicationRotator;
-        [SerializeField] private TMP_Text value;
+        [SerializeField] private TMP_Text textStrengthValue;
         [SerializeField] private Image modifierIcon;
 
         [Space]
@@ -34,15 +34,18 @@ namespace UI.CardModifiers
         
         private AssignedModifier assignedModifier;
         private BaseEntity owner;
+        
 
         public void Init(AssignedModifier modifier, BaseEntity owner)
         {
             this.owner = owner;
+            
             assignedModifier = modifier;
+            modifierIcon.sprite = modifier.Modifier.icon;
             assignedModifier.NewData += NewStack;
             assignedModifier.TimeTick += TimeTick;
             assignedModifier.ModifierEnd += End;
-            
+
             foreach (ModifierData data in modifier.allData)
             {
                 NewStack(data);
@@ -68,7 +71,7 @@ namespace UI.CardModifiers
             Vector2 newRingRotationBounds = new Vector2(lastRotation, newRingEndRotation);
             lastRotation = newRingEndRotation;
             
-            newRing.fillAmount = Mathf.Clamp01(assignedModifier.CurrentTimer.RemainingTime / fullCircleTime);
+            newRing.fillAmount = Mathf.Clamp01(data.length / fullCircleTime);
             newRing.color = Random.ColorHSV(0, 1, 0.5f, 1, 0.5f, 1);
 
             if (!currentRing)
@@ -78,6 +81,13 @@ namespace UI.CardModifiers
             }
             rings.Add(newRing);
             ringsRotationBounds.Add(newRingRotationBounds);
+
+            SetTextValue();
+        }
+
+        private void SetTextValue()
+        {
+            textStrengthValue.text = assignedModifier.TotalStrength.ToString();
         }
         
 
@@ -88,6 +98,7 @@ namespace UI.CardModifiers
             ringsRotationBounds.RemoveAt(0);
             currentRing = rings[0];
             currentRingRotationBounds = ringsRotationBounds[0];
+            SetTextValue();
         }
 
         private void End()

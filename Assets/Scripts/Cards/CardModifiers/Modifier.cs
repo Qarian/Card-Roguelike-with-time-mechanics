@@ -12,6 +12,9 @@ namespace Cards.CardModifiers
     {
         [Required]
         public string name;
+        public Sprite icon;
+        
+        [Space]
         public bool useTimer;
 
         [Header("Events")]
