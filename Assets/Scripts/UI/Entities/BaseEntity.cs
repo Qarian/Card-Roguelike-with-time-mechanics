@@ -1,6 +1,8 @@
-﻿using Cards;
+﻿using System;
+using Cards;
 using Cards.CardModifiers;
 using Character;
+using Timing;
 using UI.Cards;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,12 +13,16 @@ namespace UI.Entities
     public class BaseEntity : MonoBehaviour, ICardReceiver
     {
         [SerializeField] protected Image image;
-        protected EntityData entityData;
+        public EntityData entityData;
         
         protected int currentHealth;
-        private Modifiers modifiers;
+        protected Modifiers modifiers;
+        protected Timer timer;
+
+        public event Action OnEntityDeath;
 
         public Modifiers Modifiers => modifiers;
+        public Timer Timer => timer;
 
         protected void Init()
         {
@@ -26,6 +32,7 @@ namespace UI.Entities
             
             modifiers = GetComponent<Modifiers>();
             modifiers.Initialize(this);
+            timer = new Timer(0, CooldownEnd, true);
         }
 
         public bool CanReceiveCard(CardUI card)
@@ -43,9 +50,17 @@ namespace UI.Entities
             currentHealth += amount;
             if (currentHealth <= 0)
             {
-                // Kill Entity
+                KillEntity();
             }
         }
+
+        private void KillEntity()
+        {
+            OnEntityDeath?.Invoke();
+            Destroy(gameObject);
+        }
+        
+        protected virtual void CooldownEnd() { }
 
         public void UseCard(CardData card, BaseEntity target)
         {

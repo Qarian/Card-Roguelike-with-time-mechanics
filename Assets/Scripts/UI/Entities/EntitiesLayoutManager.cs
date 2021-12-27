@@ -4,10 +4,11 @@ using Encounter;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace UI.Entities
 {
-    public class EntitiesLayoutManager : MonoBehaviour
+    public class EntitiesLayoutManager : Singleton<EntitiesLayoutManager>
     {
         [SerializeField] private PossibleEncounters possibleEncounters; // possible assignment from code
         [SerializeField] private EnemyEntity enemyPrefab;
@@ -17,20 +18,17 @@ namespace UI.Entities
 
         private List<EnemyEntity> createdEnemies = new();
         
-        [Button]
-        public void CreateEnemies(EncounterDifficulty difficulty)
+        public List<EnemyEntity> CreateEnemies(Combination enemiesCombination)
         {
-            if (possibleEncounters.Count == 0) return;
-            
             ClearEnemies();
-            int chosenEncounter = Random.Range(0, possibleEncounters.Count);
-            var enemies = possibleEncounters[chosenEncounter].GetCombination(difficulty);
-            foreach (EnemyDataScriptable data in enemies)
+            foreach (EnemyDataScriptable data in enemiesCombination)
             {
                 EnemyEntity entity = Instantiate(enemyPrefab, enemiesLayout.transform);
                 entity.Init(data);
                 createdEnemies.Add(entity);
             }
+
+            return createdEnemies;
         }
 
         [Button]

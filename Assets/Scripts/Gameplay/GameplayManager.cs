@@ -11,7 +11,7 @@ namespace Gameplay
     {
         [Space]
         [SerializeField] private PlayerEntity player;
-        [SerializeField] private EntitiesLayoutManager entities;
+        [SerializeField] private BattleManager battleManager;
         [SerializeField] private UICardsController uiCards;
 
 
@@ -24,8 +24,14 @@ namespace Gameplay
         {
             player.Initialize();
             uiCards.Init();
-            entities.CreateEnemies(EncounterDifficulty.Normal);
+            battleManager.GenerateEnemies();
+            //ToDo: unpause after first move
             TimeManager.Paused = false;
+        }
+
+        public void EndEncounter(bool playerWon)
+        {
+            
         }
     }
 }

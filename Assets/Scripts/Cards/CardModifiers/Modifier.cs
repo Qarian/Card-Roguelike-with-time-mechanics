@@ -18,11 +18,19 @@ namespace Cards.CardModifiers
         public bool useTimer;
 
         [Header("Events")]
-        [OdinSerialize] private List<ICardUsageEffect> onUsingCard = new ();
-        [OdinSerialize] private List<IDefendEffect> onDefending = new ();
-        [OdinSerialize] private List<ICharacterEffect> onAttacking = new ();
+        [OdinSerialize] private List<ICardUsageEffect> onUsingCard;
+        [OdinSerialize] private List<IDefendEffect> onDefending;
+        [OdinSerialize] private List<ICharacterEffect> onAttacking;
         [Space]
-        [OdinSerialize] private List<ICharacterEffect> onTimeTick = new ();
+        [OdinSerialize] private List<ICharacterEffect> onTimeTick;
+
+        public Modifier()
+        {
+            onUsingCard = new ();
+            onDefending = new();
+            onAttacking = new();
+            onTimeTick = new();
+        }
         
         public bool CanBeAssigned => onTimeTick.Count > 0 || onUsingCard.Count > 0 || onAttacking.Count > 0;
 

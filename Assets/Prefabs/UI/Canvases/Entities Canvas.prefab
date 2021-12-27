@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6628972256472316047}
   - component: {fileID: 6628972256472316080}
+  - component: {fileID: 9111425452315643940}
   m_Layer: 5
   m_Name: Entities Canvas
   m_TagString: Untagged
@@ -51,9 +52,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835488349fc17e842b4854761188763a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistent: 0
   possibleEncounters: {fileID: 11400000, guid: 77a223348b3fb5841a4feebd0c942d92, type: 2}
   enemyPrefab: {fileID: 3673537858153812737, guid: cdf5ed5feb7f6cf448168c64acb85852, type: 3}
   enemiesLayout: {fileID: 7151366543104367934}
+--- !u!223 &9111425452315643940
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628972256472316043}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &7151366543104367932
 GameObject:
   m_ObjectHideFlags: 0

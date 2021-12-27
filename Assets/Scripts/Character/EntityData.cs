@@ -8,6 +8,7 @@ namespace Character
     {
         public string entityName;
         public Sprite sprite;
+        public Sprite indicatorSprite;
         public int baseLife = 100;
         
         public DeckScriptable startingDeck = default;
@@ -17,6 +18,7 @@ namespace Character
         {
             entityName = data.entityName;
             sprite = data.sprite;
+            indicatorSprite = data.indicatorSprite;
             baseLife = data.baseLife;
             startingDeck = data.startingDeck;
         }

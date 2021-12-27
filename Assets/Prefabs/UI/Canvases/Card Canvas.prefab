@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559506122584235294}
   - component: {fileID: 559506122584235295}
+  - component: {fileID: 1866067910362065848}
   m_Layer: 5
   m_Name: Card Canvas
   m_TagString: Untagged
@@ -55,6 +56,27 @@ MonoBehaviour:
   cardsHand: {fileID: 559506123621463624}
   cardsDeck: {fileID: 559506123702840939}
   cardPreview: {fileID: 559506123521685425}
+--- !u!223 &1866067910362065848
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559506122584235290}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &559506123521685439
 GameObject:
   m_ObjectHideFlags: 0

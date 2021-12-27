@@ -8,6 +8,7 @@ namespace UI.Entities
         {
             entityData = data;
             base.Init();
+            timer.IncreaseDuration(data.initialCooldown);
         }
     }
 }
