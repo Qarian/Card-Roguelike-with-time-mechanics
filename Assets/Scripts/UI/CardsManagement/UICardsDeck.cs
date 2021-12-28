@@ -1,5 +1,6 @@
 ﻿using Cards;
 using Character;
+using UI.Entities;
 using UnityEngine;
 using Utilities;
 
@@ -7,7 +8,7 @@ namespace UI.Cards
 {
 	public class UICardsDeck : MonoBehaviour
 	{
-		[SerializeField] private PlayerDataScriptable player = default;
+		[SerializeField] private PlayerEntity player = default;
 		[SerializeField] private CardUI cardPrefab = default;
 
 		private Deck deck;
@@ -15,7 +16,7 @@ namespace UI.Cards
 
 		public void Init()
 		{
-			deck = player.data.temporaryDeck;
+			deck = player.temporaryDeck;
 			GenerateCards(deck);
 			//ToDo: Deck should have backside
 		}

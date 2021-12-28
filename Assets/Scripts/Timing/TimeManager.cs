@@ -22,6 +22,11 @@ namespace Timing
             timer.OnEnd += () => timers.Remove(timer);
         }
 
+        public static void StopUpdatingTimer(Timer timer)
+        {
+            timers.Remove(timer);
+        }
+
         public static void UpdateTimers(float delta)
         {
             if (timers.Count == 0)

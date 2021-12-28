@@ -8,7 +8,5 @@ namespace Character
 	{
 		[HideInInspector]
 		public Deck permanentDeck;
-		[HideInInspector]
-		public Deck temporaryDeck;
 	}
 }

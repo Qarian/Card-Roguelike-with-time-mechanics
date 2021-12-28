@@ -52,7 +52,7 @@ namespace UI.CardsManagement
 
         private void OnClick(UICardClickable cardUI, CardData cardData, bool temporary)
         {
-            Deck deck = temporary ? player.data.temporaryDeck : player.data.permanentDeck;
+            Deck deck =  player.data.permanentDeck;
             if (create)
                 deck.AddCard(cardData);
             else

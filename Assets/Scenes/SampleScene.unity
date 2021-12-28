@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503977930}
   - component: {fileID: 503977931}
+  - component: {fileID: 503977932}
   m_Layer: 5
   m_Name: Others Canvas
   m_TagString: Untagged
@@ -193,6 +194,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &503977932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503977929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistent: 0
   player: {fileID: 244737148}
-  battleManager: {fileID: 971456536}
+  combatManager: {fileID: 971456536}
   uiCards: {fileID: 1695388856}
 --- !u!114 &971456535
 MonoBehaviour:
@@ -546,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0a5c2c12227ff4db638c0d3da90ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistent: 0
   possibleEncounters: {fileID: 11400000, guid: 77a223348b3fb5841a4feebd0c942d92, type: 2}
   colorsForRepeatingEnemies:
   - {r: 1, g: 1, b: 1, a: 1}
@@ -670,6 +689,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 559506123702840939, guid: 701ec1712fe5bcf44901d0ae7ea47492, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 244737148}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 701ec1712fe5bcf44901d0ae7ea47492, type: 3}
 --- !u!1001 &2533232891545205953
@@ -801,10 +824,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entities Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6628972256472316044, guid: c6d39acfd8eb0e042ab269e63dc2d632, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 6628972256472316047, guid: c6d39acfd8eb0e042ab269e63dc2d632, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -887,10 +906,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6628972256472316047, guid: c6d39acfd8eb0e042ab269e63dc2d632, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775047388616838232, guid: c6d39acfd8eb0e042ab269e63dc2d632, type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

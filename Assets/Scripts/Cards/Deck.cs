@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UI.Entities;
 
 namespace Cards
@@ -10,7 +11,7 @@ namespace Cards
         public readonly List<CardData> cards;
         public int Size => cards.Count;
 
-        private BaseEntity owner = default;
+        private BaseEntity owner;
 
         public Deck(List<CardDataScriptable> cards, BaseEntity owner)
         {
@@ -21,6 +22,18 @@ namespace Cards
                 card.owner = owner;
                 this.cards.Add(card);
             }
+        }
+
+        public Deck(Deck originalDeck)
+        {
+            cards = originalDeck.cards.ToArray().ToList();
+            owner = originalDeck.owner;
+        }
+
+        public Deck(BaseEntity owner)
+        {
+            cards = new();
+            this.owner = owner;
         }
 
         public void AddCard(CardData card)

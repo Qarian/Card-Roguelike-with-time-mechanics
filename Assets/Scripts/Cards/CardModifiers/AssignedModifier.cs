@@ -42,7 +42,7 @@ namespace Cards.CardModifiers
             modifier = modData.modifier;
             
             AddNew(modData);
-            CurrentTimer.StartAutoUpdate();
+            CurrentTimer.Start();
         }
         
         public void AddNew(ModifierWithData modData)
@@ -67,7 +67,7 @@ namespace Cards.CardModifiers
             {
                 allData.RemoveAt(0);
                 allTimers.RemoveAt(0);
-                CurrentTimer.StartAutoUpdate();
+                CurrentTimer.Start();
                 
                 TimeTick?.Invoke();
             }

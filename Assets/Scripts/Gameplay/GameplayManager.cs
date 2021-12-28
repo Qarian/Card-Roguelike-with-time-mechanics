@@ -11,9 +11,8 @@ namespace Gameplay
     {
         [Space]
         [SerializeField] private PlayerEntity player;
-        [SerializeField] private BattleManager battleManager;
+        [SerializeField] private CombatManager combatManager;
         [SerializeField] private UICardsController uiCards;
-
 
         private void Start()
         {
@@ -23,15 +22,11 @@ namespace Gameplay
         private void StartEncounter()
         {
             player.Initialize();
+            combatManager.GenerateEnemies();
             uiCards.Init();
-            battleManager.GenerateEnemies();
-            //ToDo: unpause after first move
-            TimeManager.Paused = false;
-        }
 
-        public void EndEncounter(bool playerWon)
-        {
-            
+            combatManager.EnablePlayerActions();
+            TimeManager.Paused = true;
         }
     }
 }

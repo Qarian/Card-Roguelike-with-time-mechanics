@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace UI.Cards
 {
     [RequireComponent(typeof(CardUI))]
-    public class CardUIMouseSupport : UIMouseInput
+    public class CardUIMouseInput : UIMouseInput
     {
         [FormerlySerializedAs("raycastReceiver")]
         [SerializeField] private Image cardRaycastReceiver = default;

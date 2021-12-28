@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 559506122584235294}
   - component: {fileID: 559506122584235295}
   - component: {fileID: 1866067910362065848}
+  - component: {fileID: 1040656139344887337}
   m_Layer: 5
   m_Name: Card Canvas
   m_TagString: Untagged
@@ -77,6 +78,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1040656139344887337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559506122584235290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &559506123521685439
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7d30e8d0a945c88b8829b54bceb3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 11400000, guid: 830b8456c51c56746b98ee9ccf2365af, type: 2}
+  player: {fileID: 0}
   cardPrefab: {fileID: 4397396417765942976, guid: afea4aca325b4c74f82d34dd7285e564, type: 3}
 --- !u!1001 &559506124016540944
 PrefabInstance:

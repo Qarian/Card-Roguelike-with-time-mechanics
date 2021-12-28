@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Encounter;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -30,6 +31,7 @@ namespace UI.Cards
 		public void ReceiveCard(CardUI card)
 		{
 			card.SetParent(this, transform);
+			card.ChangeCardActive(CombatManager.Instance.PlayerActionsEnabled);
 			if (cardsInHand.Contains(card))
 			{
 				MoveCardToPosition(card, cardsInHand.IndexOf(card));

@@ -2,6 +2,8 @@
 using Cards;
 using Cards.CardModifiers;
 using Character;
+using Encounter;
+using Gameplay;
 using Timing;
 using UI.Cards;
 using UnityEngine;
@@ -10,7 +12,7 @@ using UnityEngine.UI;
 namespace UI.Entities
 {
     [RequireComponent(typeof(Modifiers))]
-    public class BaseEntity : MonoBehaviour, ICardReceiver
+    public abstract class BaseEntity : MonoBehaviour, ICardReceiver
     {
         [SerializeField] protected Image image;
         public EntityData entityData;
@@ -32,7 +34,11 @@ namespace UI.Entities
             
             modifiers = GetComponent<Modifiers>();
             modifiers.Initialize(this);
-            timer = new Timer(0, CooldownEnd, true);
+            if (timer is null)
+            {
+                Debug.LogWarning("Timer wasn't initiated", gameObject);
+                timer = new Timer(0, CooldownEnd, false);
+            }
         }
 
         public bool CanReceiveCard(CardUI card)
@@ -59,14 +65,20 @@ namespace UI.Entities
             OnEntityDeath?.Invoke();
             Destroy(gameObject);
         }
+
+        public abstract void StartCombat();
+
+        protected abstract void CooldownEnd();
         
-        protected virtual void CooldownEnd() { }
 
         public void UseCard(CardData card, BaseEntity target)
         {
             var action = card.PrepareAction();
             modifiers.UseCard(this, card, action);
             action.PerformAction(target);
+            
+            CombatManager.Instance.ActionPerformed();
+            timer.IncreaseDuration(card.cost, true);
         }
 
         public void Defend(ActionData action)

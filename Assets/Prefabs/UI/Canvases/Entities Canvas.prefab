@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6628972256472316047}
   - component: {fileID: 6628972256472316080}
   - component: {fileID: 9111425452315643940}
+  - component: {fileID: 7385883604843751027}
   m_Layer: 5
   m_Name: Entities Canvas
   m_TagString: Untagged
@@ -77,6 +78,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &7385883604843751027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628972256472316043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &7151366543104367932
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +257,14 @@ PrefabInstance:
       propertyPath: dataScriptable
       value: 
       objectReference: {fileID: 11400000, guid: 830b8456c51c56746b98ee9ccf2365af, type: 2}
+    - target: {fileID: 3187065360920572690, guid: 24739c9789e1dc44f9110b19c731192e, type: 3}
+      propertyPath: entityData.entityName
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187065360920572690, guid: 24739c9789e1dc44f9110b19c731192e, type: 3}
+      propertyPath: entityData.startingDeck
+      value: 
+      objectReference: {fileID: 11400000, guid: 16f9138287f920947b832fd171a84b7d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24739c9789e1dc44f9110b19c731192e, type: 3}
 --- !u!224 &7151366542601945076 stripped

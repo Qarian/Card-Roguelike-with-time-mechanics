@@ -21,21 +21,26 @@ namespace Timing
             this.length = length;
             OnEnd = onEnd;
 
-            working = true;
-            
             if (autoUpdate)
                 TimeManager.AutoUpdateTimer(this);
         }
 
-        public void StartAutoUpdate()
+        public void Start()
         {
             TimeManager.AutoUpdateTimer(this);
+            working = true;
         }
 
-        public void IncreaseDuration(float amount)
+        public void Pause()
+        {
+            TimeManager.StopUpdatingTimer(this);
+            working = false;
+        }
+
+        public void IncreaseDuration(float amount, bool autoStart)
         {
             currentTime -= amount;
-            if (!working)
+            if (autoStart && !working)
                 TimeManager.AutoUpdateTimer(this);
             working = true;
         }
@@ -45,6 +50,7 @@ namespace Timing
             currentTime += amount;
             if (currentTime > length)
             {
+                currentTime = length;
                 working = false;
                 OnEnd?.Invoke();
             }

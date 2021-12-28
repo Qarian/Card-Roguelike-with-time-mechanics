@@ -1,4 +1,5 @@
 using Cards;
+using Encounter;
 using UI.Entities;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace UI.Cards
 
 		[Space]
 		public CardData data;
+		
+		// Optional components
+		private CardUIMouseInput mouseInput;
 
 		private ICardProvider parent;
 		public ICardProvider Parent => parent;
@@ -32,6 +36,7 @@ namespace UI.Cards
 		{
 			OnGet();
 			transform = GetComponent<RectTransform>();
+			mouseInput = GetComponent<CardUIMouseInput>();
 		}
 
 		private void ApplyStyle()
@@ -64,6 +69,24 @@ namespace UI.Cards
 		{
 			data.owner.UseCard(data, target);
 			PoolsManager.Remove(this);
+		}
+
+		public override void OnGet()
+		{
+			base.OnGet();
+			CombatManager.Instance.OnPlayerActionsChange += ChangeCardActive;
+		}
+
+		public override void OnRemove()
+		{
+			base.OnRemove();
+			CombatManager.Instance.OnPlayerActionsChange -= ChangeCardActive;
+		}
+
+		public void ChangeCardActive(bool active)
+		{
+			if (mouseInput)
+				mouseInput.enabled = active;
 		}
 	}
 }
