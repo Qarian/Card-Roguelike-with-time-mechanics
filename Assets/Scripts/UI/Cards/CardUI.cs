@@ -68,6 +68,7 @@ namespace UI.Cards
 		public void UseCard(BaseEntity target)
 		{
 			data.owner.UseCard(data, target);
+			CombatManager.Instance.ActionPerformed();
 			PoolsManager.Remove(this);
 		}
 

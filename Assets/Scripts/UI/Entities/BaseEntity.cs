@@ -3,7 +3,6 @@ using Cards;
 using Cards.CardModifiers;
 using Character;
 using Encounter;
-using Gameplay;
 using Timing;
 using UI.Cards;
 using UnityEngine;
@@ -22,6 +21,7 @@ namespace UI.Entities
         protected Timer timer;
 
         public event Action OnEntityDeath;
+        private bool alive;
 
         public Modifiers Modifiers => modifiers;
         public Timer Timer => timer;
@@ -31,6 +31,7 @@ namespace UI.Entities
             currentHealth = entityData.baseLife;
             gameObject.name = entityData.entityName;
             image.sprite = entityData.sprite;
+            alive = true;
             
             modifiers = GetComponent<Modifiers>();
             modifiers.Initialize(this);
@@ -62,14 +63,16 @@ namespace UI.Entities
 
         private void KillEntity()
         {
+            if (!alive) return;
+            
             OnEntityDeath?.Invoke();
+            alive = false;
             Destroy(gameObject);
         }
 
         public abstract void StartCombat();
 
         protected abstract void CooldownEnd();
-        
 
         public void UseCard(CardData card, BaseEntity target)
         {
@@ -77,14 +80,20 @@ namespace UI.Entities
             modifiers.UseCard(this, card, action);
             action.PerformAction(target);
             
-            CombatManager.Instance.ActionPerformed();
-            timer.IncreaseDuration(card.cost, true);
+            timer.IncreaseDuration(card.cost);
         }
 
         public void Defend(ActionData action)
         {
             // ToDo: Visual
             modifiers.Defend(this, action);
+        }
+
+        private void OnDestroy()
+        {
+            if (!alive) return;
+            
+            OnEntityDeath?.Invoke();
         }
     }
 }

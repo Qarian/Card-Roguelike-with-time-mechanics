@@ -14,35 +14,30 @@ namespace Timing
         public float RemainingTime => length - currentTime;
         public float Duration => length;
 
-        private bool working;
-
-        public Timer(float length, Action onEnd, bool autoUpdate = false)
+        public Timer(float length, Action onEnd, bool autoUpdate = false, bool stopAtEnd = true)
         {
             this.length = length;
             OnEnd = onEnd;
 
             if (autoUpdate)
-                TimeManager.AutoUpdateTimer(this);
+                TimeManager.AutoUpdateTimer(this, stopAtEnd);
         }
 
-        public void Start()
+        public void Start(bool stopAtEnd = true)
         {
-            TimeManager.AutoUpdateTimer(this);
-            working = true;
+            TimeManager.AutoUpdateTimer(this, stopAtEnd);
         }
 
         public void Pause()
         {
             TimeManager.StopUpdatingTimer(this);
-            working = false;
         }
 
-        public void IncreaseDuration(float amount, bool autoStart)
+        public void IncreaseDuration(float amount, bool startIfPaused = true)
         {
             currentTime -= amount;
-            if (autoStart && !working)
-                TimeManager.AutoUpdateTimer(this);
-            working = true;
+            if (startIfPaused)
+                TimeManager.AutoUpdateTimer(this, true);
         }
 
         public void Update(float amount)
@@ -51,7 +46,6 @@ namespace Timing
             if (currentTime > length)
             {
                 currentTime = length;
-                working = false;
                 OnEnd?.Invoke();
             }
         }

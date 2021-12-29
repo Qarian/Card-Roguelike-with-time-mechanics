@@ -2,7 +2,6 @@
 using Character;
 using Encounter;
 using Timing;
-using UI.Cards;
 using UI.Timeline;
 using UnityEngine;
 
@@ -18,14 +17,14 @@ namespace UI.Entities
         public Deck discardDeck;
         
         
-        private PlayerData data => (PlayerData) entityData;
+        private PlayerData Data => (PlayerData) entityData;
 
         public void Initialize()
         {
             entityData = dataScriptable;
-            data.permanentDeck = new Deck(entityData.startingDeck.cards, this);
+            Data.permanentDeck = new Deck(entityData.startingDeck.cards, this);
             
-            temporaryDeck = new Deck(data.permanentDeck);
+            temporaryDeck = new Deck(Data.permanentDeck);
             discardDeck = new Deck(this);
 
             timer = new Timer(0, CooldownEnd, false);
@@ -36,7 +35,7 @@ namespace UI.Entities
 
         public override void StartCombat()
         {
-            temporaryDeck = new Deck(data.permanentDeck);
+            temporaryDeck = new Deck(Data.permanentDeck);
             discardDeck = new Deck(this);
         }
 

@@ -12,7 +12,7 @@ namespace UI.Cards
 
 		[Space] [SerializeField] private Vector2 cardsAnchor;
 
-		private readonly List<CardUI> cardsInHand = new List<CardUI>(10);
+		private readonly List<CardUI> cardsInHand = new (10);
 
 		private new RectTransform transform;
 

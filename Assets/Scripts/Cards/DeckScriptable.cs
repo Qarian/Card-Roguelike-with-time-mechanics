@@ -8,6 +8,10 @@ namespace Cards
 	{
 		public List<CardDataScriptable> cards;
 
+		public int Count => cards.Count;
+
+		public CardData this[int i] => cards[i];
+
 		private void OnValidate()
 		{
 			if (cards != null)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Character;
 using Sirenix.OdinInspector;
 using Timing;
+using UI.Cards;
 using UI.Entities;
 using UI.Timeline;
 using UnityEngine;
@@ -20,20 +21,33 @@ namespace Encounter
         public EncounterDifficulty difficulty;
 
         [Space]
-        [SceneObjectsOnly]
-        [SerializeField] private EntitiesLayoutManager layoutManager;
-        
+        [SceneObjectsOnly] [SerializeField] private UICardsController uiCards;
+        [SceneObjectsOnly] [SerializeField] private EntitiesLayoutManager layoutManager;
+        [SceneObjectsOnly] [SerializeField] private PlayerEntity player;
 
         private List<EnemyEntity> enemies;
         private CombatState state;
 
         private bool playerActionsEnabled;
 
+        public static PlayerEntity Player => Instance.player;
+        
         public bool PlayerActionsEnabled => playerActionsEnabled;
         public event Action<bool> OnPlayerActionsChange;
 
+        
+        public void StartEncounter()
+        {
+            player.Initialize();
+            GenerateEnemies();
+            uiCards.Init();
+
+            EnablePlayerActions();
+            TimeManager.Paused = true;
+        }
+
         [Button]
-        public void GenerateEnemies()
+        private void GenerateEnemies()
         {
             CombinationGroup combinationGroup =
                 possibleEncounters.combinationGroup[Random.Range(0, possibleEncounters.combinationGroup.Count)];

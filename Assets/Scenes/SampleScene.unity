@@ -536,9 +536,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistent: 0
-  player: {fileID: 244737148}
-  combatManager: {fileID: 971456536}
-  uiCards: {fileID: 1695388856}
 --- !u!114 &971456535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +569,9 @@ MonoBehaviour:
   - {r: 0.5882353, g: 0.5882353, b: 1, a: 1}
   - {r: 0.5882353, g: 1, b: 0.5882353, a: 1}
   difficulty: 0
+  uiCards: {fileID: 1695388856}
   layoutManager: {fileID: 4089293605259186848}
+  player: {fileID: 244737148}
 --- !u!224 &1481658424 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8948252304483600687, guid: 73058a5f90d506c4a9c7b42396e3400f, type: 3}

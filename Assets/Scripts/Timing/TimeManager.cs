@@ -16,10 +16,13 @@ namespace Timing
 
         private static List<Timer> timers = new ();
 
-        public static void AutoUpdateTimer(Timer timer)
+        public static void AutoUpdateTimer(Timer timer, bool stopAtEnd)
         {
+            if (timers.Contains(timer)) return;
+            
             timers.Add(timer);
-            timer.OnEnd += () => timers.Remove(timer);
+            if (stopAtEnd)
+                timer.OnEnd += () => timers.Remove(timer);
         }
 
         public static void StopUpdatingTimer(Timer timer)
