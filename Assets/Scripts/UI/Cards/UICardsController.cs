@@ -1,4 +1,5 @@
 using System.Collections;
+using Encounter;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
@@ -10,17 +11,17 @@ namespace UI.Cards
 		[SerializeField] private UICardsHand cardsHand;
 		[SerializeField] private UICardsDeck cardsDeck;
 		[SerializeField] private UICardPreview cardPreview;
-		
+
+
 		public void Init()
 		{
 			cardsDeck.Init();
 			cardPreview.Init();
-			DrawCardToHand();
-			DrawCardToHand();
-			DrawCardToHand();
-			DrawCardToHand();
-			DrawCardToHand();
-			DrawCardToHand();
+
+			for (int i = 0; i < CombatManager.Player.cardsInHand; i++)
+			{
+				DrawCardToHand();
+			}
 		}
 
 		[Button]
@@ -30,9 +31,19 @@ namespace UI.Cards
 			
 			IEnumerator TmpDrawCardToHandAnimation()
 			{
-				CardUI card = cardsDeck.DrawCard();
+				CardUI card = cardsDeck.DrawCard(CombatManager.Player.GetCard());
 				yield return new WaitForSeconds(0.1f);
 				cardsHand.ReceiveCard(card);
+			}
+		}
+
+		[Button]
+		public void ResetHand()
+		{
+			int discardedCards = cardsHand.DiscardHand();
+			for (int i = 0; i < discardedCards; i++)
+			{
+				DrawCardToHand();
 			}
 		}
 	}

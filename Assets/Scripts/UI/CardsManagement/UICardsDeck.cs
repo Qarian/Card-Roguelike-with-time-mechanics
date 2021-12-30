@@ -18,7 +18,6 @@ namespace UI.Cards
 		{
 			deck = player.temporaryDeck;
 			GenerateCards(deck);
-			//ToDo: Deck should have backside
 		}
 
 		private void GenerateCards(Deck sourceDeck)
@@ -28,14 +27,14 @@ namespace UI.Cards
 			for (int i = 0; i < size; i++)
 			{
 				var card = Instantiate(cardPrefab, transform);
-				card.SetCard(sourceDeck.cards[i]);
 				PoolsManager.Remove(card);
 			}
 		}
 		
-		public CardUI DrawCard()
+		public CardUI DrawCard(CardData cardData)
 		{
 			CardUI card = PoolsManager.Get<CardUI>();
+			card.SetCard(cardData);
 			card.SetParent(transform);
 			card.AnchoredPosition = Vector2.zero;
 			card.transform.localScale = Vector3.one;

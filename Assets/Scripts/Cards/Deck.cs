@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UI.Entities;
+using Random = UnityEngine.Random;
 
 namespace Cards
 {
@@ -45,6 +46,32 @@ namespace Cards
         public void RemoveCard(CardData card)
         {
             cards.Remove(card);
+        }
+
+        public CardData TakeLastCard()
+        {
+            CardData card = cards[^1];
+            RemoveCard(card);
+            return card;
+        }
+
+        public void Shuffle()
+        {
+            int n = cards.Count;  
+            while (n > 1) {  
+                n--;
+                int k = Random.Range(0, n + 1);  
+                (cards[k], cards[n]) = (cards[n], cards[k]);
+            } 
+        }
+
+        public void MoveCards(Deck targetDeck)
+        {
+            foreach (var card in cards)
+            {
+                targetDeck.AddCard(card);
+            }
+            cards.Clear();
         }
     }
 }

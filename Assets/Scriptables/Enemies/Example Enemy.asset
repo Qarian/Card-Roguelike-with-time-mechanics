@@ -18,4 +18,5 @@ MonoBehaviour:
     indicatorSprite: {fileID: 0}
     baseLife: 50
     startingDeck: {fileID: 11400000, guid: 62f1d3d98ae765f48a73714d6b27c5a8, type: 2}
-    initialCooldown: 5
+    initialCooldown: 0.5
+    firstCard: {fileID: 0}

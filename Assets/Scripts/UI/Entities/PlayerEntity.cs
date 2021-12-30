@@ -15,7 +15,8 @@ namespace UI.Entities
         public Deck temporaryDeck;
         [HideInInspector]
         public Deck discardDeck;
-        
+
+        public int cardsInHand = 3;
         
         private PlayerData Data => (PlayerData) entityData;
 
@@ -25,6 +26,7 @@ namespace UI.Entities
             Data.permanentDeck = new Deck(entityData.startingDeck.cards, this);
             
             temporaryDeck = new Deck(Data.permanentDeck);
+            temporaryDeck.Shuffle();
             discardDeck = new Deck(this);
 
             timer = new Timer(0, CooldownEnd, false);
@@ -42,6 +44,23 @@ namespace UI.Entities
         protected override void CooldownEnd()
         {
             CombatManager.Instance.EnablePlayerActions();
+        }
+
+        public CardData GetCard()
+        {
+            if (temporaryDeck.Size > 0)
+                return temporaryDeck.TakeLastCard();
+            else
+            {
+                discardDeck.MoveCards(temporaryDeck);
+                temporaryDeck.Shuffle();
+                return GetCard();
+            }
+        }
+
+        public void DiscardCard(CardData card)
+        {
+            discardDeck.AddCard(card);
         }
     }
 }

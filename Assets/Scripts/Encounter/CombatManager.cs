@@ -103,6 +103,11 @@ namespace Encounter
             OnPlayerActionsChange?.Invoke(true);
         }
 
+        public void DrawCardToHand()
+        {
+            uiCards.DrawCardToHand();
+        }
+
         private enum CombatState
         {
             Start, Combat, Finish

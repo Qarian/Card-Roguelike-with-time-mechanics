@@ -9,7 +9,7 @@ namespace Cards
 	{
 		public readonly CardStyle style;
 		public readonly string title;
-		public readonly int cost;
+		public readonly float cost;
 		public readonly string description;
 
 		public List<ModifierWithData> actionsModifiers;
@@ -79,7 +79,7 @@ namespace Cards
 			{
 				var hashCode = (style != null ? style.GetHashCode() : 0);
 				hashCode = (hashCode * 397) ^ (title != null ? title.GetHashCode() : 0);
-				hashCode = (hashCode * 397) ^ cost;
+				hashCode = (hashCode * 397) ^ (int)cost;
 				hashCode = (hashCode * 397) ^ (description != null ? description.GetHashCode() : 0);
 				return hashCode;
 			}

@@ -69,6 +69,8 @@ namespace UI.Cards
 		{
 			data.owner.UseCard(data, target);
 			CombatManager.Instance.ActionPerformed();
+			CombatManager.Player.DiscardCard(data);
+			CombatManager.Instance.DrawCardToHand();
 			PoolsManager.Remove(this);
 		}
 

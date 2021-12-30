@@ -11,7 +11,7 @@ namespace Cards
     {
         public CardStyle style = null;
         public string title = string.Empty;
-        public int cost = -1;
+        public float cost = -1;
         [Multiline]
         public string description = string.Empty;
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Encounter;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Utilities;
 
 namespace UI.Cards
 {
@@ -66,13 +67,6 @@ namespace UI.Cards
 			}
 		}
 
-		[Button]
-		public void RemoveCard(int index)
-		{
-			cardsInHand.RemoveAt(index);
-			Refresh();
-		}
-
 		private void MoveCardToPosition(CardUI card, int position)
 		{
 			float xPos = (position + centeringOffset) / Mathf.Max(maxCardsForCentering - 1, cardsInHand.Count - 1);
@@ -92,6 +86,18 @@ namespace UI.Cards
 			{
 				MoveCardToPosition(cardsInHand[i], i);
 			}
+		}
+
+		public int DiscardHand()
+		{
+			int cardsCount = cardsInHand.Count;
+			foreach (CardUI card in cardsInHand)
+			{
+				CombatManager.Player.DiscardCard(card.data);
+				PoolsManager.Remove(card);
+			}
+
+			return cardsCount;
 		}
 	}
 }
