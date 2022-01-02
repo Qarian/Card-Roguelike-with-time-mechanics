@@ -67,8 +67,8 @@ namespace UI.Cards
 
 		public void UseCard(BaseEntity target)
 		{
-			data.owner.UseCard(data, target);
 			CombatManager.Instance.ActionPerformed();
+			data.owner.UseCard(data, target);
 			CombatManager.Player.DiscardCard(data);
 			CombatManager.Instance.DrawCardToHand();
 			PoolsManager.Remove(this);

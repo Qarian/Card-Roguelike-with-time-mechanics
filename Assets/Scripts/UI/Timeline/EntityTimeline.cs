@@ -56,7 +56,7 @@ namespace UI.Timeline
         private void EntityDeath(EntityIndicator indicator)
         {
             indicators.RemoveAt(indicators.FindIndex(x => x.indicator == indicator));
-            Destroy(indicator);
+            Destroy(indicator.gameObject);
         }
     }
 }

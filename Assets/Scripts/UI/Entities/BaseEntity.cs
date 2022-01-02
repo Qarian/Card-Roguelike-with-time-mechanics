@@ -14,6 +14,7 @@ namespace UI.Entities
     public abstract class BaseEntity : MonoBehaviour, ICardReceiver
     {
         [SerializeField] protected Image image;
+        [SerializeField] private UIHealthBar healthBar;
         public EntityData entityData;
         
         protected int currentHealth;
@@ -32,6 +33,8 @@ namespace UI.Entities
             gameObject.name = entityData.entityName;
             image.sprite = entityData.sprite;
             alive = true;
+            
+            healthBar.Init(entityData.baseLife);
             
             modifiers = GetComponent<Modifiers>();
             modifiers.Initialize(this);
@@ -55,6 +58,7 @@ namespace UI.Entities
         public void ModifyHealth(int amount)
         {
             currentHealth += amount;
+            healthBar.ChangeHealth(currentHealth);
             if (currentHealth <= 0)
             {
                 KillEntity();
@@ -65,8 +69,8 @@ namespace UI.Entities
         {
             if (!alive) return;
             
-            OnEntityDeath?.Invoke();
             alive = false;
+            OnEntityDeath?.Invoke();
             Destroy(gameObject);
         }
 

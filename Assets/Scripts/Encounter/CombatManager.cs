@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Character;
+using Gameplay;
 using Sirenix.OdinInspector;
 using Timing;
 using UI.Cards;
@@ -57,7 +58,7 @@ namespace Encounter
 
             enemies = layoutManager.CreateEnemies(combination);
             
-            //Assigning color to multiple same enemies
+            // Assigning color to multiple same enemies
             Dictionary<EntityData, int> enemyDataCounter = new();
 
             foreach (EnemyEntity enemyEntity in enemies)
@@ -76,12 +77,30 @@ namespace Encounter
             foreach (EnemyEntity enemy in enemies)
             {
                 enemy.StartCombat();
+                enemy.OnEntityDeath += () => EnemyDead(enemy);
             }
+
+            player.OnEntityDeath += GameOver;
+        }
+
+        private void GameOver()
+        {
+            TimeManager.Paused = true;
+            GameplayManager.Instance.EndEncounter(false);
+        }
+
+        private void EnemyDead(EnemyEntity enemy)
+        {
+            enemies.Remove(enemy);
+            if (enemies.Count == 0)
+                EndCombat();
         }
         
-        public void EndCombat()
+        private void EndCombat()
         {
             state = CombatState.Finish;
+            TimeManager.Paused = true;
+            GameplayManager.Instance.EndEncounter(true);
         }
         
         public void ActionPerformed()
