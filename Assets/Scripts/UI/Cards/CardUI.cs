@@ -67,23 +67,23 @@ namespace UI.Cards
 
 		public void UseCard(BaseEntity target)
 		{
-			CombatManager.Instance.ActionPerformed();
+			EncounterManager.Instance.ActionPerformed();
 			data.owner.UseCard(data, target);
-			CombatManager.Player.DiscardCard(data);
-			CombatManager.Instance.DrawCardToHand();
+			EncounterManager.Player.DiscardCard(data);
+			EncounterManager.Instance.DrawCardToHand();
 			PoolsManager.Remove(this);
 		}
 
 		public override void OnGet()
 		{
 			base.OnGet();
-			CombatManager.Instance.OnPlayerActionsChange += ChangeCardActive;
+			EncounterManager.Instance.OnPlayerActionsChange += ChangeCardActive;
 		}
 
 		public override void OnRemove()
 		{
 			base.OnRemove();
-			CombatManager.Instance.OnPlayerActionsChange -= ChangeCardActive;
+			EncounterManager.Instance.OnPlayerActionsChange -= ChangeCardActive;
 		}
 
 		public void ChangeCardActive(bool active)

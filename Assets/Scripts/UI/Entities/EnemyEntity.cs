@@ -18,6 +18,7 @@ namespace UI.Entities
             timer = new Timer(data.initialCooldown, CooldownEnd, false);
 
             currentCard = Data?.firstCard ?? ChooseNextCard();
+            currentHealth = Data.baseLife;
             
             base.Init();
         }
@@ -34,7 +35,7 @@ namespace UI.Entities
 
         protected override void CooldownEnd()
         {
-            UseCard(currentCard, CombatManager.Player);
+            UseCard(currentCard, EncounterManager.Player);
             currentCard = ChooseNextCard();
         }
     }

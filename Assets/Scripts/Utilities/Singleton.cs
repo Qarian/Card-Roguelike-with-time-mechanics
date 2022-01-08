@@ -2,7 +2,7 @@
 
 namespace Utilities
 {
-	public abstract class Singleton<T>: MonoBehaviour where T : MonoBehaviour
+	public abstract class Singleton<T>: MonoBehaviour where T : MonoBehaviour, new()
 	{
 		[SerializeField] protected bool persistent;
 		
@@ -13,11 +13,8 @@ namespace Utilities
 			get
 			{
 				instance ??= FindObjectOfType<T>();
-				
-				if (instance is null)
-					Debug.LogError($"Can't find singleton of type {typeof(T).FullName}");
 
-				return instance;
+				return instance ?? new GameObject($"({nameof(T)})").AddComponent<T>();
 			}
 		}
 

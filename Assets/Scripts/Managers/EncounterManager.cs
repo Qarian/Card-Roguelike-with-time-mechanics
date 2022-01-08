@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Character;
 using Gameplay;
@@ -13,7 +14,7 @@ using Random = UnityEngine.Random;
 
 namespace Encounter
 {
-    public class CombatManager : Singleton<CombatManager>
+    public class EncounterManager : Singleton<EncounterManager>
     {
         [SerializeField] private PossibleEncounters possibleEncounters;
 
@@ -37,7 +38,7 @@ namespace Encounter
         public event Action<bool> OnPlayerActionsChange;
 
         
-        public void StartEncounter()
+        private void Start()
         {
             player.Initialize();
             GenerateEnemies();
@@ -86,7 +87,7 @@ namespace Encounter
         private void GameOver()
         {
             TimeManager.Paused = true;
-            GameplayManager.Instance.EndEncounter(false);
+            GameManager.Instance.EndEncounter(false);
         }
 
         private void EnemyDead(EnemyEntity enemy)
@@ -100,7 +101,7 @@ namespace Encounter
         {
             state = CombatState.Finish;
             TimeManager.Paused = true;
-            GameplayManager.Instance.EndEncounter(true);
+            GameManager.Instance.EndEncounter(true);
         }
         
         public void ActionPerformed()

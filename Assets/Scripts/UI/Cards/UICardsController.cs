@@ -18,7 +18,7 @@ namespace UI.Cards
 			cardsDeck.Init();
 			cardPreview.Init();
 
-			for (int i = 0; i < CombatManager.Player.cardsInHand; i++)
+			for (int i = 0; i < EncounterManager.Player.cardsInHand; i++)
 			{
 				DrawCardToHand();
 			}
@@ -31,7 +31,7 @@ namespace UI.Cards
 			
 			IEnumerator TmpDrawCardToHandAnimation()
 			{
-				CardUI card = cardsDeck.DrawCard(CombatManager.Player.GetCard());
+				CardUI card = cardsDeck.DrawCard(EncounterManager.Player.GetCard());
 				yield return new WaitForSeconds(0.1f);
 				cardsHand.ReceiveCard(card);
 			}

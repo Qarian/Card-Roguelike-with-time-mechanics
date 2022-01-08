@@ -32,7 +32,7 @@ namespace UI.Cards
 		public void ReceiveCard(CardUI card)
 		{
 			card.SetParent(this, transform);
-			card.ChangeCardActive(CombatManager.Instance.PlayerActionsEnabled);
+			card.ChangeCardActive(EncounterManager.Instance.PlayerActionsEnabled);
 			if (cardsInHand.Contains(card))
 			{
 				MoveCardToPosition(card, cardsInHand.IndexOf(card));
@@ -93,7 +93,7 @@ namespace UI.Cards
 			int cardsCount = cardsInHand.Count;
 			foreach (CardUI card in cardsInHand)
 			{
-				CombatManager.Player.DiscardCard(card.data);
+				EncounterManager.Player.DiscardCard(card.data);
 				PoolsManager.Remove(card);
 			}
 

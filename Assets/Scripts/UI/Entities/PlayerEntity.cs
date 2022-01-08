@@ -23,7 +23,8 @@ namespace UI.Entities
         public void Initialize()
         {
             entityData = dataScriptable;
-            Data.permanentDeck = new Deck(entityData.startingDeck.cards, this);
+            Data.Init(this);
+            currentHealth = Data.currentHealth;
             
             temporaryDeck = new Deck(Data.permanentDeck);
             temporaryDeck.Shuffle();
@@ -43,7 +44,7 @@ namespace UI.Entities
 
         protected override void CooldownEnd()
         {
-            CombatManager.Instance.EnablePlayerActions();
+            EncounterManager.Instance.EnablePlayerActions();
         }
 
         public CardData GetCard()

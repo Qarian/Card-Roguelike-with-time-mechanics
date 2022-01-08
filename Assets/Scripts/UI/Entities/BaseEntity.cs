@@ -29,7 +29,6 @@ namespace UI.Entities
 
         protected void Init()
         {
-            currentHealth = entityData.baseLife;
             gameObject.name = entityData.entityName;
             image.sprite = entityData.sprite;
             alive = true;

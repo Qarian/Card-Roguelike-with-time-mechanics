@@ -1,17 +1,14 @@
-﻿using Encounter;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Utilities;
 
 namespace Gameplay
 {
-    public class GameplayManager : Singleton<GameplayManager>
+    public class GameManager : Singleton<GameManager>
     {
-        private void StartEncounter()
+        public static void StartEncounter()
         {
             SceneManager.LoadScene(1);
-            CombatManager.Instance.StartEncounter();
         }
 
         public void EndEncounter(bool win)
@@ -23,11 +20,6 @@ namespace Gameplay
         private void ReturnToMainMenu()
         {
             SceneManager.LoadScene(0);
-        }
-
-        public void Quit()
-        {
-            Application.Quit();
         }
     }
 }
