@@ -15,13 +15,18 @@ namespace Character
 
 		private bool initialized = false;
 
+		public PlayerData(PlayerData data) : base(data)
+		{
+			currentHealth = baseLife;
+			maxHealth = baseLife;
+		}
+
 		public void Init(PlayerEntity entity)
 		{
 			if (initialized) return;
 
-			currentHealth = baseLife;
-			maxHealth = baseLife;
-			
+			initialized = true;
+
 			permanentDeck = new Deck(startingDeck.cards, entity);
 		}
 	}

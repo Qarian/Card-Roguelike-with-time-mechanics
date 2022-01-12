@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Utilities
 {
-	public abstract class Singleton<T>: MonoBehaviour where T : MonoBehaviour, new()
+	public abstract class Singleton<T>: SerializedMonoBehaviour where T : MonoBehaviour, new()
 	{
 		[SerializeField] protected bool persistent;
 		

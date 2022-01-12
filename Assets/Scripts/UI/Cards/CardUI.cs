@@ -1,7 +1,7 @@
 using Cards;
-using Encounter;
-using UI.Entities;
+using Managers;
 using TMPro;
+using UI.Entities;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;

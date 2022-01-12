@@ -1,8 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Character;
-using Gameplay;
+using Encounter;
 using Sirenix.OdinInspector;
 using Timing;
 using UI.Cards;
@@ -12,7 +11,7 @@ using UnityEngine;
 using Utilities;
 using Random = UnityEngine.Random;
 
-namespace Encounter
+namespace Managers
 {
     public class EncounterManager : Singleton<EncounterManager>
     {

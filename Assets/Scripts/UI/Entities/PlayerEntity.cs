@@ -1,6 +1,6 @@
 ﻿using Cards;
 using Character;
-using Encounter;
+using Managers;
 using Timing;
 using UI.Timeline;
 using UnityEngine;
@@ -25,6 +25,7 @@ namespace UI.Entities
             entityData = dataScriptable;
             Data.Init(this);
             currentHealth = Data.currentHealth;
+            healthBar.Init(Data.maxHealth);
             
             temporaryDeck = new Deck(Data.permanentDeck);
             temporaryDeck.Shuffle();
@@ -38,8 +39,7 @@ namespace UI.Entities
 
         public override void StartCombat()
         {
-            temporaryDeck = new Deck(Data.permanentDeck);
-            discardDeck = new Deck(this);
+            
         }
 
         protected override void CooldownEnd()

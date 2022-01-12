@@ -1,10 +1,11 @@
 using System.Collections.Generic;
-using Encounter;
+using Managers;
 using Sirenix.OdinInspector;
+using UI.Cards;
 using UnityEngine;
 using Utilities;
 
-namespace UI.Cards
+namespace UI.CardsManagement
 {
 	public class UICardsHand : MonoBehaviour, ICardProvider
 	{

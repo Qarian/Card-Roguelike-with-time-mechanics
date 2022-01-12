@@ -14,7 +14,7 @@ namespace UI.Entities
     public abstract class BaseEntity : MonoBehaviour, ICardReceiver
     {
         [SerializeField] protected Image image;
-        [SerializeField] private UIHealthBar healthBar;
+        [SerializeField] protected UIHealthBar healthBar;
         public EntityData entityData;
         
         protected int currentHealth;
@@ -32,9 +32,7 @@ namespace UI.Entities
             gameObject.name = entityData.entityName;
             image.sprite = entityData.sprite;
             alive = true;
-            
-            healthBar.Init(entityData.baseLife);
-            
+
             modifiers = GetComponent<Modifiers>();
             modifiers.Initialize(this);
             if (timer is null)

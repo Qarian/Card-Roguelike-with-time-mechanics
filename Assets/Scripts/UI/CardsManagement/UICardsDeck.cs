@@ -1,10 +1,11 @@
 ﻿using Cards;
 using Character;
+using UI.Cards;
 using UI.Entities;
 using UnityEngine;
 using Utilities;
 
-namespace UI.Cards
+namespace UI.CardsManagement
 {
 	public class UICardsDeck : MonoBehaviour
 	{

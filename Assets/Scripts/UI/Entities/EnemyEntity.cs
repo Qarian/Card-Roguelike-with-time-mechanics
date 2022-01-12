@@ -1,6 +1,6 @@
 ﻿using Cards;
 using Character;
-using Encounter;
+using Managers;
 using Timing;
 using UnityEngine;
 
@@ -19,6 +19,7 @@ namespace UI.Entities
 
             currentCard = Data?.firstCard ?? ChooseNextCard();
             currentHealth = Data.baseLife;
+            healthBar.Init(entityData.baseLife);
             
             base.Init();
         }

@@ -1,7 +1,7 @@
 using System.Collections;
-using Encounter;
+using Managers;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
+using UI.CardsManagement;
 using UnityEngine;
 
 namespace UI.Cards
@@ -11,7 +11,6 @@ namespace UI.Cards
 		[SerializeField] private UICardsHand cardsHand;
 		[SerializeField] private UICardsDeck cardsDeck;
 		[SerializeField] private UICardPreview cardPreview;
-
 
 		public void Init()
 		{
