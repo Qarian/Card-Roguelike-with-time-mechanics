@@ -9,8 +9,6 @@ namespace UI.Entities
 {
     public class PlayerEntity : BaseEntity
     {
-        [SerializeField] private PlayerDataScriptable dataScriptable;
-
         [HideInInspector]
         public Deck temporaryDeck;
         [HideInInspector]
@@ -22,12 +20,13 @@ namespace UI.Entities
 
         public void Initialize()
         {
-            entityData = dataScriptable;
+            entityData = PlayerGlobalData.Current;
             Data.Init(this);
             currentHealth = Data.currentHealth;
             healthBar.Init(Data.maxHealth);
             
             temporaryDeck = new Deck(Data.permanentDeck);
+            temporaryDeck.SetOwner(this);
             temporaryDeck.Shuffle();
             discardDeck = new Deck(this);
 

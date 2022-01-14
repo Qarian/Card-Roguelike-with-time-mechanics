@@ -8,7 +8,7 @@ namespace UI.Cards
     {
         public Canvas canvas { get; private set; }
 
-        private void Awake()
+        protected override void OnAwake()
         {
             canvas = GetComponent<Canvas>();
         }

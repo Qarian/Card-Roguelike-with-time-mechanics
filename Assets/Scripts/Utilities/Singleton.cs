@@ -1,13 +1,12 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Utilities
 {
-	public abstract class Singleton<T>: SerializedMonoBehaviour where T : MonoBehaviour, new()
+	public abstract class Singleton<T>: MonoBehaviour where T : Singleton<T>
 	{
 		[SerializeField] protected bool persistent;
 		
-		private static T instance;
+		protected static T instance;
 
 		public static T Instance
 		{
@@ -23,9 +22,10 @@ namespace Utilities
 		{
 			if (instance != null && instance != this)
 			{
-				Destroy(gameObject);
-				return;
+				Destroy(instance.gameObject);
 			}
+ 
+			instance = (T) this;
 
 			if (persistent)
 				DontDestroyOnLoad(this);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -12,6 +13,8 @@ namespace Utilities
 
         public static void AddNewPool<T>(ObjectPool<T> pool) where T : PoolableMonoBehaviour
         {
+            if (objectPools.ContainsKey(typeof(T))) return;
+            
             objectPools.Add(typeof(T), pool);
         }
 

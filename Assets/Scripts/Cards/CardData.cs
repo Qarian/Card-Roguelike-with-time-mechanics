@@ -5,7 +5,7 @@ using UI.Entities;
 
 namespace Cards
 {
-	public struct CardData
+	public class CardData
 	{
 		public readonly CardStyle style;
 		public readonly string title;

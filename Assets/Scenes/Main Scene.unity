@@ -611,6 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431c224779d336044acb3d959e67f073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 830b8456c51c56746b98ee9ccf2365af, type: 2}
   newGameButton: {fileID: 1910625616}
   quitButton: {fileID: 383062343}
 --- !u!1 &1305155810

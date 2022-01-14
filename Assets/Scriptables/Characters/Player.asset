@@ -15,5 +15,8 @@ MonoBehaviour:
   data:
     entityName: Player
     sprite: {fileID: 21300000, guid: 7dff9de7eb1842943abf8b04fb875e51, type: 3}
-    baseLife: 100
+    indicatorSprite: {fileID: 0}
+    baseLife: 5
     startingDeck: {fileID: 11400000, guid: 16f9138287f920947b832fd171a84b7d, type: 2}
+    currentHealth: 0
+    maxHealth: 0

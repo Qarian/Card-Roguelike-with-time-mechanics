@@ -1,4 +1,5 @@
 ﻿using Character;
+using Encounter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utilities;
@@ -7,11 +8,15 @@ namespace Managers
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField] private PlayerDataScriptable playerDataScriptable;
-        
-        public static void StartEncounter()
+        public static void StartEncounter(PlayerDataScriptable playerDataScriptable)
         {
-            PlayerGlobalData.StartNewGame(Instance.playerDataScriptable);
+            PlayerGlobalData.StartNewGame(playerDataScriptable);
+            PlayerGlobalData.selectedDifficulty = EncounterDifficulty.Normal;
+            SceneManager.LoadScene(1);
+        }
+
+        public static void NewEncounter()
+        {
             SceneManager.LoadScene(1);
         }
 

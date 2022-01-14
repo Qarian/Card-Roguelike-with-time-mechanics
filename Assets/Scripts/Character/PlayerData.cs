@@ -19,15 +19,12 @@ namespace Character
 		{
 			currentHealth = baseLife;
 			maxHealth = baseLife;
+			permanentDeck = new Deck(startingDeck.cards);
 		}
 
 		public void Init(PlayerEntity entity)
 		{
-			if (initialized) return;
-
-			initialized = true;
-
-			permanentDeck = new Deck(startingDeck.cards, entity);
+			permanentDeck.SetOwner(entity);
 		}
 	}
 }

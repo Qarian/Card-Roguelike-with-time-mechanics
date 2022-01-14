@@ -2,7 +2,6 @@
 using Cards;
 using Cards.CardModifiers;
 using Character;
-using Encounter;
 using Timing;
 using UI.Cards;
 using UnityEngine;
@@ -88,13 +87,6 @@ namespace UI.Entities
         {
             // ToDo: Visual
             modifiers.Defend(this, action);
-        }
-
-        private void OnDestroy()
-        {
-            if (!alive) return;
-            
-            OnEntityDeath?.Invoke();
         }
     }
 }

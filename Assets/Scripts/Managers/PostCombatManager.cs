@@ -1,17 +1,18 @@
 using System.Collections.Generic;
-using Sirenix.Serialization;
 using UI.PostCombat;
+using UnityEngine;
 using Utilities;
 
 namespace Managers
 {
     public class PostCombatManager : Singleton<PostCombatManager>
     {
-        [OdinSerialize] public List<IPostCombatWindow> postCombatWindows = new ();
+        [SerializeField] private List<PostCombatWindow> postCombatWindows = new ();
 
         private void Start()
         {
             gameObject.SetActive(false);
+            instance = this;
         }
 
         public void StartEndSequence()
@@ -35,7 +36,7 @@ namespace Managers
 
         private void FinishedLastWindow()
         {
-            
+            GameManager.NewEncounter();
         }
     }
 }

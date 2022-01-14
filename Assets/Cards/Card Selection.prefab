@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bbd3e8829df7e4eb301b1937d4bc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistent: 0
+  cardsPool: {fileID: 11400000, guid: 31b823bc5374ccc4da2fb4dc2cffc4cd, type: 2}
   cardPrefab: {fileID: 5294639536155424774, guid: f8727575b2839ec4e835e602d93e18b1, type: 3}
   parent: {fileID: 5126493073953462211}
+  cardsCount: 3

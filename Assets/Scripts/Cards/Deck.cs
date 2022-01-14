@@ -14,7 +14,7 @@ namespace Cards
 
         private BaseEntity owner;
 
-        public Deck(List<CardDataScriptable> cards, BaseEntity owner)
+        public Deck(List<CardDataScriptable> cards, BaseEntity owner = null)
         {
             this.cards = new List<CardData>(cards.Count);
             foreach (var t in cards)
@@ -72,6 +72,14 @@ namespace Cards
                 targetDeck.AddCard(card);
             }
             cards.Clear();
+        }
+
+        public void SetOwner(BaseEntity newOwner)
+        {
+            foreach (CardData card in cards)
+            {
+                card.owner = newOwner;
+            }
         }
     }
 }

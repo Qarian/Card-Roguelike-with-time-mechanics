@@ -1,17 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cards;
 using Managers;
 using UI.Cards;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace UI.PostCombat
 {
-    public class CardSelectionWindow : MonoBehaviour, IPostCombatWindow
+    public class CardSelectionWindow : PostCombatWindow
     {
-        [SerializeField] private Deck cardsPool;
+        [SerializeField] private DeckScriptable cardsPool;
         [SerializeField] private UICardClickable cardPrefab = default;
         
         [Space]
@@ -19,22 +17,20 @@ namespace UI.PostCombat
 
         [Space]
         [SerializeField] private int cardsCount;
-        
-        public event Action OnWindowFinalized;
-        
-        public void ShowWindow()
+
+        public override void ShowWindow()
         {
             CreateCards(cardsPool.cards.OrderBy(x => Random.Range(0f, 1f)).Take(cardsCount).ToList());
             
             gameObject.SetActive(true);
         }
 
-        public void CloseWindow()
+        public override void CloseWindow()
         {
             gameObject.SetActive(false);
         }
 
-        private void CreateCards(List<CardData> cards)
+        private void CreateCards(List<CardDataScriptable> cards)
         {
             foreach (CardData cardData in cards)
             {

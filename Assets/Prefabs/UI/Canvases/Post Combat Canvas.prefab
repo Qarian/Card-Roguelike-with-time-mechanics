@@ -126,33 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5d0acaf0a8ba642a3751049392308c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1486718780034088590}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: postCombatWindows
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[UI.PostCombat.IPostCombatWindow,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   persistent: 0
+  postCombatWindows:
+  - {fileID: 1486718780034088590}
 --- !u!223 &6018239086504595383
 Canvas:
   m_ObjectHideFlags: 0
@@ -304,6 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5734eb3e226183a4a81e9ae92a2ca372, type: 3}
+--- !u!224 &1486718780034088593 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5126493075644998583, guid: 5734eb3e226183a4a81e9ae92a2ca372, type: 3}
+  m_PrefabInstance: {fileID: 6018239085783850278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1486718780034088590 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5126493075644998568, guid: 5734eb3e226183a4a81e9ae92a2ca372, type: 3}
@@ -315,8 +296,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bbd3e8829df7e4eb301b1937d4bc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1486718780034088593 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5126493075644998583, guid: 5734eb3e226183a4a81e9ae92a2ca372, type: 3}
-  m_PrefabInstance: {fileID: 6018239085783850278}
-  m_PrefabAsset: {fileID: 0}
