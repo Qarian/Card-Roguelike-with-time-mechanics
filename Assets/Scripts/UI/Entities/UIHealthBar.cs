@@ -14,11 +14,11 @@ namespace UI.Entities
         private int maxHealth;
         private int currentHealth;
 
-        public void Init(int maxHealth)
+        public void Init(int maxHealth, int currentHealth = -1)
         {
             scrollbar.value = healthFromLeft ? 1 : 0;
             this.maxHealth = maxHealth;
-            currentHealth = maxHealth;
+            this.currentHealth = currentHealth >= 0 ? currentHealth : maxHealth;
             UpdateUI();
         }
 

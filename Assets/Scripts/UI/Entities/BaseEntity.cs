@@ -51,7 +51,7 @@ namespace UI.Entities
             card.UseCard(this);
         }
 
-        public void ModifyHealth(int amount)
+        public virtual void ModifyHealth(int amount)
         {
             currentHealth += amount;
             healthBar.ChangeHealth(currentHealth);

@@ -23,7 +23,7 @@ namespace UI.Entities
             entityData = PlayerGlobalData.Current;
             Data.Init(this);
             currentHealth = Data.currentHealth;
-            healthBar.Init(Data.maxHealth);
+            healthBar.Init(Data.maxHealth, Data.currentHealth);
             
             temporaryDeck = new Deck(Data.permanentDeck);
             temporaryDeck.SetOwner(this);
@@ -39,6 +39,12 @@ namespace UI.Entities
         public override void StartCombat()
         {
             
+        }
+
+        public override void ModifyHealth(int amount)
+        {
+            base.ModifyHealth(amount);
+            Data.currentHealth = currentHealth;
         }
 
         protected override void CooldownEnd()
