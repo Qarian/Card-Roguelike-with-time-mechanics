@@ -5,10 +5,18 @@ namespace UI.PostCombat
 {
     public abstract class PostCombatWindow : MonoBehaviour
     {
-        public Action OnWindowFinalized;
+        public event Action OnWindowFinalized;
         
         public abstract void ShowWindow();
-        
-        public abstract void CloseWindow();
+
+        public virtual void CloseWindow()
+        {
+            gameObject.SetActive(false);
+        }
+
+        protected void Finalize()
+        {
+            OnWindowFinalized?.Invoke();
+        }
     }
 }

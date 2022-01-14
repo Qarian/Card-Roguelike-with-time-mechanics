@@ -18,8 +18,6 @@ namespace Managers
         [SerializeField] private PossibleEncounters possibleEncounters;
 
         [SerializeField] private List<Color> colorsForRepeatingEnemies = new();
-        
-        public EncounterDifficulty difficulty;
 
         [Space]
         [SceneObjectsOnly] [SerializeField] private UICardsController uiCards;
@@ -53,7 +51,7 @@ namespace Managers
             CombinationGroup combinationGroup =
                 possibleEncounters.combinationGroup[Random.Range(0, possibleEncounters.combinationGroup.Count)];
 
-            Combination combination = combinationGroup.combinationsPerDifficulties[difficulty];
+            Combination combination = combinationGroup.combinationsPerDifficulties[PlayerGlobalData.selectedDifficulty];
 
 
             enemies = layoutManager.CreateEnemies(combination);

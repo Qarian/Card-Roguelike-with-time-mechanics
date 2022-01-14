@@ -21,8 +21,11 @@ namespace Managers
             {
                 var i1 = i;
                 postCombatWindows[i].OnWindowFinalized += () => GoToNextWindow(i1);
+                
+                postCombatWindows[i].gameObject.SetActive(false);
             }
             postCombatWindows[^1].OnWindowFinalized += FinishedLastWindow;
+            postCombatWindows[^1].gameObject.SetActive(false);
             
             gameObject.SetActive(true);
             postCombatWindows[0].ShowWindow();

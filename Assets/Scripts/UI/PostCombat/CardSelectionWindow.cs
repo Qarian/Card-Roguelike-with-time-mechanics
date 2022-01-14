@@ -25,11 +25,6 @@ namespace UI.PostCombat
             gameObject.SetActive(true);
         }
 
-        public override void CloseWindow()
-        {
-            gameObject.SetActive(false);
-        }
-
         private void CreateCards(List<CardDataScriptable> cards)
         {
             foreach (CardData cardData in cards)
@@ -44,7 +39,7 @@ namespace UI.PostCombat
             Deck deck = PlayerGlobalData.Current.permanentDeck;
             deck.AddCard(cardData);
             
-            OnWindowFinalized.Invoke();
+            Finalize();
         }
     }
 }
