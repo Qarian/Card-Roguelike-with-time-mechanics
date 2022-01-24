@@ -74,13 +74,11 @@ namespace UI.Entities
 
         protected abstract void CooldownEnd();
 
-        public void UseCard(CardData card, BaseEntity target)
+        public virtual void UseCard(CardData card, BaseEntity target)
         {
             var action = card.PrepareAction();
             modifiers.UseCard(this, card, action);
             action.PerformAction(target);
-            
-            timer.IncreaseDuration(card.cost);
         }
 
         public void Defend(ActionData action)

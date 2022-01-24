@@ -64,6 +64,13 @@ namespace UI.Entities
             }
         }
 
+        public override void UseCard(CardData card, BaseEntity target)
+        {
+            base.UseCard(card, target);
+            
+            timer.IncreaseDuration(card.cost);
+        }
+
         public void DiscardCard(CardData card)
         {
             discardDeck.AddCard(card);

@@ -13,8 +13,6 @@ namespace Character
 		public int currentHealth;
 		public int maxHealth;
 
-		private bool initialized = false;
-
 		public PlayerData(PlayerData data) : base(data)
 		{
 			currentHealth = baseLife;

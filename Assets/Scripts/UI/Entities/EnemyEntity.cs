@@ -15,9 +15,10 @@ namespace UI.Entities
         public void Init(EnemyData data)
         {
             entityData = data;
-            timer = new Timer(data.initialCooldown, CooldownEnd, false);
-
             currentCard = Data?.firstCard ?? ChooseNextCard();
+            
+            timer = new Timer(data.initialCooldown + currentCard.cost, CooldownEnd, false);
+
             currentHealth = Data.baseLife;
             healthBar.Init(entityData.baseLife);
             
@@ -38,6 +39,7 @@ namespace UI.Entities
         {
             UseCard(currentCard, EncounterManager.Player);
             currentCard = ChooseNextCard();
+            timer.IncreaseDuration(currentCard.cost);
         }
     }
 }

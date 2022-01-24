@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Character;
+using Difficulty;
 using Encounter;
 using Sirenix.OdinInspector;
 using Timing;
@@ -38,7 +39,8 @@ namespace Managers
         private void Start()
         {
             player.Initialize();
-            GenerateEnemies();
+            Combination enemies = GenerateEnemies();
+            DifficultyScaler.NewEncounter(enemies);
             uiCards.Init();
 
             EnablePlayerActions();
@@ -46,7 +48,7 @@ namespace Managers
         }
 
         [Button]
-        private void GenerateEnemies()
+        private Combination GenerateEnemies()
         {
             CombinationGroup combinationGroup =
                 possibleEncounters.combinationGroup[Random.Range(0, possibleEncounters.combinationGroup.Count)];
@@ -68,9 +70,11 @@ namespace Managers
                 
                 EntityTimeline.Instance.TrackEntity(enemyEntity, colorsForRepeatingEnemies[enemyDataCounter[enemyEntity.entityData]]);
             }
+
+            return combination;
         }
 
-        public void StartCombat()
+        private void StartCombat()
         {
             foreach (EnemyEntity enemy in enemies)
             {

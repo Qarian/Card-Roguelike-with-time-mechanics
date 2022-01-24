@@ -9,6 +9,7 @@ namespace Encounter
     [Serializable]
     public class Combination : IEnumerable<EnemyDataScriptable>
     {
+        public float baseDifficulty = 1f; 
         public List<EnemyDataScriptable> enemies = new ();
         
         public IEnumerator<EnemyDataScriptable> GetEnumerator()

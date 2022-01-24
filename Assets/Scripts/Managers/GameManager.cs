@@ -1,4 +1,5 @@
 ﻿using Character;
+using Difficulty;
 using Encounter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,8 @@ namespace Managers
         {
             PlayerGlobalData.StartNewGame(playerDataScriptable);
             PlayerGlobalData.selectedDifficulty = EncounterDifficulty.Normal;
-            SceneManager.LoadScene(1);
+            DifficultyScaler.StartGameplay();
+            NewEncounter();
         }
 
         public static void NewEncounter()
@@ -22,7 +24,8 @@ namespace Managers
 
         public void EndEncounter(bool win)
         {
-            Debug.Log(win);
+            DifficultyScaler.EndEncounter();
+            
             if (win)
             {
                 PostCombatManager.Instance.StartEndSequence();

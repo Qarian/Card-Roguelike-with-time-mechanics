@@ -39,7 +39,7 @@ namespace UI.PostCombat
             Deck deck = PlayerGlobalData.Current.permanentDeck;
             deck.AddCard(cardData);
             
-            Finalize();
+            Close();
         }
     }
 }

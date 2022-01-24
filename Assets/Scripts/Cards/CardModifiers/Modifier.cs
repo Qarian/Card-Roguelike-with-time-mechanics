@@ -10,7 +10,6 @@ namespace Cards.CardModifiers
 {
     public class Modifier
     {
-        [Required]
         public string name;
         public Sprite icon;
         
@@ -20,7 +19,7 @@ namespace Cards.CardModifiers
         [Header("Events")]
         [OdinSerialize] private List<ICardUsageEffect> onUsingCard;
         [OdinSerialize] private List<IDefendEffect> onDefending;
-        [OdinSerialize] private List<ICharacterEffect> onAttacking;
+        [OdinSerialize] private List<ICharacterEffect> onTargetingEntity;
         [Space]
         [OdinSerialize] private List<ICharacterEffect> onTimeTick;
 
@@ -28,14 +27,12 @@ namespace Cards.CardModifiers
         {
             onUsingCard = new ();
             onDefending = new();
-            onAttacking = new();
+            onTargetingEntity = new();
             onTimeTick = new();
         }
         
-        public bool CanBeAssigned => onTimeTick.Count > 0 || onUsingCard.Count > 0 || onAttacking.Count > 0;
+        public bool CanBeAssigned => onTimeTick.Count > 0 || onUsingCard.Count > 0 || onTargetingEntity.Count > 0;
 
-        public event Action ModifierEnd; // TODO: Implement
-        
 
         public void TimeTick(BaseEntity owner, ModifierData data)
         {
@@ -63,7 +60,7 @@ namespace Cards.CardModifiers
 
         public void Attack(BaseEntity defender, ModifierData data)
         {
-            foreach (var effect in onAttacking)
+            foreach (var effect in onTargetingEntity)
             {
                 effect.ApplyEffect(defender, data);
             }

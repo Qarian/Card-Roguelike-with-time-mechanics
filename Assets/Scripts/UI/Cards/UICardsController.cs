@@ -27,16 +27,7 @@ namespace UI.Cards
 		public void DrawCardToHand()
 		{
 			CardUI card = cardsDeck.DrawCard(EncounterManager.Player.GetCard());
-			//yield return new WaitForSeconds(0.1f);
 			cardsHand.ReceiveCard(card);
-			//StartCoroutine(TmpDrawCardToHandAnimation());
-			
-			IEnumerator TmpDrawCardToHandAnimation()
-			{
-				CardUI card = cardsDeck.DrawCard(EncounterManager.Player.GetCard());
-				yield return new WaitForSeconds(0.1f);
-				cardsHand.ReceiveCard(card);
-			}
 		}
 
 		[Button]

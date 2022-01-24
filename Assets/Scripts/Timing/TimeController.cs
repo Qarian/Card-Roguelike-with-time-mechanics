@@ -5,20 +5,11 @@ namespace Timing
 {
     public class TimeController : MonoBehaviour
     {
-        [SerializeField] private float speed = 1f;
-        public float Speed
-        {
-            get => speed;
-            set
-            {
-                speed = value;
-                TimeManager.Speed = speed;
-            }
-        }
+        [SerializeField] private float startSpeed = 1f;
 
         private void Awake()
         {
-            TimeManager.Speed = speed;
+            TimeManager.Speed = startSpeed;
         }
 
         private void FixedUpdate()

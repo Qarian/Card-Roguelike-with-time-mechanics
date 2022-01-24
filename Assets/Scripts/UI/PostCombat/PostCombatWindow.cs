@@ -14,7 +14,7 @@ namespace UI.PostCombat
             gameObject.SetActive(false);
         }
 
-        protected void Finalize()
+        protected void Close()
         {
             OnWindowFinalized?.Invoke();
         }

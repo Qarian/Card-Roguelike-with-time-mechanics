@@ -25,7 +25,7 @@ namespace UI.PostCombat
         private void SetDifficulty(EncounterDifficulty newDifficulty)
         {
             PlayerGlobalData.selectedDifficulty = newDifficulty;
-            Finalize();
+            Close();
         }
     }
 }
