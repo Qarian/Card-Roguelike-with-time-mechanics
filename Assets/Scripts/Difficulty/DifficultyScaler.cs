@@ -23,6 +23,8 @@ namespace Difficulty
             
             modifiers.Add(new TimeDifficultyModifier());
             modifiers.Add(new HealthDifficultyModifier());
+            modifiers.Add(new RoundsDifficultyModifier());
+            modifiers.Add(new PlayerSuggestionDifficultyModifier());
         }
 
         public static void NewEncounter(Combination enemyCombination)

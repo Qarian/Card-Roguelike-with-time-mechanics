@@ -70,7 +70,7 @@ namespace UI.Entities
             Destroy(gameObject);
         }
 
-        public abstract void StartCombat();
+        public virtual void StartCombat() { }
 
         protected abstract void CooldownEnd();
 

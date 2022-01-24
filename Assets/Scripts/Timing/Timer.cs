@@ -4,8 +4,9 @@ namespace Timing
 {
     public class Timer
     {
-        private readonly float length;
+        private float length;
 
+        public float internalModifier = 1;
         private float currentTime;
 
         public event Action OnEnd;
@@ -42,7 +43,7 @@ namespace Timing
 
         public void Update(float amount)
         {
-            currentTime += amount;
+            currentTime += amount * internalModifier;
             if (currentTime > length)
             {
                 currentTime = length;

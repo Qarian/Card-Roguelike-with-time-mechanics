@@ -12,12 +12,13 @@ namespace UI.Entities
         
         private CardData currentCard;
 
-        public void Init(EnemyData data)
+        public void Init(EnemyData data, float difficulty)
         {
             entityData = data;
             currentCard = Data?.firstCard ?? ChooseNextCard();
             
             timer = new Timer(data.initialCooldown + currentCard.cost, CooldownEnd, false);
+            timer.internalModifier = difficulty;
 
             currentHealth = Data.baseLife;
             healthBar.Init(entityData.baseLife);

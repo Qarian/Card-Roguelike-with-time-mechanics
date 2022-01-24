@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UI.Entities;
@@ -6,7 +5,6 @@ using Random = UnityEngine.Random;
 
 namespace Cards
 {
-    [Serializable]
     public class Deck
     {
         public readonly List<CardData> cards;
@@ -17,7 +15,7 @@ namespace Cards
         public Deck(List<CardDataScriptable> cards, BaseEntity owner = null)
         {
             this.cards = new List<CardData>(cards.Count);
-            foreach (var t in cards)
+            foreach (CardDataScriptable t in cards)
             {
                 CardData card = t;
                 card.owner = owner;
@@ -29,12 +27,6 @@ namespace Cards
         {
             cards = originalDeck.cards.ToArray().ToList();
             owner = originalDeck.owner;
-        }
-
-        public Deck(BaseEntity owner)
-        {
-            cards = new();
-            this.owner = owner;
         }
 
         public void AddCard(CardData card)
@@ -55,6 +47,7 @@ namespace Cards
             return card;
         }
 
+        // Fisher–Yates shuffle
         public void Shuffle()
         {
             int n = cards.Count;  
@@ -67,7 +60,7 @@ namespace Cards
 
         public void MoveCards(Deck targetDeck)
         {
-            foreach (var card in cards)
+            foreach (CardData card in cards)
             {
                 targetDeck.AddCard(card);
             }
