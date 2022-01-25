@@ -62,7 +62,7 @@ namespace Cards.CardModifiers
 
         private void OnTimeOut()
         {
-            modifier.TimeTick(entityData, CurrentData);
+            modifier.TimeTick(entityData, CurrentData, TotalStrength);
             if (allData.Count > 1)
             {
                 allData.RemoveAt(0);

@@ -4,9 +4,9 @@ namespace Cards.CardModifiers.Effects
 {
     public class DealDamageEffect : ICharacterEffect
     {
-        public void ApplyEffect(BaseEntity target, ModifierData data)
+        public void ApplyEffect(BaseEntity target, ModifierData currentData, int totalStrength)
         {
-            target.ModifyHealth(-data.strength);
+            target.ModifyHealth(-totalStrength);
         }
     }
 }

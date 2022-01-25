@@ -17,14 +17,14 @@ namespace Cards.CardModifiers.Effects
         [HideIf("useLengthFromData")]
         [SerializeField] private int customLength;
         
-        public void ApplyEffect(BaseEntity target, ModifierData data)
+        public void ApplyEffect(BaseEntity target, ModifierData currentData, int totalStrength)
         {
-            target.Modifiers.ApplyModifier(new ModifierWithData(modifierToAdd, CalculateData(data)));
+            target.Modifiers.ApplyModifier(new ModifierWithData(modifierToAdd, CalculateData(currentData)));
         }
 
-        public void CardUsage(BaseEntity caster, CardData card, ActionData action, ModifierData data)
+        public void CardUsage(BaseEntity caster, CardData card, ActionData action, ModifierData currentData, int totalStrength)
         {
-            action.modifiersWithData.Add(new ModifierWithData(modifierToAdd, CalculateData(data)));
+            action.modifiersWithData.Add(new ModifierWithData(modifierToAdd, CalculateData(currentData)));
         }
 
         private ModifierData CalculateData(ModifierData data)

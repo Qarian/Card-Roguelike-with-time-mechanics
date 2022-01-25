@@ -25,7 +25,8 @@ namespace Cards.CardModifiers
         {
             foreach (KeyValuePair<Modifier,AssignedModifier> assignedModifier in assignedModifiers)
             {
-                assignedModifier.Key.UseCard(caster, card, action, assignedModifier.Value.CurrentData);
+                AssignedModifier value = assignedModifier.Value;
+                assignedModifier.Key.UseCard(caster, card, action, value.CurrentData, value.TotalStrength);
             }
         }
 
@@ -33,7 +34,8 @@ namespace Cards.CardModifiers
         {
             foreach (KeyValuePair<Modifier,AssignedModifier> assignedModifier in assignedModifiers)
             {
-                assignedModifier.Key.Defend(defender, action, assignedModifier.Value.CurrentData);
+                AssignedModifier value = assignedModifier.Value;
+                assignedModifier.Key.Defend(defender, action, value.CurrentData, value.TotalStrength);
             }
         }
 

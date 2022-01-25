@@ -11,11 +11,11 @@ namespace UI.Cards
 	public class CardUI : UIAnimatedObject
 	{
 		[Header("References")]
-		[SerializeField] private Image background = default;
-		[SerializeField] private Image backSide = default;
-		[SerializeField] private TMP_Text cost = default;
-		[SerializeField] private TMP_Text title = default;
-		[SerializeField] private TMP_Text explanation = default;
+		[SerializeField] private Image background;
+		[SerializeField] private Image backSide;
+		[SerializeField] private TMP_Text cost;
+		[SerializeField] private TMP_Text title;
+		[SerializeField] private TMP_Text explanation;
 
 		[Space]
 		public CardData data;

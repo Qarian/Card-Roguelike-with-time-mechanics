@@ -4,6 +4,6 @@ namespace Cards.CardModifiers.Effects
 {
     public interface IDefendEffect
     {
-        public void Defend(BaseEntity defender, ActionData action, ModifierData data);
+        public void Defend(BaseEntity defender, ActionData action, ModifierData currentData, int totalStrength);
     }
 }
