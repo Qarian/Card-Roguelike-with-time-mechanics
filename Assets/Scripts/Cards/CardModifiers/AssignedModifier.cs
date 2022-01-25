@@ -16,7 +16,7 @@ namespace Cards.CardModifiers
         public ModifierData CurrentData => allData[0];
 
         public readonly List<Timer> allTimers = new ();
-        public Timer CurrentTimer => allTimers[0];
+        public Timer CurrentTimer => allTimers.Count > 0 ? allTimers[0] : null;
 
         public event Action<ModifierData> NewData;
         public event Action TimeTick;
@@ -42,7 +42,7 @@ namespace Cards.CardModifiers
             modifier = modData.modifier;
             
             AddNew(modData);
-            CurrentTimer.Start();
+            CurrentTimer?.Start();
         }
         
         public void AddNew(ModifierWithData modData)

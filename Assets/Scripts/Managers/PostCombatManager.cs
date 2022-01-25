@@ -9,7 +9,7 @@ namespace Managers
     {
         [SerializeField] private List<PostCombatWindow> postCombatWindows = new ();
 
-        private void Start()
+        private void Awake()
         {
             gameObject.SetActive(false);
             instance = this;

@@ -46,6 +46,8 @@ namespace UI.CardModifiers
             assignedModifier.TimeTick += TimeTick;
             assignedModifier.ModifierEnd += End;
 
+
+            timer.SetActive(modifier.Modifier.useTimer);
             foreach (ModifierData data in modifier.allData)
             {
                 NewStack(data);
@@ -54,6 +56,7 @@ namespace UI.CardModifiers
 
         private void Update()
         {
+            if (assignedModifier.CurrentTimer == null) return;
             currentRing.fillAmount = Mathf.Clamp01(assignedModifier.CurrentTimer.RemainingTime / fullCircleTime);
             currentTimeIndicationRotator.transform.rotation = Quaternion.Euler(0, 0,
                 currentRingRotationBounds.PointInBetween(assignedModifier.CurrentTimer.Progress));
@@ -87,7 +90,7 @@ namespace UI.CardModifiers
 
         private void SetTextValue()
         {
-            textStrengthValue.text = assignedModifier.TotalStrength.ToString();
+            textStrengthValue.text = Mathf.Abs(assignedModifier.TotalStrength).ToString();
         }
         
 

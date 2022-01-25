@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Cards.CardModifiers.Effects
 {
     [System.Serializable]
-    public class AddModifierEffect : ICharacterEffect, ICardUsageEffect
+    public class AddModifierEffect : ICharacterEffect, ICardUsageEffect, IAttackEffect
     {
         [SerializeField] private ModifierScriptable modifierToAdd;
         
@@ -33,6 +33,11 @@ namespace Cards.CardModifiers.Effects
             float length = useLengthFromData ? data.length : customLength;
 
             return new ModifierData(strength, length);
+        }
+
+        public void Attack(BaseEntity target, ModifierData currentData)
+        {
+            target.Modifiers.ApplyModifier(new ModifierWithData(modifierToAdd, CalculateData(currentData)));
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Cards
 		public readonly string title;
 		public readonly float cost;
 		public readonly string description;
+		public bool selfCastAsEnemy = false;
 
 		public List<ModifierWithData> actionsModifiers;
 
@@ -25,6 +26,7 @@ namespace Cards
 			cost = origin.cost;
 			description = origin.description;
 			actionsModifiers = origin.Actions;
+			selfCastAsEnemy = origin.selfCastAsEnemy;
 			owner = null;
 		}
 		

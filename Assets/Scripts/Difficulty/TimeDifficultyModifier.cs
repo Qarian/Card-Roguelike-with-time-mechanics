@@ -11,7 +11,7 @@ namespace Difficulty
         private const float MinTotalModifier = 0.9f;
         private const float MaxTotalModifier = 1.2f;
         
-        private float currentModifier = MaxTotalModifier;
+        private float currentModifier = 1f;
 
         private float encounterStartTime;
 

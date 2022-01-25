@@ -7,14 +7,15 @@ namespace Cards
 {
     public class Deck
     {
-        public readonly List<CardData> cards;
+        public readonly List<CardData> cards = new ();
         public int Size => cards.Count;
 
         private BaseEntity owner;
 
         public Deck(List<CardDataScriptable> cards, BaseEntity owner = null)
         {
-            this.cards = new List<CardData>(cards.Count);
+            if (cards == null) return;
+            
             foreach (CardDataScriptable t in cards)
             {
                 CardData card = t;

@@ -14,7 +14,7 @@ namespace Difficulty
         private const float PerfectHealthModifier = 0.08f;
 
         private int currentPerfectHealthStack = 0;
-        private float currentHealthModifier = MaxHealthModifier;
+        private float currentHealthModifier = 1f;
         
         public void ModifyDifficulty(ref float difficulty)
         {
@@ -24,7 +24,7 @@ namespace Difficulty
 
         public void StartEncounter(Combination enemyCombination)
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void EndEncounter()

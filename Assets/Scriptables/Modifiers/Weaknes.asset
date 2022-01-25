@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40ebb83f5924f7fb5ce400fd4c4f8fd, type: 3}
-  m_Name: Add Self
+  m_Name: Weaknes
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -27,7 +27,7 @@ MonoBehaviour:
       Data: 0|Cards.CardModifiers.Modifier, Assembly-CSharp
     - Name: name
       Entry: 1
-      Data: Add Self
+      Data: Resistance
     - Name: icon
       Entry: 6
       Data: 
@@ -87,7 +87,28 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 5|Cards.CardModifiers.Effects.ChangeEffectDataEffect, Assembly-CSharp
+    - Name: effectToChange
+      Entry: 7
+      Data: 6|Cards.CardModifiers.Effects.DealDamageEffect, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: useDifferenceFromStrength
+      Entry: 5
+      Data: true
+    - Name: customDifference
+      Entry: 3
       Data: 0
+    - Name: clampNegative
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -96,7 +117,7 @@ MonoBehaviour:
       Data: 
     - Name: onTimeTick
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[Cards.CardModifiers.Effects.ICharacterEffect,
+      Data: 7|System.Collections.Generic.List`1[[Cards.CardModifiers.Effects.ICharacterEffect,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12

@@ -38,7 +38,7 @@ namespace UI.Entities
 
         protected override void CooldownEnd()
         {
-            UseCard(currentCard, EncounterManager.Player);
+            UseCard(currentCard, currentCard.selfCastAsEnemy ? this : EncounterManager.Player);
             currentCard = ChooseNextCard();
             timer.IncreaseDuration(currentCard.cost);
         }

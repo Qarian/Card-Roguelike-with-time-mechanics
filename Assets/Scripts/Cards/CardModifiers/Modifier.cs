@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cards.CardModifiers.Effects;
-using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UI.Entities;
 using UnityEngine;

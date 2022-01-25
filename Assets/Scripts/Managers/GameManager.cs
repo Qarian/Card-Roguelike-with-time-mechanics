@@ -26,6 +26,10 @@ namespace Managers
         {
             DifficultyScaler.EndEncounter();
             
+            PlayerGlobalData.Current.currentHealth = Mathf.Clamp(
+                (int)(PlayerGlobalData.Current.currentHealth + PlayerGlobalData.Current.maxHealth * 0.2f),
+                0, PlayerGlobalData.Current.maxHealth);
+            
             if (win)
             {
                 PostCombatManager.Instance.StartEndSequence();

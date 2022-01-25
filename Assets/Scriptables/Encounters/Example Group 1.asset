@@ -51,6 +51,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 2|Encounter.Combination, Assembly-CSharp
+    - Name: baseDifficulty
+      Entry: 4
+      Data: 1
     - Name: enemies
       Entry: 7
       Data: 3|System.Collections.Generic.List`1[[Character.EnemyDataScriptable, Assembly-CSharp]],
@@ -82,6 +85,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 4|Encounter.Combination, Assembly-CSharp
+    - Name: baseDifficulty
+      Entry: 4
+      Data: 1
     - Name: enemies
       Entry: 7
       Data: 5|System.Collections.Generic.List`1[[Character.EnemyDataScriptable, Assembly-CSharp]],
@@ -113,6 +119,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 6|Encounter.Combination, Assembly-CSharp
+    - Name: baseDifficulty
+      Entry: 4
+      Data: 1
     - Name: enemies
       Entry: 7
       Data: 7|System.Collections.Generic.List`1[[Character.EnemyDataScriptable, Assembly-CSharp]],

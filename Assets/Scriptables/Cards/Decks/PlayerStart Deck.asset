@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStart Deck
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: bad76f77186fd71499f5d705a2df2fd8, type: 2}
   - {fileID: 11400000, guid: 845cc1a9a27ded04fad9aa10ccd29be2, type: 2}
-  - {fileID: 11400000, guid: bad76f77186fd71499f5d705a2df2fd8, type: 2}
   - {fileID: 11400000, guid: 845cc1a9a27ded04fad9aa10ccd29be2, type: 2}
+  - {fileID: 11400000, guid: d27f7f7b9dc13584e897f1a98521829c, type: 2}
+  - {fileID: 11400000, guid: d27f7f7b9dc13584e897f1a98521829c, type: 2}

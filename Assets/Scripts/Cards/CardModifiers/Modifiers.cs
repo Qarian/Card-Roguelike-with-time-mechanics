@@ -32,7 +32,7 @@ namespace Cards.CardModifiers
 
         public void Defend(BaseEntity defender, ActionData action)
         {
-            foreach (KeyValuePair<Modifier,AssignedModifier> assignedModifier in assignedModifiers)
+            foreach (KeyValuePair<Modifier, AssignedModifier> assignedModifier in assignedModifiers)
             {
                 AssignedModifier value = assignedModifier.Value;
                 assignedModifier.Key.Defend(defender, action, value.CurrentData, value.TotalStrength);
@@ -56,13 +56,9 @@ namespace Cards.CardModifiers
             AssignedModifier newAssignedModifier = new AssignedModifier(entity, modData);
             newAssignedModifier.ModifierEnd += () => ModifierEnd(modData.modifier);
             assignedModifiers.Add(modData.modifier, newAssignedModifier);
-
-            if (modData.modifier.useTimer)
-            {
-                // ToDO: show icon but disable timer
-                var icon = Instantiate(modifierIconPrefab, modifiersParent);
-                icon.Init(newAssignedModifier, entity);
-            }
+            
+            var icon = Instantiate(modifierIconPrefab, modifiersParent);
+            icon.Init(newAssignedModifier, entity);
         }
 
         private void ModifierEnd(Modifier modifier)

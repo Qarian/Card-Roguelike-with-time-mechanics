@@ -16,7 +16,7 @@ MonoBehaviour:
     entityName: Example Enemy
     sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     indicatorSprite: {fileID: 0}
-    baseLife: 5
+    baseLife: 10
     startingDeck: {fileID: 11400000, guid: 62f1d3d98ae765f48a73714d6b27c5a8, type: 2}
     initialCooldown: 0.5
     firstCard: {fileID: 0}
