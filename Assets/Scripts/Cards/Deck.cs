@@ -70,6 +70,8 @@ namespace Cards
 
         public void SetOwner(BaseEntity newOwner)
         {
+            owner = newOwner;
+            
             foreach (CardData card in cards)
             {
                 card.owner = newOwner;

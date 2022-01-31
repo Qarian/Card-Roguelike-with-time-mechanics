@@ -37,6 +37,7 @@ namespace UI.CardsManagement
 			CardUI card = PoolsManager.Get<CardUI>();
 			card.SetCard(cardData);
 			card.SetParent(transform);
+			card.transform.localPosition = Vector3.zero;
 			card.AnchoredPosition = Vector2.zero;
 			card.transform.localScale = Vector3.one;
 

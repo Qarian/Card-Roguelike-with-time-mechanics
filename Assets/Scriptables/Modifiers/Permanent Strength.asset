@@ -16,6 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 9d4d86cb4212d0648aa12ef31ac5efd6, type: 3}
     - {fileID: 11400000}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -29,8 +30,8 @@ MonoBehaviour:
       Entry: 1
       Data: Strength
     - Name: icon
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: useTimer
       Entry: 5
       Data: false
@@ -46,7 +47,7 @@ MonoBehaviour:
       Data: 2|Cards.CardModifiers.Effects.AddModifierEffect, Assembly-CSharp
     - Name: modifierToAdd
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: useStrengthFromData
       Entry: 5
       Data: true
