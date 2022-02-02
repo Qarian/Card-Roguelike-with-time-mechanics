@@ -40,7 +40,7 @@ namespace Managers
             }
         }
 
-        private void ReturnToMainMenu()
+        public void ReturnToMainMenu()
         {
             SceneManager.LoadScene(0);
         }

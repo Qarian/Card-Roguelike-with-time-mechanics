@@ -111,7 +111,7 @@ namespace UI.CardModifiers
 
         public override void OnRemove()
         {
-            base.OnRemove();
+            //base.OnRemove();
             foreach (Transform circle in ringsTransform)
             {
                 Destroy(circle.gameObject);

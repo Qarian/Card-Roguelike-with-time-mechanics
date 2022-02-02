@@ -96,10 +96,13 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 10
       Data: 1
+    - Name: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -133,7 +136,7 @@ MonoBehaviour:
       Data: 3
     - Name: 
       Entry: 10
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 10
       Data: 0

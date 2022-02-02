@@ -21,12 +21,12 @@ namespace UI.Cards
 
         protected override void StartHovering()
         {
-            UICardPreview.ShowPreview(cardUI.data);
+            //UICardPreview.ShowPreview(cardUI.data);
         }
 
         protected override void EndHovering()
         {
-            UICardPreview.HidePreview(cardUI.data);
+            //UICardPreview.HidePreview(cardUI.data);
         }
 
         protected override void StartDragging()

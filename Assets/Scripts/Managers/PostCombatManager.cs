@@ -7,10 +7,17 @@ namespace Managers
 {
     public class PostCombatManager : Singleton<PostCombatManager>
     {
+        [SerializeField] private PostCombatWindow loseWindow;
         [SerializeField] private List<PostCombatWindow> postCombatWindows = new ();
 
         private void Awake()
         {
+            foreach (PostCombatWindow window in postCombatWindows)
+            {
+                window.gameObject.SetActive(false);
+            }
+            //loseWindow.gameObject.SetActive(false);
+            
             gameObject.SetActive(false);
             instance = this;
         }
@@ -21,13 +28,16 @@ namespace Managers
             {
                 var i1 = i;
                 postCombatWindows[i].OnWindowFinalized += () => GoToNextWindow(i1);
-                
-                postCombatWindows[i].gameObject.SetActive(false);
             }
             postCombatWindows[^1].OnWindowFinalized += FinishedLastWindow;
-            postCombatWindows[^1].gameObject.SetActive(false);
             
             gameObject.SetActive(true);
+            postCombatWindows[0].ShowWindow();
+        }
+
+        public void ShowLoseScreen()
+        {
+            loseWindow.gameObject.SetActive(true);
             postCombatWindows[0].ShowWindow();
         }
 
