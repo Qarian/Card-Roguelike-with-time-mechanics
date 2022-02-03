@@ -16,7 +16,7 @@ namespace Managers
             {
                 window.gameObject.SetActive(false);
             }
-            //loseWindow.gameObject.SetActive(false);
+            loseWindow.gameObject.SetActive(false);
             
             gameObject.SetActive(false);
             instance = this;
@@ -37,8 +37,9 @@ namespace Managers
 
         public void ShowLoseScreen()
         {
+            gameObject.SetActive(true);
             loseWindow.gameObject.SetActive(true);
-            postCombatWindows[0].ShowWindow();
+            loseWindow.ShowWindow();
         }
 
         private void GoToNextWindow(int windowIndex)

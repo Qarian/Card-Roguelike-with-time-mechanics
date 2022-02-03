@@ -292,4 +292,4 @@ MonoBehaviour:
   cardsPool: {fileID: 11400000, guid: 31b823bc5374ccc4da2fb4dc2cffc4cd, type: 2}
   cardPrefab: {fileID: 5294639536155424774, guid: f8727575b2839ec4e835e602d93e18b1, type: 3}
   parent: {fileID: 5126493073953462211}
-  cardsCount: 3
+  cardsCount: 4

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Kamol Deck
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 845cc1a9a27ded04fad9aa10ccd29be2, type: 2}
+  - {fileID: 11400000, guid: a82afe4bcd78e2248ab2d6ff3a7d4698, type: 2}
+  - {fileID: 11400000, guid: 3a41fa91c64bd504f97300b52f4024ae, type: 2}

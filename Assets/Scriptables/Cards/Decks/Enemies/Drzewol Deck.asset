@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Drzewol Deck
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 845cc1a9a27ded04fad9aa10ccd29be2, type: 2}
+  - {fileID: 11400000, guid: 10a889f580ec30b4a819bed80e334c42, type: 2}
+  - {fileID: 11400000, guid: 10ee20eaedd41f8478243cf2238cd644, type: 2}
+  - {fileID: 11400000, guid: b7d578bd6db5e204db1a920930692cd3, type: 2}

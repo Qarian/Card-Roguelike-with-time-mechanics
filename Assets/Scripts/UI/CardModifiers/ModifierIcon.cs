@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography;
 using Cards.CardModifiers;
 using Extensions;
 using TMPro;
@@ -106,7 +107,16 @@ namespace UI.CardModifiers
 
         private void End()
         {
-            PoolsManager.Remove(this);
+            if (assignedModifier is not null)
+            {
+                assignedModifier.NewData -= NewStack;
+                assignedModifier.TimeTick -= TimeTick;
+                assignedModifier.ModifierEnd -= End;
+            }
+            
+            if (gameObject)
+                Destroy(gameObject);
+            //PoolsManager.Remove(this);
         }
 
         public override void OnRemove()

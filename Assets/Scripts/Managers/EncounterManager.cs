@@ -38,6 +38,7 @@ namespace Managers
         
         private void Start()
         {
+            PlayerGlobalData.Stats.NewEncounter();
             player.Initialize();
             Combination enemies = GenerateEnemies();
             DifficultyScaler.NewEncounter(enemies);

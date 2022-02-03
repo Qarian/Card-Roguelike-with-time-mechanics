@@ -286,7 +286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Game by\n\tDorian Cichoszewski\nArts by\n\tMartyna Sobala"
+  m_text: "Game by\n\tDorian Cichoszewski\nIllustrations by\n\tMartyna Sobala"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c5379e4c6a96c945a2edb3efe01ad24, type: 2}
   m_sharedMaterial: {fileID: 3227361782857112933, guid: 3c5379e4c6a96c945a2edb3efe01ad24, type: 2}

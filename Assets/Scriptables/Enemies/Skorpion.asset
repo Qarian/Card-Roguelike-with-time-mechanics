@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Skorpion
   m_EditorClassIdentifier: 
   data:
-    entityName: Example Enemy
+    entityName: Scorpion
     sprite: {fileID: 21300000, guid: 780ad84db2f8fcf4983abf4dcc0b68b4, type: 3}
     indicatorSprite: {fileID: 21300000, guid: 780ad84db2f8fcf4983abf4dcc0b68b4, type: 3}
-    baseLife: 10
+    baseLife: 35
     startingDeck: {fileID: 11400000, guid: 62f1d3d98ae765f48a73714d6b27c5a8, type: 2}
-    initialCooldown: 0.5
+    initialCooldown: 1.5
     firstCard: {fileID: 0}

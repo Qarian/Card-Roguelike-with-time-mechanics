@@ -37,10 +37,10 @@ MonoBehaviour:
       Data: 0
     - Name: strength
       Entry: 3
-      Data: 4
+      Data: 3
     - Name: length
       Entry: 4
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -55,7 +55,7 @@ MonoBehaviour:
       Data: 2
     - Name: length
       Entry: 4
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -68,5 +68,5 @@ MonoBehaviour:
   style: {fileID: 11400000, guid: b7912924c6caa5b4ca594711f75e088b, type: 2}
   title: Venom
   cost: 2
-  description: Typical Poison
+  description: Quick poison
   selfCastAsEnemy: 0

@@ -36,7 +36,8 @@ namespace Managers
             }
             else
             {
-                ReturnToMainMenu();
+                PostCombatManager.Instance.ShowLoseScreen();
+                //ReturnToMainMenu();
             }
         }
 

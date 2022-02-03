@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Skorpion Deck
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 845cc1a9a27ded04fad9aa10ccd29be2, type: 2}
+  - {fileID: 11400000, guid: d6997b2d96bc93948b9eb535a68bb50c, type: 2}
+  - {fileID: 11400000, guid: 4b4e4d218659c3145ba77dbfb0790774, type: 2}
+  - {fileID: 11400000, guid: b38bb3dd4d18cb54289638ef3f07e4b1, type: 2}

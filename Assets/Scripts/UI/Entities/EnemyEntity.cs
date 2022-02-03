@@ -17,7 +17,7 @@ namespace UI.Entities
             entityData = data;
             currentCard = Data?.firstCard ?? ChooseNextCard();
             
-            timer = new Timer(data.initialCooldown + currentCard.cost, CooldownEnd, false);
+            timer = new Timer(data.initialCooldown + currentCard.cost + Random.Range(0, 1f), CooldownEnd, false);
             timer.internalModifier = difficulty;
 
             currentHealth = Data.baseLife;

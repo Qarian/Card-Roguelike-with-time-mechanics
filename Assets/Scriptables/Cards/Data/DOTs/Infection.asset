@@ -37,7 +37,7 @@ MonoBehaviour:
       Data: 0
     - Name: strength
       Entry: 3
-      Data: 2
+      Data: 3
     - Name: length
       Entry: 4
       Data: 9
