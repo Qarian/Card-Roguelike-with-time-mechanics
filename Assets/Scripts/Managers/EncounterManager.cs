@@ -10,30 +10,35 @@ using UI.Entities;
 using UI.Timeline;
 using UnityEngine;
 using Utilities;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Managers
 {
-    public class EncounterManager : Singleton<EncounterManager>
+    public class EncounterManager : MonoBehaviour
     {
         [SerializeField] private PossibleEncounters possibleEncounters;
 
         [SerializeField] private List<Color> colorsForRepeatingEnemies = new();
-
-        [Space]
-        [SceneObjectsOnly] [SerializeField] private UICardsController uiCards;
-        [SceneObjectsOnly] [SerializeField] private EntitiesLayoutManager layoutManager;
-        [SceneObjectsOnly] [SerializeField] private PlayerEntity player;
+        
+        private UICardsController uiCards;
+        private EntitiesLayoutManager layoutManager;
+        private PlayerEntity player;
 
         private List<EnemyEntity> enemies;
         private CombatState state;
 
         private bool playerActionsEnabled;
-
-        public static PlayerEntity Player => Instance.player;
-        
         public bool PlayerActionsEnabled => playerActionsEnabled;
         public event Action<bool> OnPlayerActionsChange;
+
+        [Inject]
+        private void Init(UICardsController uiCards, EntitiesLayoutManager layoutManager, PlayerEntity playerEntity)
+        {
+            this.uiCards = uiCards;
+            this.layoutManager = layoutManager;
+            player = playerEntity;
+        }
 
         
         private void Start()

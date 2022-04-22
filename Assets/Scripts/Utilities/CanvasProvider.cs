@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using Utilities;
 
-namespace UI.Cards
+namespace Utilities
 {
     [RequireComponent(typeof(Canvas))]
-    public class CanvasDataProvider : Singleton<CanvasDataProvider>
+    public class CanvasProvider : MonoBehaviour
     {
         public Canvas canvas { get; private set; }
 
-        protected override void OnAwake()
+        protected void Awake()
         {
             canvas = GetComponent<Canvas>();
         }

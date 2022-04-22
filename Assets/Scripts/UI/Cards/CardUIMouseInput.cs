@@ -1,32 +1,30 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Utilities;
+using Zenject;
 
 namespace UI.Cards
 {
     [RequireComponent(typeof(CardUI))]
     public class CardUIMouseInput : UIMouseInput
     {
-        [FormerlySerializedAs("raycastReceiver")]
         [SerializeField] private Image cardRaycastReceiver = default;
         private CardUI cardUI;
         private new RectTransform transform;
+
+        private Canvas canvas;
+
+        [Inject]
+        private void Init(CanvasProvider canvasProvider)
+        {
+            canvas = canvasProvider.canvas;
+        }
 
         private void Awake()
         {
             cardUI = GetComponent<CardUI>();
             transform = GetComponent<RectTransform>();
-        }
-
-        protected override void StartHovering()
-        {
-            //UICardPreview.ShowPreview(cardUI.data);
-        }
-
-        protected override void EndHovering()
-        {
-            //UICardPreview.HidePreview(cardUI.data);
         }
 
         protected override void StartDragging()
@@ -37,7 +35,7 @@ namespace UI.Cards
         
         protected override void Dragging(Vector2 delta)
         {
-            transform.anchoredPosition += delta / CanvasDataProvider.Instance.canvas.scaleFactor;
+            transform.anchoredPosition += delta / canvas.scaleFactor;
         }
 
         protected override void EndDrag(List<GameObject> hovered)
@@ -61,5 +59,7 @@ namespace UI.Cards
             //fallback
             cardUI.Parent.ReturnCard(cardUI);
         }
+        
+        public class Factory : PlaceholderFactory<CardUIMouseInput> { }
     }
 }

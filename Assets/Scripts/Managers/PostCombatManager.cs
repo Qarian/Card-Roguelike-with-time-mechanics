@@ -5,7 +5,7 @@ using Utilities;
 
 namespace Managers
 {
-    public class PostCombatManager : Singleton<PostCombatManager>
+    public class PostCombatManager : MonoBehaviour
     {
         [SerializeField] private PostCombatWindow loseWindow;
         [SerializeField] private List<PostCombatWindow> postCombatWindows = new ();
@@ -19,7 +19,6 @@ namespace Managers
             loseWindow.gameObject.SetActive(false);
             
             gameObject.SetActive(false);
-            instance = this;
         }
 
         public void StartEndSequence()

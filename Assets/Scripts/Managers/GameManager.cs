@@ -4,11 +4,15 @@ using Encounter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utilities;
+using Zenject;
 
 namespace Managers
 {
     public class GameManager : Singleton<GameManager>
     {
+        [Inject]
+        private PostCombatManager postCombatManager;
+        
         public static void StartEncounter(PlayerDataScriptable playerDataScriptable)
         {
             PlayerGlobalData.StartNewGame(playerDataScriptable);
@@ -32,12 +36,11 @@ namespace Managers
             
             if (win)
             {
-                PostCombatManager.Instance.StartEndSequence();
+                postCombatManager.StartEndSequence();
             }
             else
             {
-                PostCombatManager.Instance.ShowLoseScreen();
-                //ReturnToMainMenu();
+                postCombatManager.ShowLoseScreen();
             }
         }
 

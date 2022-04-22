@@ -2,7 +2,9 @@
 using Character;
 using Managers;
 using Timing;
+using UI.Cards;
 using UnityEngine;
+using Zenject;
 
 namespace UI.Entities
 {
@@ -11,6 +13,14 @@ namespace UI.Entities
         private EnemyData Data => (EnemyData) entityData;
         
         private CardData currentCard;
+
+        private PlayerEntity player;
+
+        [Inject]
+        private void Inject(PlayerEntity playerEntity)
+        {
+            player = playerEntity;
+        }
 
         public void Init(EnemyData data, float difficulty)
         {
@@ -38,9 +48,11 @@ namespace UI.Entities
 
         protected override void CooldownEnd()
         {
-            UseCard(currentCard, currentCard.selfCastAsEnemy ? this : EncounterManager.Player);
+            UseCard(currentCard, currentCard.selfCastAsEnemy ? this : player);
             currentCard = ChooseNextCard();
             timer.IncreaseDuration(currentCard.cost);
         }
+
+        public class Factory : PlaceholderFactory<EnemyEntity> { }
     }
 }

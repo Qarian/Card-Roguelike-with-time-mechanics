@@ -5,6 +5,7 @@ using UI.Entities;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
+using Zenject;
 
 namespace UI.Cards
 {
@@ -25,6 +26,16 @@ namespace UI.Cards
 
 		private ICardProvider parent;
 		public ICardProvider Parent => parent;
+
+		private PlayerEntity player;
+		private EncounterManager encounterManager;
+
+		[Inject]
+		private void Init(PlayerEntity playerEntity, EncounterManager encounterManager)
+		{
+			player = playerEntity;
+			this.encounterManager = encounterManager;
+		}
 
 		public void SetParent(ICardProvider newParent, Transform newParentTransform)
 		{
@@ -67,29 +78,44 @@ namespace UI.Cards
 
 		public void UseCard(BaseEntity target)
 		{
-			EncounterManager.Instance.ActionPerformed();
+			encounterManager.ActionPerformed();
 			data.owner.UseCard(data, target);
-			EncounterManager.Player.DiscardCard(data);
-			EncounterManager.Instance.DrawCardToHand();
+			player.DiscardCard(data);
+			encounterManager.DrawCardToHand();
 			PoolsManager.Remove(this);
 		}
 
 		public override void OnGet()
 		{
 			base.OnGet();
-			EncounterManager.Instance.OnPlayerActionsChange += ChangeCardActive;
+			encounterManager.OnPlayerActionsChange += ChangeCardActive;
 		}
 
 		public override void OnRemove()
 		{
 			base.OnRemove();
-			EncounterManager.Instance.OnPlayerActionsChange -= ChangeCardActive;
+			encounterManager.OnPlayerActionsChange -= ChangeCardActive;
 		}
 
 		public void ChangeCardActive(bool active)
 		{
 			if (mouseInput)
 				mouseInput.enabled = active;
+		}
+		
+		public class Factory : IFactory<CardUI, CardUI>
+		{
+			private DiContainer container;
+
+			public Factory(DiContainer container)
+			{
+				this.container = container;
+			}
+		
+			public CardUI Create(CardUI param)
+			{
+				return container.InstantiatePrefabForComponent<CardUI>(param.gameObject);
+			}
 		}
 	}
 }

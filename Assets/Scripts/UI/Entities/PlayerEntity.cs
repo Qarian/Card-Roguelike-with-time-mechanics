@@ -4,6 +4,7 @@ using Managers;
 using Timing;
 using UI.Timeline;
 using UnityEngine;
+using Zenject;
 
 namespace UI.Entities
 {
@@ -15,6 +16,9 @@ namespace UI.Entities
         public Deck discardDeck;
 
         public int cardsInHand = 3;
+
+        [Inject]
+        private EncounterManager encounterManager;
         
         private PlayerData Data => (PlayerData) entityData;
 
@@ -44,7 +48,7 @@ namespace UI.Entities
 
         protected override void CooldownEnd()
         {
-            EncounterManager.Instance.EnablePlayerActions();
+            encounterManager.EnablePlayerActions();
         }
 
         public CardData GetCard()

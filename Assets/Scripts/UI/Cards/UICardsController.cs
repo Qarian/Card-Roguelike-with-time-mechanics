@@ -1,23 +1,33 @@
-using System.Collections;
-using Managers;
 using Sirenix.OdinInspector;
 using UI.CardsManagement;
+using UI.Entities;
 using UnityEngine;
+using Zenject;
 
 namespace UI.Cards
 {
 	public class UICardsController : MonoBehaviour
 	{
-		[SerializeField] private UICardsHand cardsHand;
-		[SerializeField] private UICardsDeck cardsDeck;
-		[SerializeField] private UICardPreview cardPreview;
+		private UICardsHand cardsHand;
+		private UICardsDeck cardsDeck;
+		private UICardPreview cardPreview;
+		private PlayerEntity player;
+
+		[Inject]
+		private void Init(UICardsHand cardsHand, UICardsDeck cardsDeck, UICardPreview cardPreview, PlayerEntity playerEntity)
+		{
+			this.cardsHand = cardsHand;
+			this.cardsDeck = cardsDeck;
+			this.cardPreview = cardPreview;
+			player = playerEntity;
+		}
 
 		public void Init()
 		{
 			cardsDeck.Init();
 			cardPreview.Init();
 
-			for (int i = 0; i < EncounterManager.Player.cardsInHand; i++)
+			for (int i = 0; i < player.cardsInHand; i++)
 			{
 				DrawCardToHand();
 			}
@@ -26,7 +36,7 @@ namespace UI.Cards
 		[Button]
 		public void DrawCardToHand()
 		{
-			CardUI card = cardsDeck.DrawCard(EncounterManager.Player.GetCard());
+			CardUI card = cardsDeck.DrawCard(player.GetCard());
 			cardsHand.ReceiveCard(card);
 		}
 

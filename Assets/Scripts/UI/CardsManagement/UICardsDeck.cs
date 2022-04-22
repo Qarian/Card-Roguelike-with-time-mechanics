@@ -1,9 +1,9 @@
 ﻿using Cards;
-using Character;
 using UI.Cards;
 using UI.Entities;
 using UnityEngine;
 using Utilities;
+using Zenject;
 
 namespace UI.CardsManagement
 {
@@ -14,6 +14,14 @@ namespace UI.CardsManagement
 
 		private Deck deck;
 		private int size;
+
+		private CardUI.Factory cardFactory;
+
+		[Inject]
+		private void Dependencies(CardUI.Factory cardFactory)
+		{
+			this.cardFactory = cardFactory;
+		}
 
 		public void Init()
 		{
@@ -27,7 +35,8 @@ namespace UI.CardsManagement
 			PoolsManager.AddNewPool(new ObjectPool<CardUI>());
 			for (int i = 0; i < size; i++)
 			{
-				var card = Instantiate(cardPrefab, transform);
+				var card = cardFactory.Create(cardPrefab);
+				card.transform.SetParent(transform);
 				PoolsManager.Remove(card);
 			}
 		}

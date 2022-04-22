@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using Managers;
 using Sirenix.OdinInspector;
 using UI.Cards;
+using UI.Entities;
 using UnityEngine;
 using Utilities;
+using Zenject;
 
 namespace UI.CardsManagement
 {
@@ -20,8 +22,15 @@ namespace UI.CardsManagement
 
 		private float centeringOffset;
 
-		private void Awake()
+		private PlayerEntity player;
+		private EncounterManager encounterManager;
+
+		[Inject]
+		private void Init(PlayerEntity playerEntity, EncounterManager encounterManager)
 		{
+			player = playerEntity;
+			this.encounterManager = encounterManager;
+			
 			transform = GetComponent<RectTransform>();
 		}
 
@@ -33,7 +42,7 @@ namespace UI.CardsManagement
 		public void ReceiveCard(CardUI card)
 		{
 			card.SetParent(this, transform);
-			card.ChangeCardActive(EncounterManager.Instance.PlayerActionsEnabled);
+			card.ChangeCardActive(encounterManager.PlayerActionsEnabled);
 			if (cardsInHand.Contains(card))
 			{
 				MoveCardToPosition(card, cardsInHand.IndexOf(card));
@@ -94,7 +103,7 @@ namespace UI.CardsManagement
 			int cardsCount = cardsInHand.Count;
 			foreach (CardUI card in cardsInHand)
 			{
-				EncounterManager.Player.DiscardCard(card.data);
+				player.DiscardCard(card.data);
 				PoolsManager.Remove(card);
 			}
 

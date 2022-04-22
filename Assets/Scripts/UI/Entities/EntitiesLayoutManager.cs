@@ -6,25 +6,31 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
+using Zenject;
 
 namespace UI.Entities
 {
-    public class EntitiesLayoutManager : Singleton<EntitiesLayoutManager>
+    public class EntitiesLayoutManager : MonoBehaviour
     {
-        [SerializeField] private PossibleEncounters possibleEncounters; // possible assignment from code
-        [SerializeField] private EnemyEntity enemyPrefab;
-
-        [Space]
         [SerializeField] private LayoutGroup enemiesLayout;
 
+        private EnemyEntity.Factory enemyFactory;
+
         private List<EnemyEntity> createdEnemies = new();
+
+        [Inject]
+        private void Init(EnemyEntity.Factory enemyFactory)
+        {
+            this.enemyFactory = enemyFactory;
+        }
         
         public List<EnemyEntity> CreateEnemies(Combination enemiesCombination)
         {
             ClearEnemies();
             foreach (EnemyDataScriptable data in enemiesCombination)
             {
-                EnemyEntity entity = Instantiate(enemyPrefab, enemiesLayout.transform);
+                EnemyEntity entity = enemyFactory.Create();
+                entity.transform.SetParent(enemiesLayout.transform, false);
                 entity.Init(data, DifficultyScaler.GetDifficulty(enemiesCombination.baseDifficulty));
                 createdEnemies.Add(entity);
             }
